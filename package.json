@@ -1,8 +1,15 @@
 {
   "name": "bingo_next",
   "version": "0.1.0",
+  "author": "ROhta",
+  "description": "A Bingo Machine for Party",
   "private": false,
-
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://rohta.github.io/bingo_next/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ROhta/bingo_next"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
