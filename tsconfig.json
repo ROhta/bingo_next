@@ -1,20 +1,19 @@
 {
+  "compileOnSave": true,
+  "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
+    "target": "es2022",
+    "module": "es2022",
     "moduleResolution": "node",
+    "outDir": "src/js",
+    "sourceMap": true,
+    "removeComments": true,
+    "isolatedModules": false,
+    "noEmitOnError": true,
+    "checkJs": false,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true
+    "experimentalDecorators": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["src/ts/*"],
   "exclude": ["node_modules"]
 }
