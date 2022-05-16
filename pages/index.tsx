@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import styled from "styled-components"
+import IndexPage from "../templates/Index"
 
 const Home: NextPage = () => {
   return (
@@ -28,23 +29,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <div className="row">
-          <section className="col-sm text-center">
-            <BingoNumber id="bingo-number" />
-            <button type="button" id="start-button" className="btn btn-lg btn-secondary px-5 py-4"></button>
-            <button type="button" id="reset-button" className="btn btn-lg btn-secondary px-1 py-4"></button>
-          </section>
-          <section className="col-sm h1">
-            <p id="history-title" className="py-5"></p>
-            <div id="history-display" className="row"></div>
-          </section>
-        </div>
-
-        <audio id="drum" preload="auto" src="./drumroll.mp3"></audio>
-        <audio id="cymbals" preload="auto" src="./cymbals.mp3"></audio>
-
+        <IndexPage />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossOrigin="anonymous"></script>
-
         <script src="./js/numberList.js" defer></script>
         <script src="./js/domManipulation.js" defer></script>
         <script src="./js/root.js" defer></script>
