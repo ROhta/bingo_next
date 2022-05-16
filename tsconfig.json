@@ -3,17 +3,30 @@
   "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
     "target": "es2022",
-    "module": "es2022",
+    "module": "esnext",
     "moduleResolution": "node",
     "outDir": "src/js",
     "sourceMap": true,
     "removeComments": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "noEmitOnError": true,
     "checkJs": false,
     "resolveJsonModule": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "jsx": "preserve"
   },
-  "include": ["src/ts/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/ts/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
