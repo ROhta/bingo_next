@@ -1,6 +1,6 @@
 import { FC } from "react"
 import HistoryNumbers from "../molecules/HistoryNumbers"
-import HistoryTitle from "../atoms/HistoryNumber"
+import HistoryTitle from "../atoms/HistoryTitle"
 
 const ManualOperation: FC = () => {
     return (
