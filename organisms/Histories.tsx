@@ -1,4 +1,4 @@
-import { FC } from "react"
+import type { FC } from "react"
 import HistoryNumbers from "../molecules/HistoryNumbers"
 import HistoryTitle from "../atoms/HistoryTitle"
 

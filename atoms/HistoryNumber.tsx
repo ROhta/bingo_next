@@ -1,4 +1,4 @@
-import { FC } from "react"
+import type { FC } from "react"
 
 const HistoryNumber: FC = () => {
     return <p className="col-2">ダミー</p>

@@ -1,4 +1,4 @@
-import { FC } from "react"
+import type { FC } from "react"
 import OperationButtons from "../molecules/OperationButtons"
 import BingoNumber from "../atoms/BingoNumber"
 

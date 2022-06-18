@@ -1,4 +1,4 @@
-import { FC } from "react"
+import type { FC } from "react"
 import Operations from "../organisms/Operations"
 import Histories from "../organisms/Histories"
 import Audios from "../molecules/Audios"
