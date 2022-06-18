@@ -1,50 +1,50 @@
 export default class NumberList {
-    private readonly _remainListKey = "remainNumberList"
-    private readonly _historyListKey = "historyNumberList"
-    private readonly _minBingoNumber = 1
-    private readonly _maxBingoNumber = 75
-    private readonly _allNumberList: number[] = []
+	readonly #remainListKey = "remainNumberList"
+	readonly #historyListKey = "historyNumberList"
+	readonly #minBingoNumber = 1
+	readonly #maxBingoNumber = 75
+	readonly #allNumberList: number[] = []
 
-    constructor() {
-        for (let i = this._minBingoNumber; i <= this._maxBingoNumber; i++) this._allNumberList.push(i)
-    }
+	constructor() {
+		for (let i = this.#minBingoNumber; i <= this.#maxBingoNumber; i++) this.#allNumberList.push(i)
+	}
 
-    get remainList(): number[] {
-        return this.getListFromLocalStorage(this._remainListKey)
-    }
+	get remainList(): number[] {
+		return this.#getListFromLocalStorage(this.#remainListKey)
+	}
 
-    set remainList(remains: number[]) {
-        this.setListOnLocalStorage(this._remainListKey, remains)
-    }
+	set remainList(remainsList: number[]) {
+		this.#setListOnLocalStorage(this.#remainListKey, remainsList)
+	}
 
-    get historyList(): number[] {
-        return this.getListFromLocalStorage(this._historyListKey)
-    }
+	get historyList(): number[] {
+		return this.#getListFromLocalStorage(this.#historyListKey)
+	}
 
-    set historyList(histories: number[]) {
-        this.setListOnLocalStorage(this._historyListKey, histories)
-    }
+	set historyList(historiesList: number[]) {
+		this.#setListOnLocalStorage(this.#historyListKey, historiesList)
+	}
 
-    private getListFromLocalStorage(key: string): number[] {
-        let ret: number[] = []
-        try {
-            ret = JSON.parse(localStorage.getItem(key) || "")
-            if (!Array.isArray(ret)) throw new Error("There is no Array in the localStorage!")
-            for (const i of ret) if (typeof i !== "number") throw new Error("The array contains non-digit character in the localStorage!")
-        } catch (e: unknown) {
-            if (e instanceof Error) console.error(e.name, e.message, e.stack)
-        }
-        return ret
-    }
+	#getListFromLocalStorage(key: string): number[] {
+		let ret: number[] = []
+		try {
+			ret = JSON.parse(localStorage.getItem(key) || "")
+			if (!Array.isArray(ret)) throw new Error("There is no Array in the localStorage!")
+			for (const i of ret) if (typeof i !== "number") throw new Error("The array contains non-digit character in the localStorage!")
+		} catch (e: unknown) {
+			if (e instanceof Error) console.error(e.name, e.message, e.stack)
+		}
+		return ret
+	}
 
-    private setListOnLocalStorage = (key: string, list: number[]): void => localStorage.setItem(key, JSON.stringify(list))
+	#setListOnLocalStorage = (key: string, list: number[]): void => localStorage.setItem(key, JSON.stringify(list))
 
-    public generateRandomNumber = (n: number): number => Math.floor(Math.random() * n)
+	generateRandomNumber = (n: number): number => Math.floor(Math.random() * n)
 
-    public resetLists(): void {
-        localStorage.removeItem(this._historyListKey)
-        localStorage.removeItem(this._remainListKey)
-        this.remainList = this._allNumberList
-        this.historyList = []
-    }
+	resetLists(): void {
+		localStorage.removeItem(this.#historyListKey)
+		localStorage.removeItem(this.#remainListKey)
+		this.remainList = this.#allNumberList
+		this.historyList = []
+	}
 }
