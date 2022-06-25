@@ -12,10 +12,12 @@
 
 ## 見てほしいところ
 
-- [ ] PRの各種設定値は適切か
+- PR の各種設定値は適切か
   - [ ] Assignee
-  - [ ] 該当Issueの項目と一致しているか
-    - [ ] ProjectsのSprint
+  - [ ] Projects の status
+    - draft なら作業中、ready for review ならレビュー中
+  - 該当 Issue の項目と一致しているか
+    - [ ] Projects の Sprint
     - [ ] Milestone
-  - [ ] Developmentで該当のIssueを設定したか
+  - [ ] Development で該当の Issue を設定したか
 - [ ]
