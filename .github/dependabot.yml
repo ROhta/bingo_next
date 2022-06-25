@@ -19,7 +19,7 @@ updates:
       separator: "_"
     rebase-strategy: "auto"
     assignees:
-      - "dependabot[bot]"
+      - "ROhta"
     reviewers:
       - "ROhta"
     versioning-strategy: increase-if-necessary
@@ -41,6 +41,6 @@ updates:
       separator: "_"
     rebase-strategy: "auto"
     assignees:
-      - "dependabot[bot]"
+      - "ROhta"
     reviewers:
       - "ROhta"
