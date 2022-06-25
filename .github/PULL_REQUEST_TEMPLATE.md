@@ -13,9 +13,9 @@
 ## 見てほしいところ
 
 - [ ] PRの各種設定値は適切か
-　　- [ ] Assignee
- - [ ] 該当Issueの項目と一致しているか
-   - [ ] ProjectsのSprint
-   - [ ] Milestone
- - [ ] Developmentで該当のIssueを設定したか
+  - [ ] Assignee
+  - [ ] 該当Issueの項目と一致しているか
+    - [ ] ProjectsのSprint
+    - [ ] Milestone
+  - [ ] Developmentで該当のIssueを設定したか
 - [ ]
