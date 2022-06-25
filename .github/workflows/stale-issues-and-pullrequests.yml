@@ -1,0 +1,22 @@
+name: Close Inactive Issues and PullRequests
+on:
+  schedule:
+    - cron: "* * * * 1"
+
+jobs:
+  close-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: "進捗無いからもう少ししたら閉じちゃうよ"
+          close-issue-message: "閉じるよ"
+          exempt-issue-labels: "bug-1 重大バグ"
+          days-before-issue-stale: 180
+          days-before-issue-close: 14
+          stale-pr-message: "進捗無いからもう少ししたら閉じちゃうよ"
+          close-pr-message: "閉じるよ"
+          exempt-pr-labels: "bug-1 重大バグ"
+          days-before-pr-stale: 180
+          days-before-pr-close: 14
