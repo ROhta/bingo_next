@@ -1,6 +1,6 @@
 ---
 name: 設定変更
-about: プロダクトコードをいじらない作業
+about: プロダクトコードを触らない作業
 title: ""
 labels: ""
 assignees: ROhta

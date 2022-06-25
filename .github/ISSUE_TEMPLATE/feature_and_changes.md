@@ -1,6 +1,6 @@
 ---
 name: プロダクト機能変更
-about: プロダクトコードをいじるもの
+about: プロダクトコードの修正を行うもの
 title: ""
 labels: "enhance-1 破壊的変更, enhance-2 新機能, enhance-3 ドキュメント"
 assignees: ROhta
