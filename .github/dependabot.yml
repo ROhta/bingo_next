@@ -2,8 +2,7 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     schedule:
-      interval: "weekly"
-      day: "thursday"
+      interval: "daily"
       time: "10:00"
       timezone: "Asia/Tokyo"
     directory: "/"
@@ -15,17 +14,18 @@ updates:
       include: "scope"
     labels:
       - "dependencies"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 2
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
+    assignees:
+      - "dependabot-bot"
     reviewers:
       - "ROhta"
     versioning-strategy: increase-if-necessary
   - package-ecosystem: "github-actions"
     schedule:
-      interval: "weekly"
-      day: "thursday"
+      interval: "daily"
       time: "10:00"
       timezone: "Asia/Tokyo"
     directory: "/"
@@ -36,9 +36,11 @@ updates:
       include: "scope"
     labels:
       - "dependencies"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 2
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
+    assignees:
+      - "dependabot-bot"
     reviewers:
       - "ROhta"

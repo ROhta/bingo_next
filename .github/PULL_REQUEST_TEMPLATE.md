@@ -14,9 +14,8 @@
 
 - PR の各種設定値は適切か
   - [ ] Assignee
-  - [ ] Projects の status
-    - draft なら作業中、ready for review ならレビュー中
-  - 該当 Issue の項目と一致しているか
+  - [ ] Projects の statusが、draft なら作業中、ready for review ならレビュー中になっているか
+  - [ ] 該当 Issue の項目と一致しているか
     - [ ] Projects の Sprint
     - [ ] Milestone
   - [ ] Development で該当の Issue を設定したか
