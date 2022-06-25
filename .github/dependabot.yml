@@ -18,9 +18,9 @@ updates:
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
-    assignees:
-      - "ROhta"
     reviewers:
+      - "ROhta"
+    assignees:
       - "ROhta"
     versioning-strategy: increase-if-necessary
   - package-ecosystem: "github-actions"
@@ -40,7 +40,7 @@ updates:
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
-    assignees:
-      - "ROhta"
     reviewers:
+      - "ROhta"
+    assignees:
       - "ROhta"
