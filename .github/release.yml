@@ -19,4 +19,4 @@ changelog:
   exclude:
     labels:
       - blocked by
-      - topic-1 参考情報
+      - topic 参考情報
