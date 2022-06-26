@@ -21,7 +21,7 @@ const Home: NextPage = () => {
         <meta property="og:locale" content="ja_JP"/>
         <meta property="og:type" content="game"/>
         <title>Bingo Machine</title>
-        <link rel="icon" href="./logo.ico"/>
+        <link rel="icon" href="../../public/logo.ico"/>
       </Head>
 
       <main>
