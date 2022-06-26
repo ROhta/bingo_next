@@ -1,4 +1,4 @@
-import { FC } from "react"
+import type { FC } from "react"
 import Drums from "../atoms/Drums"
 import Cymbals from "../atoms/Cymbals"
 

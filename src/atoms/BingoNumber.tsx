@@ -1,12 +1,8 @@
 import type { FC } from "react"
-import styled from "styled-components"
 
 const BingoNumber: FC = () => {
-    return <NumberDisplay id="bingo-number">00</NumberDisplay>
+    return <p id="bingo-number">00</p>
 }
 
-const NumberDisplay = styled.p`
-  font-size: 55vmin
-`
 
 export default BingoNumber
