@@ -19,4 +19,5 @@ changelog:
   exclude:
     labels:
       - blocked by
-      - topic 参考情報
+      - topic-1 参考情報
+      - topic-2 過去ログ
