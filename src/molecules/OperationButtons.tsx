@@ -1,4 +1,4 @@
-import { FC } from "react"
+import type { FC } from "react"
 import StartButton from "../atoms/StartButton"
 import ResetButton from "../atoms/ResetButton"
 

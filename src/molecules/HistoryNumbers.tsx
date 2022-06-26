@@ -1,4 +1,4 @@
-import { FC } from "react"
+import type { FC } from "react"
 import HistoryNumber from "../atoms/HistoryNumber"
 
 const HistoryNumbers: FC = () => {
