@@ -1,6 +1,6 @@
 import { FC } from "react"
-import Drums from "../atoms/drums"
-import Cymbals from "../atoms/cymbals"
+import Drums from "../atoms/Drums"
+import Cymbals from "../atoms/Cymbals"
 
 const Audios: FC = () => {
     return (
