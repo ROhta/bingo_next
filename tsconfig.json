@@ -24,11 +24,7 @@
     "jsx": "preserve"
   },
   "include": [
-    "pages/*",
-    "templates/*",
-    "organisms/*",
-    "molecules/*",
-    "atoms/*"
+    "src/*"
   ],
   "exclude": [
     "node_modules"
