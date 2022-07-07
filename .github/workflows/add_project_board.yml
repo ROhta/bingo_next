@@ -3,9 +3,12 @@ on:
   issues:
     types:
       - opened
+      - transferred
+      - labeled
   pull_request:
     types:
       - opened
+      - labeled
 jobs:
   add-to-project:
     name: Add to Project
