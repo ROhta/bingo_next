@@ -21,7 +21,7 @@ updates:
     reviewers:
       - "ROhta"
     assignees:
-      - "ROhta"
+      - "dependabot[bot]"
     versioning-strategy: increase-if-necessary
   - package-ecosystem: "github-actions"
     schedule:
@@ -43,4 +43,4 @@ updates:
     reviewers:
       - "ROhta"
     assignees:
-      - "ROhta"
+      - "dependabot[bot]"
