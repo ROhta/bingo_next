@@ -9,8 +9,8 @@ class MyDocument extends Document {
     render() {
         return (
             <Html lang="ja">
-                <Head prefix="og:http://ogp.me/ns#" />
-                <body className="container bg-dark text-white h-100">
+                <Head prefix="og:http://ogp.me/ns#" ></Head>
+                <body className={`bg-black text-white font-medievalsharp`}>
                     <Main />
                     <NextScript />
                 </body>
