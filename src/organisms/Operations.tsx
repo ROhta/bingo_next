@@ -4,7 +4,7 @@ import BingoNumber from "../atoms/BingoNumber"
 
 const Operations: FC = () => {
     return (
-        <section className="text-center flex-auto">
+        <section className={`text-center flex-auto`}>
             <BingoNumber />
             <OperationButtons />
         </section>
