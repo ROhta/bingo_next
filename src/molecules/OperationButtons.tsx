@@ -1,12 +1,11 @@
 import type { FC } from "react"
-import StartButton from "../atoms/StartButton"
-import ResetButton from "../atoms/ResetButton"
+import {OperationButton} from "../atoms/OperationButton"
 
 const OperationButtons: FC = () => {
     return (
         <>
-            <StartButton />
-            <ResetButton />
+            <OperationButton id={`start-button`} additionalClass={`px-16`} word={`START`}/>
+            <OperationButton id={`reset-button`} additionalClass={`px-8`} word={`RESET`}/>
         </>
     )
 }
