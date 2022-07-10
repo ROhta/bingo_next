@@ -1,5 +1,5 @@
 import type { FC } from "react"
-import {OperationButton} from "../atoms/OperationButton"
+import OperationButton from "../atoms/OperationButton"
 
 const OperationButtons: FC = () => {
     return (
