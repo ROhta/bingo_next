@@ -9,19 +9,19 @@ updates:
     allow:
       - dependency-type: "all"
     commit-message:
-      prefix: "[skip ci]"
-      prefix-development: "check ci status"
+      prefix: "check ci status"
+      prefix-development: "[skip ci]"
       include: "scope"
     labels:
       - "dependencies"
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
     reviewers:
       - "ROhta"
     assignees:
-      - "dependabot[bot]"
+      - "ROhta"
     versioning-strategy: increase-if-necessary
   - package-ecosystem: "github-actions"
     schedule:
@@ -36,11 +36,11 @@ updates:
       include: "scope"
     labels:
       - "dependencies"
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
     reviewers:
       - "ROhta"
     assignees:
-      - "dependabot[bot]"
+      - "ROhta"
