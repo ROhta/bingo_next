@@ -4,7 +4,7 @@ import HistoryTitle from "../atoms/HistoryTitle"
 
 const ManualOperation: FC = () => {
     return (
-        <section className="col-sm h1">
+        <section className={`flex-auto`}>
             <HistoryTitle />
             <HistoryNumbers />
         </section>

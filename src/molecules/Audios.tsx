@@ -1,12 +1,11 @@
 import type { FC } from "react"
-import Drums from "../atoms/Drums"
-import Cymbals from "../atoms/Cymbals"
+import AudioElement from "../atoms/AudioElement"
 
 const Audios: FC = () => {
     return (
         <>
-            <Drums />
-            <Cymbals />
+            <AudioElement id={`drum`} src={`drumroll.mp3`} />
+            <AudioElement id={`cymbals`} src={`cymbals.mp3`} />
         </>
     )
 }

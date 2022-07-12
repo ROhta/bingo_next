@@ -6,7 +6,7 @@ import Audios from "../molecules/Audios"
 const IndexPage: FC = () => {
     return (
         <>
-            <div className="row">
+            <div className={`flex`}>
                 <Operations />
                 <Histories />
             </div>
