@@ -3,13 +3,14 @@ updates:
   - package-ecosystem: "npm"
     schedule:
       interval: "daily"
-      time: "10:00"
+      time: "03:00"
       timezone: "Asia/Tokyo"
     directory: "/"
     allow:
       - dependency-type: "all"
     commit-message:
-      prefix: "[skip ci]"
+      prefix: "check ci status"
+      prefix-development: "[skip ci]"
       include: "scope"
     labels:
       - "dependencies"
@@ -25,7 +26,7 @@ updates:
   - package-ecosystem: "github-actions"
     schedule:
       interval: "daily"
-      time: "10:00"
+      time: "02:00"
       timezone: "Asia/Tokyo"
     directory: "/"
     allow:
