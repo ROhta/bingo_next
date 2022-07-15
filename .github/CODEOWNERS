@@ -1,9 +1,1 @@
-.github/ @ROhta
-.husky @ROhta
-public/ @ROhta
-src/ @ROhta
-.gitignore @ROhta
-LICENSE @ROhta
-*.js @ROhta
-README.md @ROhta
-tsconfig.json @ROhta
+* @ROhta
