@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "npm"
     schedule:
       interval: "daily"
-      time: "3:00"
+      time: "03:00"
       timezone: "Asia/Tokyo"
     directory: "/"
     allow:
@@ -26,7 +26,7 @@ updates:
   - package-ecosystem: "github-actions"
     schedule:
       interval: "daily"
-      time: "2:00"
+      time: "02:00"
       timezone: "Asia/Tokyo"
     directory: "/"
     allow:
