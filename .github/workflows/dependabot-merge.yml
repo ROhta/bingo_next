@@ -1,14 +1,14 @@
 name: Auto Merge
 on:
-  pull_request:
-    branches:
-      - main
+  check_suite:
+    types:
+      - completed
 jobs:
   Auto-Merge:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: ahmadnassri/action-dependabot-auto-merge@v2
+      - uses: ridedott/merge-me-action@v2
         with:
-          target: minor
-          github-token: ${{ secrets.AUTO_MERGE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
