@@ -6,6 +6,7 @@ jobs:
   Auto-Merge:
     runs-on: ubuntu-latest
     permissions:
+      checks: read
       pull-requests: write
     steps:
       - uses: ridedott/merge-me-action@v2
