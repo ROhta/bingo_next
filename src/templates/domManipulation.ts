@@ -46,13 +46,6 @@ export default class DomManipulation {
 
 	#zeroPad = (n: number): string => String(n).padStart(2, "0")
 
-	#addHistory = (n: number): void => {
-		const historyNumberElement = document.createElement("p")
-		historyNumberElement.className = this.#historyDisplayClassName
-		historyNumberElement.innerHTML = this.#zeroPad(n)
-		this.#historyDisplay.appendChild(historyNumberElement)
-	}
-
 	#chooseNumber = (): void => {
 		if (!this.#isStarted) return
 		this.#startButton.innerHTML = this.#startText
