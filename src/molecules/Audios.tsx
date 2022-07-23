@@ -1,7 +1,7 @@
 import type { FC } from "react"
-import AudioElement from "../atoms/AudioElement"
+import { AudioElement } from "../atoms/AudioElement"
 
-const Audios: FC = () => {
+export const Audios: FC = () => {
     return (
         <>
             <AudioElement id={`drum`} src={`drumroll.mp3`} />
@@ -9,5 +9,3 @@ const Audios: FC = () => {
         </>
     )
 }
-
-export default Audios

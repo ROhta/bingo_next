@@ -56,7 +56,8 @@
   },
   "dependencies": {
     "next": "^12.2.2",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "recoil": "^0.7.4"
   },
   "devDependencies": {
     "@tsconfig/strictest": "^1.0.1",

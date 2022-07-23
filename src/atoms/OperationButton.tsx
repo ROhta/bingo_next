@@ -7,8 +7,6 @@ type Props = {
     additionalClass?: string,
 }
 
-const OperationButton: FC<Props> = (props) => {
+export const OperationButton: FC<Props> = (props) => {
     return <button type={`button`} onClick={props.onClick} id={props.id} className={`bg-slate-100/50 ${props.additionalClass} py-6 rounded text-3xl`}>{props.word}</button>
 }
-
-export default OperationButton
