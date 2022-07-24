@@ -1,10 +1,11 @@
-import type { FC } from "react"
+import type { FC, RefObject } from "react"
 import { OperationButton } from "../atoms/OperationButton"
 
 type props = {
     rouletteAction: () => void,
     btnText: string,
     resetAction: () => void,
+    ref: RefObject<HTMLButtonElement>,
 }
 
 export const OperationButtons: FC<props> = (props) => {

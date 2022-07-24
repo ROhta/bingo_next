@@ -23,6 +23,11 @@ export const isStartedAtom = atom<boolean>({
     default: false
 })
 
+export const startBtnAtom = atom<RefObject<HTMLButtonElement>>({
+    key: "startBtnAtom",
+    default: undefined
+})
+
 export const drumAtom = atom<RefObject<HTMLAudioElement>>({
     key: "drumAtom",
     default: undefined

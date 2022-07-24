@@ -1,5 +1,5 @@
 import {DefaultValue, selector} from "recoil"
-import { historiesListAtom, remainsListAtom, isStartedAtom, minBingoNumber, maxBingoNumber, drumsAtom } from "./atoms"
+import { historiesListAtom, remainsListAtom, minBingoNumber, maxBingoNumber } from "./atoms"
 
 export const chooseNumberSelector = selector<number>({
     key: "chooseNumberSelector",
