@@ -1,7 +1,29 @@
-import {selector} from "recoil";
+import {DefaultValue, selector} from "recoil"
+import { historiesListAtom, remainsListAtom, isStartedAtom, minBingoNumber, maxBingoNumber, drumsAtom } from "./atoms"
 
-const historySelector = selector({
-    key: "remainList",
-    get: ({get}) => get(historyAtom),
-    set: ({set}, newValue) => set(historyAtom, newValue)
+export const chooseNumberSelector = selector<number>({
+    key: "chooseNumberSelector",
+    get: ({ get }) => {
+        return Math.floor(Math.random() * get(remainsListAtom).length)
+    },
+    set: ({ set, get }, i) => {
+        if (i instanceof DefaultValue || i < minBingoNumber || i > maxBingoNumber) i = 0
+
+        const remains = get(remainsListAtom)
+        remains.splice(i, 1)
+        set(remainsListAtom, remains)
+
+        const histories = get(historiesListAtom)
+        histories.push(i)
+        set(historiesListAtom, histories)
+    }
+})
+
+export const resetSelector = selector({
+    key: "resetSelector",
+    get: () => "",
+    set: ({ reset }) => {
+        reset(historiesListAtom)
+        reset(remainsListAtom)
+    }
 })

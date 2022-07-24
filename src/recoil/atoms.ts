@@ -1,24 +1,34 @@
-import {atom} from "recoil";
+import type { RefObject } from "react";
+import { atom } from "recoil"
 
-export const isStartedAtom = atom({
-    key: "isStarted",
-    default: false
-}
+export const rouletteInterval = 150
 
-const minBingoNumber = 1
-const maxBingoNumber = 75
-
+export const minBingoNumber = 1
+export const maxBingoNumber = 75
 const allNumberList: number[] = []
 for (let i = minBingoNumber; i <= maxBingoNumber; i++) allNumberList.push(i)
 
-const historiesList = atom({
-    key: 'historiesList',
+export const historiesListAtom = atom<typeof allNumberList>({
+    key: "historiesListAtom",
+    default: [],
+})
+
+export const remainsListAtom = atom<typeof allNumberList>({
+    key: "remainsListAtom",
     default: allNumberList,
 })
 
+export const isStartedAtom = atom<boolean>({
+    key: "isStartedAtom",
+    default: false
+})
 
-const remainNumberList: number[] = []
-const remainsList = atom({
-    key: 'remainsList',
-    default: remainNumberList,
+export const drumAtom = atom<RefObject<HTMLAudioElement>>({
+    key: "drumAtom",
+    default: undefined
+})
+
+export const cymbalsAtom = atom<RefObject<HTMLAudioElement>>({
+    key: "cymbalsAtom",
+    default: undefined
 })

@@ -3,7 +3,7 @@ import {atom, selector} from "recoil"
 import { HistoryNumbers } from "../molecules/HistoryNumbers"
 import { HistoryTitle } from "../atoms/HistoryTitle"
 
-const ManualOperation: FC = () => {
+export const Histories: FC = () => {
 
 
     return (
@@ -13,5 +13,3 @@ const ManualOperation: FC = () => {
         </section>
     )
 }
-
-export default ManualOperation
