@@ -2,8 +2,8 @@ import type { FC } from "react"
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil"
 import { BingoNumber } from "../atoms/BingoNumber"
 import { OperationButtons } from "../molecules/OperationButtons"
-import { rouletteInterval, isStartedAtom, startBtnAtom, drumAtom, cymbalsAtom } from "../recoil/atoms"
-import { chooseNumberSelector, resetSelector } from "../recoil/selectors";
+import { rouletteInterval, isStartedAtom, startBtnAtom, drumAtom, cymbalsAtom } from "../state/atoms"
+import { chooseNumberSelector, resetSelector } from "../state/selectors";
 
 export const Operations: FC = () => {
     const [ isStarted, setStarted ] = useRecoilState(isStartedAtom)

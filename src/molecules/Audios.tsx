@@ -2,7 +2,7 @@ import type { FC } from "react"
 import { useRef } from "react"
 import { useRecoilState } from "recoil";
 import { AudioElement } from "../atoms/AudioElement"
-import { drumAtom, cymbalsAtom } from "../recoil/atoms"
+import { drumAtom, cymbalsAtom } from "../state/atoms"
 
 export const Audios: FC = () => {
     const [ drum, setDrum ] = useRecoilState(drumAtom)
