@@ -1,4 +1,4 @@
-import type { RefObject } from "react";
+import type { RefObject } from "react"
 import { atom } from "recoil"
 
 export const rouletteInterval = 150
