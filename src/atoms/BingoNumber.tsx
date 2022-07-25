@@ -1,7 +1,9 @@
 import type { FC } from "react"
 
-const BingoNumber: FC = () => {
-    return <p id={`bingo-number`} style={{fontSize: "55vmin"}}>00</p>
+type Props = {
+    numStr: string,
 }
 
-export default BingoNumber
+export const BingoNumber: FC<Props> = (props) => {
+    return <p id={`bingo-number`} style={{fontSize: "55vmin"}}>{props.numStr}</p>
+}

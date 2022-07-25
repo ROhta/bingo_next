@@ -1,13 +1,19 @@
 import type { FC } from "react"
-import AudioElement from "../atoms/AudioElement"
+import { useRef } from "react"
+import { useRecoilState } from "recoil";
+import { AudioElement } from "../atoms/AudioElement"
+import { drumAtom, cymbalsAtom } from "../state/atoms"
 
-const Audios: FC = () => {
+export const Audios: FC = () => {
+    const [ drum, setDrum ] = useRecoilState(drumAtom)
+    const [ cymbals, setCymbals ] = useRecoilState(cymbalsAtom)
+    setDrum(useRef<HTMLAudioElement>(null))
+    setCymbals(useRef<HTMLAudioElement>(null))
+
     return (
         <>
-            <AudioElement id={`drum`} src={`drumroll.mp3`} />
-            <AudioElement id={`cymbals`} src={`cymbals.mp3`} />
+            <AudioElement id={`drum`} src={`drumroll.mp3`} ref={drum} />
+            <AudioElement id={`cymbals`} src={`cymbals.mp3`} ref={cymbals}/>
         </>
     )
 }
-
-export default Audios

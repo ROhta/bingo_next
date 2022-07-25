@@ -1,14 +1,12 @@
 import type { FC } from "react"
-import HistoryNumbers from "../molecules/HistoryNumbers"
-import HistoryTitle from "../atoms/HistoryTitle"
+import { HistoryNumbers } from "../molecules/HistoryNumbers"
+import { HistoryTitle } from "../atoms/HistoryTitle"
 
-const ManualOperation: FC = () => {
+export const Histories: FC = () => {
     return (
         <section className={`flex-auto`}>
             <HistoryTitle />
-            <HistoryNumbers />
+            <HistoryNumbers  />
         </section>
     )
 }
-
-export default ManualOperation

@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import IndexPage from "../templates"
+import { IndexPage } from "../templates"
 
 const Home: NextPage = () => {
   return (
