@@ -3,44 +3,41 @@ updates:
   - package-ecosystem: "npm"
     schedule:
       interval: "daily"
-      time: "22:30"
+      day: "thursday"
+      time: "22:45"
       timezone: "Asia/Tokyo"
     directory: "/"
     allow:
       - dependency-type: "all"
     commit-message:
-      prefix: "check ci status"
-      prefix-development: "[skip ci]"
+      prefix: "[skip ci]"
       include: "scope"
     labels:
       - "dependencies"
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
     reviewers:
-      - "ROhta"
-    assignees:
       - "ROhta"
     versioning-strategy: increase-if-necessary
   - package-ecosystem: "github-actions"
     schedule:
-      interval: "daily"
-      time: "02:00"
+      interval: "weekly"
+      day: "thursday"
+      time: "10:00"
       timezone: "Asia/Tokyo"
     directory: "/"
     allow:
       - dependency-type: "all"
     commit-message:
-      prefix: "check ci status"
+      prefix: "[skip ci]"
       include: "scope"
     labels:
       - "dependencies"
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
     reviewers:
-      - "ROhta"
-    assignees:
       - "ROhta"
