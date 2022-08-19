@@ -2,8 +2,9 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     schedule:
-      interval: "daily"
-      time: "22:45"
+      interval: "weekly"
+      day: "wednesday"
+      time: "10:00"
       timezone: "Asia/Tokyo"
     directory: "/"
     allow:
