@@ -1,4 +1,3 @@
 dependencies:
-- changed-files:
-  - any-glob-to-any-file:　['package.json', 'package-lock.json']
-  
+  - changed-files:
+    - any-glob-to-any-file: ['package.json', 'package-lock.json']
