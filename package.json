@@ -1,77 +1,33 @@
 {
-  "name": "bingo_next",
+  "name": "bingo-next",
   "version": "0.1.0",
-  "author": "ROhta",
-  "description": "A Bingo Machine for Party",
-  "private": false,
-  "license": "GPL-3.0-or-later",
-  "homepage": "https://rohta.github.io/bingo_next/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ROhta/bingo_next"
-  },
+  "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prepare": "husky"
-  },
-  "engines": {
-    "node": ">=22.13.1",
-  "pnpm": ">=9.15.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "prettier": {
-    "printWidth": 1000,
-    "tabWidth": 2,
-    "useTabs": true,
-    "semi": false,
-    "singleQuote": false,
-    "quoteProps": "as-needed",
-    "jsxSingleQuote": false,
-    "trailingComma": "es5",
-    "bracketSpacing": false,
-    "arrowParens": "avoid",
-    "rangeStart": 0,
-    "rangeEnd": 10000,
-    "filepath": "none",
-    "requirePragma": false,
-    "insertPragma": false,
-    "proseWrap": "never",
-    "htmlWhitespaceSensitivity": "ignore",
-    "vueIndentScriptAndStyle": true,
-    "endOfLine": "auto"
-  },
-  "eslintConfig": {
-    "extends": "next/core-web-vitals",
-    "ignorePatterns": [
-      "/node_modules/*",
-      ".next/*"
-    ]
+    "lint": "next lint"
   },
   "dependencies": {
-    "next": "^15.1.6",
+    "@radix-ui/react-icons": "^1.3.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.474.0",
+    "next": "15.1.6",
     "react": "^19.0.0",
-    "recoil": "^0.7.7"
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@tsconfig/strictest": "^2.0.5",
-    "@types/node": "^22.10.10",
-    "@types/react": "^19.0.8",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9.19.0",
-    "eslint-config-next": "^15.1.6",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "postcss": "^8.5.1",
-    "prettier": "^3.4.2",
-    "tailwindcss": "^4.0.0",
-    "typescript": "^5.7.3"
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.6",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
-
