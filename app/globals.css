@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+}
+
+.medieval-number {
+  -webkit-text-stroke: 1px white;
+  text-shadow: 2px 2px 0 #000;
+}
+
