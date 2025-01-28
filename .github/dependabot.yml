@@ -1,0 +1,43 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    schedule:
+      interval: "daily"
+      time: "10:00"
+      timezone: "Asia/Tokyo"
+    directory: "/"
+    allow:
+      - dependency-type: "production"
+    commit-message:
+      prefix: "[skip ci]"
+      include: "scope"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 2
+    pull-request-branch-name:
+      separator: "_"
+    rebase-strategy: "auto"
+    reviewers:
+      - "ROhta"
+    versioning-strategy: increase-if-necessary
+
+  - package-ecosystem: "github-actions"
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "10:00"
+      timezone: "Asia/Tokyo"
+    directory: "/"
+    allow:
+      - dependency-type: "all"
+    commit-message:
+      prefix: "[skip ci]"
+      include: "scope"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: "_"
+    rebase-strategy: "auto"
+    reviewers:
+      - "ROhta"
