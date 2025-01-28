@@ -71,6 +71,7 @@ export function BingoGame() {
         drumrollAudio.removeEventListener("ended", handleEnded)
       }
     }
+    return undefined;
   }, [drumrollRef, intervalId, finishGame])
 
   // コンポーネントのアンマウント時にインターバルとオーディオをクリーンアップ
