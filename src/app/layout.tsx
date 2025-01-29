@@ -21,7 +21,6 @@ export default function RootLayout({
     <html lang="ja">
       <head>
         <link rel="icon" href="/logo.ico" />
-        <link href="/dist/styles.css" rel="stylesheet"></link>
       </head>
       <body className={`${medievalSharp.className} bg-gray-900 text-white`}>{children}</body>
     </html>

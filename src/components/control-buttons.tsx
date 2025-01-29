@@ -11,13 +11,13 @@ export const ControlButtons = ({ isRunning, onStart, onReset }: ControlButtonsPr
     <div className="flex gap-0">
       <Button
         onClick={onStart}
-        className="bg-slate-50 px-16 py-6 rounded-xl text-3xl"
+        className="bg-slate-700 px-20 py-10 rounded-xl text-3xl"
       >
         {isRunning ? "STOP" : "START"}
       </Button>
       <Button
         onClick={onReset}
-        className="bg-slate-50 px-16 py-6 rounded-xl text-3xl"
+        className="bg-slate-700 px-12 py-10 rounded-xl text-3xl"
       >
         RESET
       </Button>

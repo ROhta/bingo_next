@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <div className="grid grid-cols-2">
-        <div className="flex flex-col items-center justify-between p-4">
+        <div className="flex flex-col items-center">
           <NumberDisplay number={currentNumber} />
           <ControlButtons isRunning={isRunning} onStart={startRotation} onReset={reset} />
         </div>
