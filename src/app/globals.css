@@ -2,15 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-  }
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 17, 24, 39;
 }
 
-.medieval-number {
-  -webkit-text-stroke: 1px white;
-  text-shadow: 2px 2px 0 #000;
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
 }
 

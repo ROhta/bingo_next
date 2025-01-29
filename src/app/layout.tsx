@@ -1,13 +1,15 @@
-import type { Metadata } from "next"
-import { medievalSharp } from "./fonts"
 import "./globals.css"
+import { MedievalSharp } from "next/font/google"
 
-export const metadata: Metadata = {
-  title: "Bingo Game",
-  description: "シンプルなビンゴゲーム",
-  icons: {
-    icon: "/logo.ico",
-  },
+const medievalSharp = MedievalSharp({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+})
+
+export const metadata = {
+  title: "Bingo",
+  description: "ビンゴアプリケーション",
 }
 
 export default function RootLayout({
@@ -17,7 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={medievalSharp.className}>{children}</body>
+      <head>
+        <link rel="icon" href="/logo.ico" />
+      </head>
+      <body className={`${medievalSharp.className} bg-gray-900 text-white`}>{children}</body>
     </html>
   )
 }
