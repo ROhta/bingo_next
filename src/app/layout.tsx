@@ -24,9 +24,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.ico" />
       </head>
-      <body className={`${medievalSharp.className} bg-gray-900 text-white`}>{children}</body>
-      <Analytics />
-      <SpeedInsights />
+      <body className={`${medievalSharp.className} bg-gray-900 text-white`}>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   )
 }
