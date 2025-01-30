@@ -1,5 +1,21 @@
 {
   "cSpell.words": [
     "turbopack"
-  ]
+  ],
+  "cursor.aipreview.enabled": true,
+  "cursor.cmdk.useThemedDiffBackground": true,
+  "files.autoSave": "onFocusChange",
+  "editor.fontSize": 14,
+  "editor.renderWhitespace": "all",
+  "editor.multiCursorModifier": "alt",
+  "cursor.composer.cmdPFilePicker2": true,
+  "cursor.composer.collapsePaneInputBoxPills": true,
+  "cursor.composer.renderPillsInsteadOfBlocks": true,
+  "cursor.composer.shouldShowMarkdownHoverParticipantActions2": true,
+  "cursor.cpp.enablePartialAccepts": true,
+  "cursor.diffs.useCharacterLevelDiffs": true,
+  "cursor.general.enableShadowWorkspace": true,
+  "cursor.preferNotificationsSameAsChat": true,
+  "cursor.terminal.usePreviewBox": true,
+  "cursor.general.gitGraphIndexing": "enabled"
 }
