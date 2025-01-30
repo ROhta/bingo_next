@@ -20,6 +20,10 @@ updates:
     reviewers:
       - "ROhta"
     versioning-strategy: increase-if-necessary
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-patch
 
   - package-ecosystem: "github-actions"
     schedule:
