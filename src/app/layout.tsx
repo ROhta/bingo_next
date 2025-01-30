@@ -1,5 +1,7 @@
 import "./globals.css"
 import { MedievalSharp } from "next/font/google"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const medievalSharp = MedievalSharp({
   weight: "400",
@@ -23,6 +25,8 @@ export default function RootLayout({
         <link rel="icon" href="/logo.ico" />
       </head>
       <body className={`${medievalSharp.className} bg-gray-900 text-white`}>{children}</body>
+      <Analytics />
+      <SpeedInsights />
     </html>
   )
 }
