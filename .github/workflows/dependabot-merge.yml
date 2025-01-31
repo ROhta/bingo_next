@@ -1,16 +1,17 @@
 name: Auto Merge
 on:
-  check_suite:
-    types: 
-      - completed
+  push:
+    branches:
+      - main
+  pull_request:
 jobs:
-  Auto-Merge:
+  auto-merge:
     runs-on: ubuntu-latest
     permissions:
-      checks: read
-      contents: write
       pull-requests: write
+      contents: write
     steps:
-      - uses: ridedott/merge-me-action@v2
+      - uses: fastify/github-action-merge-dependabot@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          use-github-auto-merge: true
+          target: 'minor'
