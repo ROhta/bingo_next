@@ -5,7 +5,7 @@ updates:
       interval: "daily"
       time: "10:00"
       timezone: "Asia/Tokyo"
-    directory: "/"
+    directory: "/application"
     allow:
       - dependency-type: "production"
     commit-message:
@@ -24,7 +24,22 @@ updates:
       - dependency-name: '*'
         update-types:
           - version-update:semver-patch
-
+  - package-ecosystem: "terraform"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+      time: "10:00"
+      timezone: "Asia/Tokyo"
+    directory: "/iac"
+    allow:
+      - dependency-type: "all"
+    open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: "_"
+    rebase-strategy: "auto"
+    reviewers:
+      - "ROhta"
+    versioning-strategy: increase-if-necessary
   - package-ecosystem: "github-actions"
     schedule:
       interval: "weekly"
