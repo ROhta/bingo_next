@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - "src/**/*.ts"
-      - "src/**/*.tsx"
+      - "application/src/**/*.ts"
+      - "application/src/**/*.tsx"
   schedule:
     - cron: 0 22 1 * *
 
