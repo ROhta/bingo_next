@@ -16,12 +16,10 @@
 
 ### application
 
-- 以下をローカルにインストールする
-  - volta
-  - voltaでnodeをインストール
-  - voltaでpnpmをインストール
-  - nodeとpnpmのバージョンはpackage.jsonを参照
-- `pnpm run build`
+- git clone
+- voltaを設定
+- voltaにより、nodeとpnpmをpackage.jsonで指定されたバージョンに設定
+- `pnpm i --frozen-lockfile`
 - `pnpm run dev`
 
 ### iac
