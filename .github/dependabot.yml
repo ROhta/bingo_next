@@ -21,7 +21,7 @@ updates:
       - "ROhta"
     versioning-strategy: increase-if-necessary
     ignore:
-      - dependency-name: '*'
+      - dependency-name: "*"
         update-types:
           - version-update:semver-patch
   - package-ecosystem: "terraform"
@@ -39,7 +39,6 @@ updates:
     rebase-strategy: "auto"
     reviewers:
       - "ROhta"
-    versioning-strategy: increase-if-necessary
   - package-ecosystem: "github-actions"
     schedule:
       interval: "weekly"
