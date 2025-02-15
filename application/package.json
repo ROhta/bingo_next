@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "volta": {
+    "node": "22.13.1",
+    "pnpm": "10.4.0"
+  },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
     "@tailwindcss/postcss": "^4.0.0",
