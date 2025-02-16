@@ -33,7 +33,6 @@ const eslintConfig = [
     rules: {
       ...(typescript.configs?.["recommended-type-checked"]?.rules ?? {}),
       ...(typescript.configs?.["stylistic-type-checked"]?.rules ?? {}),
-      "@typescript-eslint/array-type": "off",
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
       "@typescript-eslint/consistent-type-imports": [
         "warn",
@@ -42,8 +41,6 @@ const eslintConfig = [
           fixStyle: "inline-type-imports",
         },
       ],
-      "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/require-await": "off",
       "@typescript-eslint/no-misused-promises": [
         "error",
         {
@@ -59,7 +56,9 @@ const eslintConfig = [
       "func-style": ["error", "declaration", { allowArrowFunctions: false }],
       "prefer-arrow-callback": ["error", { allowNamedFunctions: false }],
       "import/no-default-export": "error",
-      "unused-imports/no-unused-imports": "warn"
+      "unused-imports/no-unused-imports": "warn",
+      "func-style": "off",
+      "@typescript-eslint/consistent-type-definitions": "off"
     },
   },
   {
