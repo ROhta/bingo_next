@@ -9,13 +9,25 @@ on:
     types:
       - opened
       - labeled
+# デフォルトシェルでパイプエラーを有効化
+defaults:
+  run:
+    shell: bash
+
 jobs:
   add-to-project:
-    name: Add to Project
     runs-on: ubuntu-latest
+    permissions: {}
     if: github.actor != 'dependabot[bot]'
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+        with:
+          config: ${{ vars.PERMISSIONS_CONFIG }}
+      - uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
       - uses: actions/add-to-project@v1.0.2
         with:
           project-url: https://github.com/users/ROhta/projects/3
-          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          github-token: ${{ steps.create-github-app-token.outputs.token }}

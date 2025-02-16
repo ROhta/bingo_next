@@ -23,6 +23,11 @@ export default function RootLayout({
     <html lang="ja">
       <head>
         <link rel="icon" href="/logo.ico" />
+        <meta property="og:title" content="Bingo" />
+        <meta property="og:description" content="ビンゴアプリケーション" />
+        <meta property="og:image" content="/ogp.png" />
+        <meta property="og:url" content="https://rohta-bingo-next.vercel.app/" />
+        <meta property="og:type" content="website" />
       </head>
       <body className={`${medievalSharp.className} bg-gray-900 text-white`}>
         {children}

@@ -2,7 +2,10 @@ name: Close Inactive Issues and PullRequests
 on:
   schedule:
     - cron: "* * * * 1"
-
+# デフォルトシェルでパイプエラーを有効化
+defaults:
+  run:
+    shell: bash
 jobs:
   close-issues:
     runs-on: ubuntu-latest
@@ -10,7 +13,10 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: actions/stale@v9.1.0
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+        with:
+          config: ${{ vars.PERMISSIONS_CONFIG }}
+      - uses: actions/stale@v9
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           stale-issue-message: "進捗無いからもう少ししたら閉じちゃうよ"

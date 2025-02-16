@@ -11,6 +11,9 @@ jobs:
       pull-requests: write
       contents: write
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+        with:
+          config: ${{ vars.PERMISSIONS_CONFIG }}
       - uses: fastify/github-action-merge-dependabot@v3
         with:
           use-github-auto-merge: true
