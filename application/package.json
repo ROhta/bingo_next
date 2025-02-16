@@ -2,6 +2,17 @@
   "name": "bingo_next",
   "version": "0.1.0",
   "private": false,
+  "author": "ROhta",
+  "description": "A Bingo Machine for Party",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://rohta-bingo-next.vercel.app/",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/ROhta/bingo_next"
+  },
+  "bugs": {
+    "url": "https://github.com/ROhta/bingo_next/security/policy"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
