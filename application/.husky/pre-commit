@@ -1,1 +1,2 @@
+cd application/
 pnpm exec lint-staged
