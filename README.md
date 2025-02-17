@@ -18,9 +18,17 @@
 
 - git clone
 - voltaを設定
-- voltaにより、nodeとpnpmをpackage.jsonで指定されたバージョンに設定
-- `pnpm i --frozen-lockfile`
-- `pnpm run dev`
+- voltaにより、nodeとpnpmをpackage.jsonで指定されたバージョンをインストールする
+  - `volta install node@${指定バージョン}`
+  - `volta install pnpm@${指定バージョン}`
+- アプリケーションのインストールと起動
+  - `pnpm i --frozen-lockfile`
+  - `pnpm run dev`
+- huskyの設定
+  - application/.husky/pre-commitに実行権限がなく、lint-stagedが実行されない場合もある
+  - その場合、実行権限を付与した上で、git設定を確認する
+    - `git update-index --add  --chmod=+x application/.husky/pre-commit`
+    - `git config core.filemode false`
 
 ### iac
 
