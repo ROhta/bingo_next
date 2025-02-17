@@ -18,7 +18,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "prepare": "cd .. && husky install application/.husky"
   },
   "volta": {
     "node": "22.13.1",
@@ -83,6 +84,8 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-unicorn": "^56.0.1",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.4.3",
     "postcss": "^8.5.2",
     "prettier": "^3.5.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
