@@ -47,15 +47,8 @@ const eslintConfig = [
 					checksVoidReturn: {attributes: false},
 				},
 			],
-			"unicorn/filename-case": [
-				"error",
-				{
-					case: "kebabCase",
-				},
-			],
 			"func-style": ["error", "declaration", {allowArrowFunctions: false}],
 			"prefer-arrow-callback": ["error", {allowNamedFunctions: false}],
-			"import/no-default-export": "error",
 			"unused-imports/no-unused-imports": "warn",
 			"func-style": "off",
 			"@typescript-eslint/consistent-type-definitions": "off",
