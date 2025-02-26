@@ -24,8 +24,8 @@
     "build-storybook": "storybook build"
   },
   "volta": {
-    "node": "22.13.1",
-    "pnpm": "10.4.0"
+    "node": "22.14.0",
+    "pnpm": "10.5.0"
   },
   "husky": {
     "hooks": {
