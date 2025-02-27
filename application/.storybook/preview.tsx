@@ -1,4 +1,7 @@
+import React from "react"
 import type {Preview} from "@storybook/react"
+import "../src/app/globals.css"
+import {medievalSharp} from "../src/app/fonts"
 
 const preview: Preview = {
 	parameters: {
@@ -9,6 +12,13 @@ const preview: Preview = {
 			},
 		},
 	},
+	decorators: [
+		Story => (
+			<div className={medievalSharp.className}>
+				<Story />
+			</div>
+		),
+	],
 }
 
 export default preview
