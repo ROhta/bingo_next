@@ -111,10 +111,5 @@
 			"@vercel/speed-insights",
 			"sharp"
 		]
-	},
-	"eslintConfig": {
-		"extends": [
-			"plugin:storybook/recommended"
-		]
 	}
 }
