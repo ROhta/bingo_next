@@ -39,7 +39,7 @@
 	"include": [
 		"**/*.ts",
 		"**/*.tsx",
-		".storybook/*",
+		".storybook/*"
 	],
 	"exclude": [
 		"node_modules"
