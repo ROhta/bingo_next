@@ -3,7 +3,7 @@
 import {useState, useCallback, useRef} from "react"
 import {useAudio} from "@/hooks/use-audio"
 
-export const useBingo = () => {
+export const UseBingo = () => {
 	const [currentNumber, setCurrentNumber] = useState("00")
 	const [selectedNumbers, setSelectedNumbers] = useState<string[]>([])
 	const [isRunning, setIsRunning] = useState(false)

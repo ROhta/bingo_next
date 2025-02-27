@@ -2,6 +2,7 @@ import type {Meta, StoryObj} from "@storybook/react"
 import {fn} from "@storybook/test"
 
 import {ControlButtons} from "@/components/control-buttons"
+import {UseBingo} from "@/hooks/use-bingo"
 
 const meta: Meta<typeof ControlButtons> = {
 	title: "LeftSide/Control Buttons",
@@ -20,10 +21,10 @@ const meta: Meta<typeof ControlButtons> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const twoButtons: Story = {
+export const control_buttons: Story = {
 	args: {
 		isRunning: false,
-		onStart: fn(),
-		onReset: fn(),
+		onStart: () => UseBingo().startRotation(),
+		onReset: () => UseBingo().reset(),
 	},
 }

@@ -19,13 +19,13 @@ const meta: Meta<typeof Button> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Start: Story = {
+export const start: Story = {
 	args: {
 		asChild: false,
 	},
 }
 
-export const Reset: Story = {
+export const reset: Story = {
 	args: {
 		asChild: false,
 	},
