@@ -9,7 +9,6 @@ defaults:
     shell: bash
     working-directory: "application"
 
-
 jobs:
   chromatic:
     name: Run Chromatic
