@@ -2,12 +2,20 @@ name: "Chromatic"
 
 on: push
 
+defaults:
+  run:
+    shell: bash
+    working-directory: "application"
+
+
 jobs:
   chromatic:
     name: Run Chromatic
     runs-on: ubuntu-latest
     timeout-minutes: 3
     permissions: {}
+    env:
+      package-json-path: "application/package.json"
     steps:
       - uses: GitHubSecurityLab/actions-permissions/monitor@v1
         with:
@@ -17,10 +25,10 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with:
-            package_json_file: "package.json"
+            package_json_file: ${{ env.package-json-path }}
       - uses: actions/setup-node@v4
         with:
-          node-version-file: "package.json"
+          node-version-file: ${{ env.package-json-path }}
           check-latest: true
           cache: 'pnpm'
       - name: Install Dependencies

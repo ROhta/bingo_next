@@ -4,10 +4,13 @@ on:
     types: [review_requested, reopened, ready_for_review]
     branches:
       - main
+
 # デフォルトシェルでパイプエラーを有効化
 defaults:
   run:
     shell: bash
+    working-directory: "application"
+
 jobs:
   Dependency-Review:
     runs-on: ubuntu-latest
@@ -24,6 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     permissions: {}
+    env:
+      package-json-path: "application/package.json"
     steps:
       - uses: GitHubSecurityLab/actions-permissions/monitor@v1
         with:
@@ -31,10 +36,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with:
-          package_json_file: "package.json"
+          package_json_file: ${{ env.package-json-path }}
       - uses: actions/setup-node@v4
         with:
-          node-version-file: "package.json"
+          node-version-file: ${{ env.package-json-path }}
           check-latest: true
           cache: 'pnpm'
       - name: Install Dependencies
