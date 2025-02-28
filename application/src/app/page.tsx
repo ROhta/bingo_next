@@ -3,10 +3,10 @@
 import {NumberDisplay} from "@/components/number-display"
 import {ControlButtons} from "@/components/control-buttons"
 import {HitNumbers} from "@/components/hit-numbers"
-import {useBingo} from "@/hooks/use-bingo"
+import {UseBingo} from "@/hooks/use-bingo"
 
 export default function Home() {
-	const {currentNumber, selectedNumbers, isRunning, startRotation, reset} = useBingo()
+	const {currentNumber, selectedNumbers, isRunning, startRotation, reset} = UseBingo()
 
 	return (
 		<main className="min-h-screen">

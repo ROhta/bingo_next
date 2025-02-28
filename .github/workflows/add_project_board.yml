@@ -17,7 +17,9 @@ defaults:
 jobs:
   add-to-project:
     runs-on: ubuntu-latest
-    permissions: {}
+    permissions:
+      contents: read
+      packages: read
     if: github.actor != 'dependabot[bot]'
     steps:
       - uses: GitHubSecurityLab/actions-permissions/monitor@v1

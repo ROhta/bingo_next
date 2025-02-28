@@ -6,6 +6,7 @@ import typescriptParser from "@typescript-eslint/parser"
 import unicorn from "eslint-plugin-unicorn"
 import importPlugin from "eslint-plugin-import"
 import unusedImports from "eslint-plugin-unused-imports"
+import storybookRecommend from "eslint-plugin-storybook"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -23,6 +24,7 @@ const eslintConfig = [
 			unicorn: unicorn,
 			import: importPlugin,
 			"unused-imports": unusedImports,
+			storybook: storybookRecommend,
 		},
 		languageOptions: {
 			parser: typescriptParser,
@@ -47,15 +49,8 @@ const eslintConfig = [
 					checksVoidReturn: {attributes: false},
 				},
 			],
-			"unicorn/filename-case": [
-				"error",
-				{
-					case: "kebabCase",
-				},
-			],
 			"func-style": ["error", "declaration", {allowArrowFunctions: false}],
 			"prefer-arrow-callback": ["error", {allowNamedFunctions: false}],
-			"import/no-default-export": "error",
 			"unused-imports/no-unused-imports": "warn",
 			"func-style": "off",
 			"@typescript-eslint/consistent-type-definitions": "off",

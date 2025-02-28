@@ -1,42 +1,34 @@
-name: Dependency Review
+name: "Chromatic"
+
 on:
   pull_request:
-    types: [review_requested, reopened, ready_for_review]
-    branches:
-      - main
+    types: [opened, reopened, synchronize, ready_for_review]
 
-# デフォルトシェルでパイプエラーを有効化
 defaults:
   run:
     shell: bash
     working-directory: "application"
 
 jobs:
-  Dependency-Review:
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    permissions:
-      contents: read
-    steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
-        with:
-          config: ${{ vars.PERMISSIONS_CONFIG }}
-      - uses: actions/checkout@v4
-      - uses: actions/dependency-review-action@v4
-  Build-Check:
+  chromatic:
+    name: Run Chromatic
     runs-on: ubuntu-latest
     timeout-minutes: 3
     permissions: {}
     env:
       package-json-path: "application/package.json"
+    if: |
+      github.event.pull_request.draft == false && github.event.pull_request.state == 'open'
     steps:
       - uses: GitHubSecurityLab/actions-permissions/monitor@v1
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with:
-          package_json_file: ${{ env.package-json-path }}
+            package_json_file: ${{ env.package-json-path }}
       - uses: actions/setup-node@v4
         with:
           node-version-file: ${{ env.package-json-path }}
@@ -44,5 +36,6 @@ jobs:
           cache: 'pnpm'
       - name: Install Dependencies
         run: pnpm i --frozen-lockfile
-      - name: Build
-        run: pnpm run build
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
