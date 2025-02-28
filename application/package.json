@@ -22,7 +22,7 @@
     "prepare": "cd .. && husky install application/.husky",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "pnpx chromatic --project-token=${CHROMATIC_PROJECT_TOKEN}"
+    "chromatic": "pnpx chromatic --only-changed --project-token=${CHROMATIC_PROJECT_TOKEN}"
   },
   "volta": {
     "node": "22.14.0",
