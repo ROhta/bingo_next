@@ -19,7 +19,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"lint:fix": "next lint --fix",
-		"prepare": "cd .. && husky install application/.husky",
+		"prepare": "cd .. && husky application/.husky",
 		"test": "vitest",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
