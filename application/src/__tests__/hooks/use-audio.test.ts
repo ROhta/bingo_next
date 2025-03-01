@@ -5,7 +5,7 @@ import { useAudio } from '@/hooks/use-audio'
 // Audio要素のモック
 class AudioMock {
   src: string
-  currentTime: number = 0
+  currentTime = 0
   onended: (() => void) | null = null
   pause = vi.fn()
   play = vi.fn().mockImplementation(() => Promise.resolve())
@@ -29,7 +29,7 @@ describe('useAudio hook', () => {
       const instance = new AudioMock(url)
       audioInstances.push(instance)
       return instance
-    }) as any
+    })
 
     vi.clearAllMocks()
   })

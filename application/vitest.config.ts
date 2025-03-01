@@ -9,7 +9,6 @@ const dirname = typeof __dirname !== "undefined" ? __dirname : path.dirname(file
 export default defineConfig({
 	test: {
 		environment: "jsdom",
-		include: ["**/__tests__/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
 		alias: {
 			"@": path.resolve(dirname, "./src"),
 		},
@@ -31,7 +30,15 @@ export default defineConfig({
 					browser: {
 						enabled: true,
 						headless: true,
-						name: "chromium",
+					instances: [
+						{
+							browser: 'chromium',
+							viewport: {
+								width: 1280,
+								height: 720,
+							},
+						},
+					],
 						provider: "playwright",
 					},
 					setupFiles: [".storybook/vitest.setup.ts"],

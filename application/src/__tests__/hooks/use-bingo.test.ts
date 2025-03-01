@@ -5,9 +5,11 @@ import {UseBingo} from "@/hooks/use-bingo"
 // useAudioのモック
 vi.mock("@/hooks/use-audio", () => ({
 	useAudio: () => ({
-		playDrumroll: vi.fn((callback) => {
+		playDrumroll: vi.fn((callback?: () => void) => {
 			// 即座にコールバックを実行するモック
-			if (callback) callback()
+			if (callback) {
+				callback()
+			}
 		}),
 		stopDrumroll: vi.fn(),
 		playCymbals: vi.fn(),
@@ -24,7 +26,7 @@ describe("UseBingo", () => {
 		// setIntervalのモック
 		vi.spyOn(global, "setInterval").mockImplementation(() => 123 as unknown as NodeJS.Timeout)
 		// clearIntervalのモック
-		vi.spyOn(global, "clearInterval").mockImplementation(() => {})
+		vi.spyOn(global, "clearInterval").mockImplementation(vi.fn())
 	})
 
 	// テスト後に実行
