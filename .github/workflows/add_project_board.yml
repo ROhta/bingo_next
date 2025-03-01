@@ -25,12 +25,7 @@ jobs:
       - uses: GitHubSecurityLab/actions-permissions/monitor@v1
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
-      - id: create-github-app-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.PRIVATE_KEY }}
       - uses: actions/add-to-project@v1.0.2
         with:
           project-url: https://github.com/users/ROhta/projects/3
-          github-token: ${{ steps.create-github-app-token.outputs.token }}
+          github-token: ${{ secrets.ADD_TO_PROJECT }}
