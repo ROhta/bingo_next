@@ -38,7 +38,7 @@ describe("UseBingo", () => {
 
 			// Math.randomが0.5を返すようにモック化されているので、
 			// 0.5 * 76 = 38が生成される
-			expect(result.current.currentNumber).toBe("00")
+			expect(result.current.currentNumber).toBe("38")
 		})
 	})
 
