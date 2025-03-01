@@ -28,14 +28,18 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v4
         with:
-            package_json_file: ${{ env.package-json-path }}
+          run_install: false
+          package_json_file: ${{ env.package-json-path }}
       - uses: actions/setup-node@v4
         with:
           node-version-file: ${{ env.package-json-path }}
-          check-latest: true
           cache: 'pnpm'
+          cache-dependency-path: "application/pnpm-lock.yaml"
       - name: Install Dependencies
         run: pnpm i --frozen-lockfile
       - uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
+          skip: "dependabot_**"
+          workingDir: "application"
