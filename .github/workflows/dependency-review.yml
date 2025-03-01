@@ -27,14 +27,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     permissions: {}
+    env:
+      package-json-path: "application/package.json"
     steps:
       - uses: GitHubSecurityLab/actions-permissions/monitor@v1
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+          package_json_file: ${{ env.package-json-path }}
       - uses: actions/setup-node@v4
         with:
-          node-version-file: "application/package.json"
+          node-version-file: ${{ env.package-json-path }}
           cache: 'pnpm'
           cache-dependency-path: "application/pnpm-lock.yaml"
       - name: Install Dependencies
