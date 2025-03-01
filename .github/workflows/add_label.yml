@@ -3,8 +3,8 @@ on:
   pull_request:
     branches:
       - main
-  pull_request_review:
-    types: [submitted]
+    types: [review_requested, reopened, ready_for_review]
+
 # デフォルトシェルでパイプエラーを有効化
 defaults:
   run:
