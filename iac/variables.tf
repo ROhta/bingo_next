@@ -1,14 +1,9 @@
-variable "hcp_client_id" {
-  description = "hcp vault secrets client ID"
+variable "HCP_CLIENT_ID" {
+  description = "HCP client ID (uppercase version)"
   type        = string
 }
 
-variable "hcp_client_secret" {
-  description = "secrets for hcp vault secrets"
-  type        = string
-}
-
-variable "hcp_project_id" {
-  description = "bingo_next on hcp vault secrets"
+variable "HCP_CLIENT_SECRET" {
+  description = "HCP client secret (uppercase version)"
   type        = string
 }

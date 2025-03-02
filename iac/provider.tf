@@ -3,6 +3,6 @@ provider "vercel" {
 }
 
 provider "hcp" {
-  client_id     = var.hcp_client_id
-  client_secret = var.hcp_client_secret
+  client_id     = var.HCP_CLIENT_ID
+  client_secret = var.HCP_CLIENT_SECRET
 }
