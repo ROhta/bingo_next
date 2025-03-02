@@ -1,14 +1,14 @@
-variable "vercel_api_token" {
-  description = "API token for Vercel"
+variable "hcp_client_id" {
+  description = "hcp vault secrets client ID"
   type        = string
 }
 
-variable "vault_address" {
-  description = "hcp vault secrets URL"
+variable "hcp_client_secret" {
+  description = "secrets for hcp vault secrets"
   type        = string
 }
 
-variable "vault_token" {
-  description = "API token for hcp vault secrets"
+variable "hcp_project_id" {
+  description = "bingo_next on hcp vault secrets"
   type        = string
 }

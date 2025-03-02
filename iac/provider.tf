@@ -1,8 +1,8 @@
 provider "vercel" {
-  api_token = var.vercel_api_token
+  api_token = data.hcp_vault_secrets_app.bingo_next.secrets["vercel_api_token"]
 }
 
-provider "vault" {
-  address = var.vault_address
-  token   = var.vault_token
+provider "hcp" {
+  client_id     = var.hcp_client_id
+  client_secret = var.hcp_client_secret
 }

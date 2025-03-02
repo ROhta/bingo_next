@@ -6,6 +6,10 @@ terraform {
       source  = "vercel/vercel"
       version = "~> 2.10"
     }
+    hcp = {
+      source  = "hashicorp/hcp"
+      version = "0.104.0"
+    }
   }
 
   backend "remote" {
@@ -16,4 +20,8 @@ terraform {
       name = "bingo_next_iac"
     }
   }
+}
+
+data "hcp_vault_secrets_app" "bingo_next" {
+  app_name = "bingo-next"
 }
