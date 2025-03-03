@@ -22,6 +22,6 @@ terraform {
   }
 }
 
-data "hcp_vault_secrets_app" "bingo_next" {
-  app_name = "bingo-next"
-}
+# data "hcp_vault_secrets_app" "bingo_next" {
+#   app_name = "bingo-next"
+# }
