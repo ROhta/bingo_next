@@ -6,10 +6,6 @@ terraform {
       source  = "vercel/vercel"
       version = "~> 2.10"
     }
-    hcp = {
-      source  = "hashicorp/hcp"
-      version = "0.104.0"
-    }
   }
 
   backend "remote" {
