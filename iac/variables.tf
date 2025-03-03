@@ -1,9 +1,9 @@
 variable "HCP_CLIENT_ID" {
-  description = "HCP client ID (uppercase version)"
+  description = "from Sevrice Principals/Keys"
   type        = string
 }
 
 variable "HCP_CLIENT_SECRET" {
-  description = "HCP client secret (uppercase version)"
+  description = "from Sevrice Principals/Keys"
   type        = string
 }
