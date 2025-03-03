@@ -3,7 +3,7 @@
 
 provider "registry.terraform.io/vercel/vercel" {
   version     = "2.10.1"
-  constraints = "~> 2.9"
+  constraints = "~> 2.10"
   hashes = [
     "h1:nbf56ASMUziYvKdni7AHUV8Ax/FTRV+Khwu5fXPnBew=",
     "zh:0925b826c76f5ebb89a9518f41350b056eaa27475baa3606ca2047146d7c2159",
