@@ -5,12 +5,12 @@
 - アプリケーションはNext.js
   - アプリケーションコードはv0で作成
 - ホスティングと監視はvercel
-  - IaCはterraformにより構築
+- IaCはterraformにより構築
 
 ## 必要アカウント
 
-- vercel
-- Terraform Cloud
+- Vercel
+- Hashicorp Cloud
 
 ## 環境構築
 

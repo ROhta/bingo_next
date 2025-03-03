@@ -3,6 +3,7 @@ resource "vercel_project" "bingo_next" {
   automatically_expose_system_environment_variables = true
   customer_success_code_visibility                  = false
   directory_listing                                 = true
+  enable_affected_projects_deployments              = true
   root_directory                                    = "application/"
   framework                                         = "nextjs"
   function_failover                                 = false
