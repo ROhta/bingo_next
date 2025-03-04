@@ -13,7 +13,16 @@ terraform {
     organization = "bingo_next"
 
     workspaces {
-      name = "bingo_next_iac"
+      name = "bingo_next_deploy"
     }
   }
+}
+
+provider "vercel" {
+  api_token = var.vercel_api_token
+}
+
+variable "vercel_api_token" {
+  description = "API token for Vercel"
+  type        = string
 }
