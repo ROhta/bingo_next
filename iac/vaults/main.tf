@@ -13,7 +13,7 @@ terraform {
     organization = "bingo_next"
 
     workspaces {
-      name = "bingo_next_setting"
+      name = "vaults"
     }
   }
 }
@@ -38,7 +38,7 @@ variable "client_secret" {
 
 
 resource "hcp_vault_secrets_app" "chromatic" {
-  app_name   = "chromatic"
-  project_id = "54ecb58d-35f2-4a71-9152-79b82af95578"
+  app_name = "chromatic"
+  # project_id = "54ecb58d-35f2-4a71-9152-79b82af95578"
 }
 

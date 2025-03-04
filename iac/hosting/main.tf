@@ -13,7 +13,7 @@ terraform {
     organization = "bingo_next"
 
     workspaces {
-      name = "bingo_next_deploy"
+      name = "hosting"
     }
   }
 }
