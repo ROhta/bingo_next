@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 1.11.0"
+  required_version = "~> 1.11"
 
   required_providers {
     vercel = {
@@ -13,7 +13,16 @@ terraform {
     organization = "bingo_next"
 
     workspaces {
-      name = "bingo_next_iac"
+      name = "hosting"
     }
   }
+}
+
+provider "vercel" {
+  api_token = var.vercel_api_token
+}
+
+variable "vercel_api_token" {
+  description = "API token for Vercel"
+  type        = string
 }
