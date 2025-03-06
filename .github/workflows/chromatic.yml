@@ -37,7 +37,7 @@ jobs:
           cache-dependency-path: "application/pnpm-lock.yaml"
       - name: Install Dependencies
         run: pnpm i --frozen-lockfile
-      - uses: chromaui/action@v1
+      - uses: chromaui/action@v11
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true
