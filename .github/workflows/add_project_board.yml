@@ -1,14 +1,10 @@
 name: Add all Issues and PRs to project
 on:
   issues:
-    types:
-      - opened
-      - transferred
-      - labeled
+    types: [opened, transferred, labeled]
   pull_request:
-    types:
-      - opened
-      - labeled
+    types: [opened, labeled]
+
 # デフォルトシェルでパイプエラーを有効化
 defaults:
   run:

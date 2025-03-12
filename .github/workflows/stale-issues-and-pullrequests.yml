@@ -10,8 +10,8 @@ jobs:
   close-issues:
     runs-on: ubuntu-latest
     permissions:
-      issues: write
-      pull-requests: write
+      issues: read
+      pull-requests: read
     steps:
       - uses: GitHubSecurityLab/actions-permissions/monitor@v1
         with:
