@@ -2,6 +2,7 @@ name: Close Inactive Issues and PullRequests
 on:
   schedule:
     - cron: "* * * * 1"
+
 # デフォルトシェルでパイプエラーを有効化
 defaults:
   run:

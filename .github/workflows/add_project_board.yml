@@ -1,4 +1,5 @@
 name: Add all Issues and PRs to project
+
 on:
   issues:
     types: [opened, transferred, labeled]
