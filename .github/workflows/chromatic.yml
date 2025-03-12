@@ -2,7 +2,7 @@ name: "Chromatic"
 
 on:
   pull_request:
-    types: [assigned, reopened, ready_for_review]
+    types: [review_requested, reopened, ready_for_review]
 
 defaults:
   run:
@@ -37,7 +37,7 @@ jobs:
           cache-dependency-path: "application/pnpm-lock.yaml"
       - name: Install Dependencies
         run: pnpm i --frozen-lockfile
-      - uses: chromaui/action@v1
+      - uses: chromaui/action@v11
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true

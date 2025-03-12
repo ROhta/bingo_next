@@ -1,9 +1,11 @@
 name: Auto Merge
+
 on:
   push:
     branches:
       - main
   pull_request:
+
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
