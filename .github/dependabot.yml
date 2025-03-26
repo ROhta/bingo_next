@@ -9,7 +9,6 @@ updates:
     allow:
       - dependency-type: "production"
     commit-message:
-      prefix: "[skip ci]"
       include: "scope"
     labels:
       - "dependencies"
@@ -49,7 +48,6 @@ updates:
     allow:
       - dependency-type: "all"
     commit-message:
-      prefix: "[skip ci]"
       include: "scope"
     labels:
       - "dependencies"
