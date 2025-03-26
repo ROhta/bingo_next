@@ -2,7 +2,7 @@ name: "Chromatic"
 
 on:
   pull_request:
-    types: [review_requested, reopened, ready_for_review]
+    types: [opened, reopened, ready_for_review]
 
 defaults:
   run:
