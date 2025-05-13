@@ -1,3 +1,4 @@
+<!-- I want to review in Japanese. -->
 ## 期待する挙動・状態
 
 -
@@ -20,3 +21,15 @@
     - [ ] Milestone
   - [ ] Development で該当の Issue を設定したか
 - [ ]
+
+<!-- for GitHub Copilot review rule -->
+<!--
+レビューする際には、以下のprefix(接頭辞)をつけてください
+[must]  
+[imo] (in my opinion)  
+[nits](nitpick) 
+[ask]  
+[fyi]
+-->
+<!-- for GitHub Copilot review  rule-->
+<!-- I want to review in Japanese. -->
