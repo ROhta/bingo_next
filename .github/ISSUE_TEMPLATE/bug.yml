@@ -33,7 +33,7 @@ body:
     id: logs
     attributes:
       label: エラーメッセージ
-      description: エラーメッセージが表示されていたら、貼り付けてください。
+      description: "エラーメッセージが表示されていたら、貼り付けてください。"
       placeholder: "特になければ空欄のままにしてください。"
       render: shell
     validations:
@@ -42,7 +42,7 @@ body:
     id: remarks
     attributes:
       label: 特記事項
-      description: 前提条件、その他備考等があれば記載してください。
+      description: "前提条件、その他備考等があれば記載してください。"
       placeholder: "特になければ空欄のままにしてください。"
     validations:
       required: false
