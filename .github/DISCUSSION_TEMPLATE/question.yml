@@ -1,0 +1,16 @@
+labels: ["topic-2 過去ログ"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: 概要
+    validations:
+      required: true
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: 質問内容
+      placeholder: 簡潔に記載してください
+    validations:
+      required: true
