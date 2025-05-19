@@ -1,0 +1,21 @@
+name: プロダクト機能変更
+description: プロダクトコードの修正を行うもの
+labels: ["enhance-1 破壊的変更, enhance-2 新機能, enhance-3 ドキュメント"]
+assignees: ROhta
+body:
+  - type: textarea
+    id: detail
+    attributes:
+      label: 詳細
+      placeholder: 簡潔に記載してください
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: 参考文献
+      description: "有益情報が記載されているウェブサイトやAI回答のURLを記載してください"
+      placeholder: "- [参考文献1](https://example.com)\n- [参考文献2](https://example.com)"
+      render: markdown
+    validations:
+      required: true
