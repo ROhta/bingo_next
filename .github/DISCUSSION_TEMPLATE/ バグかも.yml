@@ -1,11 +1,5 @@
 labels: ["bug-1 重大バグ", "bug-2 バグ", "bug-3 改善"]
 body:
-  - type: input
-    id: title
-    attributes:
-      label: 概要
-    validations:
-      required: true
   - type: textarea
     id: detail
     attributes:
@@ -14,10 +8,10 @@ body:
       placeholder: "再現手順は次の項目に記載してください。"
     validations:
       required: true
-  - type: input
+  - type: textarea
     id: prevalence
     attributes:
       label: 再現手順
-      description: "ブラウズの種類、OSバージョン、発生日時等、どんなに細かくても良いので、情報をなるべく多く書いてください。"
+      description: "ブラウズの種類、OSバージョン、発生日時等、どんなに細かくても良いので、情報をなるべく多く書いてください。キャプチャもお願いします。"
     validations:
       required: true
