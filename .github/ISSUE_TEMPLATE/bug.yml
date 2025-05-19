@@ -1,0 +1,44 @@
+name: バグ報告
+description: 重大度をlabelsで示す
+labels: ["bug-1 重大バグ, bug-2 バグ, bug-3 改善"]
+assignees: ROhta
+body:
+  - type: textarea
+    id: prevalence
+    attributes:
+      label: 再現手順
+      description: "ブラウザの種類、OSバージョン、発生日時等、どんなに細かくても良いので、情報をなるべく多く書いてください。"
+      placeholder: "キャプチャもお願いします。"
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: ブラウザ
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Brave
+        - Opera
+        - Vivaldi
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: エラーメッセージ
+      description: エラーメッセージが表示されていたら、貼り付けてください。
+      render: shell
+    validations:
+      required: false
+  - type: textarea
+    id: remarks
+    attributes:
+      label: 特記事項
+      description: 前提条件、その他備考等。
+      placeholder: "特になければ空欄のままにしてください"
+    validations:
+      required: false

@@ -12,6 +12,7 @@ body:
     id: prevalence
     attributes:
       label: 再現手順
-      description: "ブラウズの種類、OSバージョン、発生日時等、どんなに細かくても良いので、情報をなるべく多く書いてください。キャプチャもお願いします。"
+      description: "ブラウザの種類、OSバージョン、発生日時等、どんなに細かくても良いので、情報をなるべく多く書いてください。"
+      placeholder: "キャプチャもお願いします。"
     validations:
       required: true
