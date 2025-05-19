@@ -1,12 +1,5 @@
 labels: ["topic-2 過去ログ"]
 body:
-  - type: input
-    id: title
-    attributes:
-      label: 概要
-    validations:
-      required: true
-
   - type: textarea
     id: detail
     attributes:
