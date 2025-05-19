@@ -1,9 +1,0 @@
-labels: ["enhance-1 破壊的変更", "enhance-2 新機能"]
-body:
-  - type: textarea
-    id: detail
-    attributes:
-      label: ふわっとした要望
-      placeholder: 簡潔に記載してください
-    validations:
-      required: true
