@@ -2,13 +2,14 @@ name: 設定変更
 description: プロダクトコードを触らない作業
 labels: ["enhance-2 新機能", "bug-3 改善"]
 assignees: ROhta
+projects: ["ROhta/3"]
 body:
   - type: textarea
     id: detail
     attributes:
       label: 詳細
       description: "設定変更の内容を記載してください。"
-      placeholder: "簡潔に記載してください"
+      placeholder: "簡潔に記載してください。"
     validations:
       required: true
   - type: textarea
@@ -17,14 +18,13 @@ body:
       label: 手順
       description: "ここでの記載内容が作業手順書になるよう、詳細に記載してください"
       placeholder: "1. \n1. \n1. "
-      render: markdown
     validations:
       required: true
   - type: textarea
     id: remarks
     attributes:
       label: 特記事項
-      description: "前提条件、その他備考等。"
-      placeholder: "特になければ空欄のままにしてください"
+      description: "前提条件、その他備考等があれば記載してください。"
+      placeholder: "特になければ空欄のままにしてください。"
     validations:
       required: false

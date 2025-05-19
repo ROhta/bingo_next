@@ -4,6 +4,6 @@ body:
     id: detail
     attributes:
       label: ふわっとした要望
-      placeholder: 簡潔に記載してください
+      placeholder: "簡潔に記載してください。"
     validations:
       required: true

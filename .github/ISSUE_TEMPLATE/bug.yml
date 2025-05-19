@@ -2,6 +2,7 @@ name: バグ報告
 description: 重大度をlabelsで示す
 labels: ["bug-1 重大バグ, bug-2 バグ, bug-3 改善"]
 assignees: ROhta
+projects: ["ROhta/3"]
 body:
   - type: textarea
     id: prevalence
@@ -15,6 +16,7 @@ body:
     id: browsers
     attributes:
       label: ブラウザ
+      description: "複数選択可能です。"
       multiple: true
       options:
         - Firefox
@@ -24,13 +26,15 @@ body:
         - Brave
         - Opera
         - Vivaldi
+        - etc.
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
       label: エラーメッセージ
-      description: エラーメッセージが表示されていたら、貼り付けてください。
+      description: "エラーメッセージが表示されていたら、貼り付けてください。"
+      placeholder: "特になければ空欄のままにしてください。"
       render: shell
     validations:
       required: false
@@ -38,7 +42,7 @@ body:
     id: remarks
     attributes:
       label: 特記事項
-      description: 前提条件、その他備考等。
-      placeholder: "特になければ空欄のままにしてください"
+      description: "前提条件、その他備考等があれば記載してください。"
+      placeholder: "特になければ空欄のままにしてください。"
     validations:
       required: false
