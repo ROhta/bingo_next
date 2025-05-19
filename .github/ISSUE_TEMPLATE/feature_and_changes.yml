@@ -10,7 +10,7 @@ body:
       placeholder: 簡潔に記載してください
     validations:
       required: true
-  - type:
+  - type: textarea
     id: references
     attributes:
       label: 参考文献
