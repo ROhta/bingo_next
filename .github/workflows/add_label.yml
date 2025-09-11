@@ -22,4 +22,4 @@ jobs:
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
       - uses: actions/checkout@v5
-      - uses: actions/labeler@v5
+      - uses: actions/labeler@v6
