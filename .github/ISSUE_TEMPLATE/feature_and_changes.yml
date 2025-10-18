@@ -9,14 +9,20 @@ body:
     attributes:
       label: 詳細
       placeholder: "簡潔に記載してください。"
+      render: markdown
     validations:
       required: true
   - type: textarea
     id: references
     attributes:
       label: 参考文献
-      description: "有益情報が記載されているウェブサイトやAI回答のURLを記載してください"
-      placeholder: "- [参考文献1](https://example.com)\n- [参考文献2](https://example.com)"
+      description: |
+        有益情報が記載されているウェブサイトやAI回答のURLを記載してください
+
+        例:
+        - [参考文献1](https://example.com)
+        - [参考文献2](https://example.com)
+      placeholder: "- \n- "
       render: markdown
     validations:
       required: true
