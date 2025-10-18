@@ -6,27 +6,34 @@ updates:
       time: "10:00"
       timezone: "Asia/Tokyo"
     directory: "/application"
+    cooldown:
+      semver-major-days: 30
+      semver-minor-days: 10
     allow:
       - dependency-type: "production"
     labels:
       - "dependencies"
-    open-pull-requests-limit: 1
+    open-pull-requests-limit: 2
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
-    reviewers:
-      - "ROhta"
     versioning-strategy: increase-if-necessary
     ignore:
       - dependency-name: "*"
         update-types:
           - version-update:semver-patch
+    groups:
+      npm-all-dependencies:
+        patterns:
+          - "*"
   - package-ecosystem: "terraform"
     schedule:
       interval: "weekly"
       day: "friday"
       time: "10:00"
       timezone: "Asia/Tokyo"
+    cooldown:
+      default-days: 10
     directory: "/iac"
     allow:
       - dependency-type: "all"
@@ -34,14 +41,18 @@ updates:
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
-    reviewers:
-      - "ROhta"
+    groups:
+      terraform-all-dependencies:
+        patterns:
+          - "*"
   - package-ecosystem: "github-actions"
     schedule:
       interval: "weekly"
       day: "thursday"
       time: "10:00"
       timezone: "Asia/Tokyo"
+    cooldown:
+      default-days: 10
     directory: "/"
     allow:
       - dependency-type: "all"
@@ -51,5 +62,7 @@ updates:
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
-    reviewers:
-      - "ROhta"
+    groups:
+      github-all-dependencies:
+        patterns:
+          - "*"
