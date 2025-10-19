@@ -34,7 +34,7 @@ updates:
       timezone: "Asia/Tokyo"
     cooldown:
       default-days: 10
-    directory: "/iac"
+    directory: "/" #/iac配下を再起的に対象とするため。ルートを指定
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 10
