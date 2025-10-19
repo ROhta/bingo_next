@@ -1,10 +1,10 @@
 terraform {
-  required_version = "~> 1.11"
+  required_version = "~> 1.13"
 
   required_providers {
     vercel = {
       source  = "vercel/vercel"
-      version = "~> 2.10"
+      version = "~> 3.17"
     }
   }
 
