@@ -20,7 +20,7 @@ jobs:
     if: |
       github.event.pull_request.draft == false && github.event.pull_request.state == 'open'
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1-beta-7
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
       - uses: actions/checkout@v5
