@@ -32,8 +32,12 @@
 
 ### iac
 
-- terraformをローカルにインストール
-  - terraformのバージョンはmain.tfを参照
+- tfenvを使用してterraformをインストール（推奨）
+  - tfenvをインストール: `brew install tfenv` (macOS) または [tfenv GitHub](https://github.com/tfutils/tfenv)を参照
+  - プロジェクトルートの`.terraform-version`ファイルにより、適切なバージョンが自動的に使用されます
+  - `tfenv install` でバージョンをインストール
+  - または、terraformを直接インストールすることも可能
+    - terraformのバージョンはmain.tfを参照
 - iacディレクトリで以下を実行
   - `terraform login`
   - `terraform init`
