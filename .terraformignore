@@ -1,0 +1,18 @@
+# Local development files
+terraform.tfvars
+.terraform/
+.terraform.lock.hcl
+*.tfstate*
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
