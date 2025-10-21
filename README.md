@@ -27,8 +27,8 @@
 - huskyの設定
   - application/.husky/pre-commitに実行権限がなく、lint-stagedが実行されない場合もある
   - その場合、実行権限を付与した上で、git設定を確認する
-    - `git update-index --add  --chmod=+x application/.husky/pre-commit`
-    - `git config core.filemode false`
+  - `git update-index --add  --chmod=+x application/.husky/pre-commit`
+  - `git config core.filemode false`
 
 ### iac
 
@@ -37,7 +37,3 @@
 - iacディレクトリで以下を実行
   - `terraform login`
   - `terraform init`
-
-## エディター
-
-- cursorを想定
