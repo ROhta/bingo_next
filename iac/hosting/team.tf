@@ -7,8 +7,6 @@ resource "vercel_team_config" "bingo_next" {
   remote_caching = {
     enabled = true
   }
-  enable_preview_feedback         = "off"
-  enable_production_feedback      = "off"
   hide_ip_addresses               = true
   hide_ip_addresses_in_log_drains = true
 }
