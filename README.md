@@ -27,8 +27,8 @@
 - husky の設定
   - application/.husky/pre-commit に実行権限がなく、lint-staged が実行されない場合もある
   - その場合、実行権限を付与した上で、git 設定を確認する
-    - `git update-index --add  --chmod=+x application/.husky/pre-commit`
-    - `git config core.filemode false`
+  - `git update-index --add  --chmod=+x application/.husky/pre-commit`
+  - `git config core.filemode false`
 
 ### iac
 
