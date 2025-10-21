@@ -1,6 +1,6 @@
 {
 	"name": "bingo_next",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"private": false,
 	"author": "ROhta",
 	"description": "A Bingo Machine for Party",
@@ -26,8 +26,8 @@
 		"chromatic": "chromatic --only-changed --project-token=${CHROMATIC_PROJECT_TOKEN}"
 	},
 	"volta": {
-		"node": "22.14.0",
-		"pnpm": "10.5.2"
+		"node": "24.10.0",
+		"pnpm": "10.19.0"
 	},
 	"packageManager": "pnpm@10.19.0",
 	"husky": {
