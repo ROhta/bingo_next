@@ -1,7 +1,7 @@
 locals {
   team_id           = "team_YR2EVOhud8379Uz429mo0SDG"
   project_id        = "prj_MElDKOgU2mzfBMDQyTzckES8SeyE"
-  user_id           = "hXLYCsD1NyJmHX4gYSadF2Vn"
+  user_email           = "hXLYCsD1NyJmHX4gYSadF2Vn"
   repo              = "ROhta/bingo_next"
   domain            = "rohta-bingo-next.vercel.app"
   team_name         = "rohta's projects"

@@ -2,10 +2,10 @@
 
 ## 概要
 
-- アプリケーションはNext.js
-  - アプリケーションコードはv0で作成
-- ホスティングと監視はvercel
-- IaCはterraformにより構築
+- アプリケーションは Next.js
+  - アプリケーションコードは v0 で作成
+- ホスティングと監視は vercel
+- IaC は terraform により構築
 
 ## 必要アカウント
 
@@ -17,27 +17,23 @@
 ### application
 
 - git clone
-- voltaを設定
-- voltaにより、nodeとpnpmをpackage.jsonで指定されたバージョンをインストールする
+- volta を設定
+- volta により、node と pnpm を package.json で指定されたバージョンをインストールする
   - `volta install node@${指定バージョン}`
   - `volta install pnpm@${指定バージョン}`
 - アプリケーションのインストールと起動
   - `pnpm i --frozen-lockfile`
   - `pnpm run dev`
-- huskyの設定
-  - application/.husky/pre-commitに実行権限がなく、lint-stagedが実行されない場合もある
-  - その場合、実行権限を付与した上で、git設定を確認する
+- husky の設定
+  - application/.husky/pre-commit に実行権限がなく、lint-staged が実行されない場合もある
+  - その場合、実行権限を付与した上で、git 設定を確認する
     - `git update-index --add  --chmod=+x application/.husky/pre-commit`
     - `git config core.filemode false`
 
 ### iac
 
-- terraformをローカルにインストール
-  - terraformのバージョンはmain.tfを参照
-- iacディレクトリで以下を実行
+- terraform をローカルにインストール
+  - terraform のバージョンは main.tf を参照
+- iac ディレクトリで以下を実行
   - `terraform login`
   - `terraform init`
-
-## エディター
-
-- cursorを想定
