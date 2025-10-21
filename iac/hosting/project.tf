@@ -10,7 +10,6 @@ resource "vercel_project" "bingo_next" {
   }
 
   oidc_token_config = {
-    enabled     = true
     issuer_mode = "team"
   }
 
