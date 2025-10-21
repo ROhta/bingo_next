@@ -11,9 +11,9 @@ resource "vercel_team_config" "bingo_next" {
   hide_ip_addresses_in_log_drains = true
 }
 
-# Note: vercel_team_member requires additional API permissions
-# This resource is commented out due to API authorization limitations
-# Uncomment and update with appropriate credentials if needed
+# Note: vercel_team_member is not supported on Hobby Plan
+# Team members can only be added on Pro Team or higher
+# Uncomment only if you have upgraded to Pro Team plan
 # resource "vercel_team_member" "bingo_next" {
 #   projects = []
 #   role     = "OWNER"
