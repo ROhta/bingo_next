@@ -4,6 +4,7 @@ import "../src/app/globals.css"
 import {medievalSharp} from "../src/app/fonts"
 
 const preview: Preview = {
+	tags: ['autodocs'],
 	parameters: {
 		controls: {
 			matchers: {
