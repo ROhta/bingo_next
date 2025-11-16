@@ -4,8 +4,10 @@ import unicorn from "eslint-plugin-unicorn"
 import importPlugin from "eslint-plugin-import"
 import unusedImports from "eslint-plugin-unused-imports"
 import storybook from "eslint-plugin-storybook"
+import nextConfig from "eslint-config-next"
 
 const eslintConfig = [
+	...nextConfig,
 	{
 		files: ["**/*.ts", "**/*.tsx"],
 		plugins: {
