@@ -1,17 +1,16 @@
-import type {StorybookConfig} from "@storybook/experimental-nextjs-vite"
+import type {StorybookConfig} from "@storybook/nextjs"
 
 const config: StorybookConfig = {
 	stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
-	addons: ["@storybook/addon-onboarding", "@storybook/addon-essentials", "@chromatic-com/storybook", "@storybook/experimental-addon-test"],
+	addons: ["@chromatic-com/storybook"],
 
 	framework: {
-		name: "@storybook/experimental-nextjs-vite",
+		name: "@storybook/nextjs",
 		options: {},
 	},
 
 	staticDirs: ["../public"],
-
 
 	typescript: {
 		reactDocgen: "react-docgen-typescript",

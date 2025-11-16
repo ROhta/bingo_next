@@ -11,7 +11,7 @@ updates:
       semver-minor-days: 10
     labels:
       - "dependencies"
-    open-pull-requests-limit: 2
+    open-pull-requests-limit: 5
     pull-request-branch-name:
       separator: "_"
     rebase-strategy: "auto"
@@ -32,7 +32,7 @@ updates:
       timezone: "Asia/Tokyo"
     cooldown:
       default-days: 10
-    directory: "/iac"
+    directory: "/"
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 10
