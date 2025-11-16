@@ -30,3 +30,4 @@ jobs:
           onlyChanged: true
           skip: "dependabot**"
           workingDir: "application"
+          exitOnceUploaded: true
