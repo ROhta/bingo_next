@@ -3,6 +3,7 @@ import {fileURLToPath} from "node:url"
 import {defineConfig, type Plugin} from "vitest/config"
 import {storybookTest} from "@storybook/addon-vitest/vitest-plugin"
 import {playwright} from "@vitest/browser-playwright"
+import type {PluginBuild, OnResolveArgs} from "esbuild"
 
 const dirname = typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url))
 
@@ -63,14 +64,14 @@ export default defineConfig(
 				plugins: [
 					{
 						name: "storybook-original-resolver-esbuild",
-						setup(build: any) {
-							build.onResolve({filter: /^sb-original\//}, (args: any) => ({
+						setup(build: PluginBuild) {
+							build.onResolve({filter: /^sb-original\//}, (args: OnResolveArgs) => ({
 								path: args.path,
 								namespace: "sb-original",
 							}))
 							build.onLoad({filter: /.*/, namespace: "sb-original"}, () => ({
 								contents: "export default {}; export const ImageContext = {};",
-								loader: "js",
+								loader: "js" as const,
 							}))
 						},
 					},
