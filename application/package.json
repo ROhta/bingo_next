@@ -20,8 +20,8 @@
 		"lint": "next lint",
 		"lint:fix": "next lint --fix",
 		"prepare": "cd .. && husky application/.husky",
-		"postinstall": "playwright install chromium --with-deps",
 		"test": "vitest",
+		"test:setup": "playwright install chromium --with-deps",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
 		"chromatic": "chromatic --only-changed --project-token=${CHROMATIC_PROJECT_TOKEN}"
