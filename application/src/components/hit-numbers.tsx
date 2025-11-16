@@ -1,4 +1,3 @@
-
 interface HitNumbersProps {
 	numbers: string[]
 }
