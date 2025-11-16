@@ -32,7 +32,7 @@ updates:
       timezone: "Asia/Tokyo"
     cooldown:
       default-days: 10
-    directory: "/iac"
+    directory: "/"
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 10

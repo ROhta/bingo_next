@@ -1,4 +1,4 @@
-import type {Meta, StoryObj} from "@storybook/react"
+import type {Meta, StoryObj} from "@storybook/react-vite"
 import {NumberDisplay} from "@/components/number-display"
 
 const meta: Meta<typeof NumberDisplay> = {
