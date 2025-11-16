@@ -1,4 +1,4 @@
-import type {Meta, StoryObj} from "@storybook/react-vite"
+import type {Meta, StoryObj} from "@storybook/nextjs"
 import {fn} from "storybook/test"
 
 import {ControlButtons} from "@/components/control-buttons"
