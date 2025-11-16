@@ -91,7 +91,7 @@
 		"@typescript-eslint/eslint-plugin": "^8.46.4",
 		"@typescript-eslint/parser": "^8.46.4",
 		"@vitest/browser": "^4.0.9",
-		"@vitest/browser-playwright": "4.0.9",
+		"@vitest/browser-playwright": "^4.0.9",
 		"@vitest/coverage-v8": "^4.0.9",
 		"chromatic": "^13.3.3",
 		"eslint": "^9.39.1",
