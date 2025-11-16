@@ -30,15 +30,15 @@ export default defineConfig({
 					browser: {
 						enabled: true,
 						headless: true,
-					instances: [
-						{
-							browser: 'chromium',
-							viewport: {
-								width: 1280,
-								height: 720,
+						instances: [
+							{
+								browser: "chromium",
+								viewport: {
+									width: 1280,
+									height: 720,
+								},
 							},
-						},
-					],
+						],
 						provider: "playwright",
 					},
 					setupFiles: [".storybook/vitest.setup.ts"],
