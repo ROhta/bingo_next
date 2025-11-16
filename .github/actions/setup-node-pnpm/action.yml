@@ -1,0 +1,33 @@
+name: 'Setup Node and pnpm'
+description: 'Node.jsとpnpmをキャッシュ付きでセットアップして依存関係をインストールします'
+
+inputs:
+  package-json-path:
+    description: 'package.jsonファイルへのパス'
+    required: false
+    default: 'application/package.json'
+  cache-dependency-path:
+    description: 'pnpm-lock.yamlファイルへのパス'
+    required: false
+    default: 'application/pnpm-lock.yaml'
+  working-directory:
+    description: 'pnpmコマンドの作業ディレクトリ'
+    required: false
+    default: 'application'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: pnpm/action-setup@v4
+      with:
+        run_install: false
+        package_json_file: ${{ inputs.package-json-path }}
+    - uses: actions/setup-node@v6
+      with:
+        node-version-file: ${{ inputs.package-json-path }}
+        cache: "pnpm"
+        cache-dependency-path: ${{ inputs.cache-dependency-path }}
+    - name: Install Dependencies
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: pnpm i --frozen-lockfile
