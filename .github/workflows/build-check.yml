@@ -31,9 +31,11 @@ jobs:
     timeout-minutes: 3
     permissions: {}
     steps:
-      - uses: ./.github/actions/setup-node-pnpm
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1.0.2-beta7
         with:
-          permissions-config: ${{ vars.PERMISSIONS_CONFIG }}
+          config: ${{ vars.PERMISSIONS_CONFIG }}
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/setup-node-pnpm
       - name: Run Tests
         run: pnpm test -- --run
       - name: Build

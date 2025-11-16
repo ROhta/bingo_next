@@ -1,11 +1,7 @@
 name: 'Setup Node and pnpm'
-description: 'コードをチェックアウトし、Node.jsとpnpmをキャッシュ付きでセットアップして依存関係をインストールします'
+description: 'Node.jsとpnpmをキャッシュ付きでセットアップして依存関係をインストールします'
 
 inputs:
-  fetch-depth:
-    description: '取得するコミット数。0はすべてのブランチとタグの全履歴を示します。'
-    required: false
-    default: '1'
   package-json-path:
     description: 'package.jsonファイルへのパス'
     required: false
@@ -18,19 +14,10 @@ inputs:
     description: 'pnpmコマンドの作業ディレクトリ'
     required: false
     default: 'application'
-  permissions-config:
-    description: 'actions-permissions/monitorの権限設定'
-    required: true
 
 runs:
   using: 'composite'
   steps:
-    - uses: GitHubSecurityLab/actions-permissions/monitor@v1.0.2-beta7
-      with:
-        config: ${{ inputs.permissions-config }}
-    - uses: actions/checkout@v5
-      with:
-        fetch-depth: ${{ inputs.fetch-depth }}
     - uses: pnpm/action-setup@v4
       with:
         run_install: false

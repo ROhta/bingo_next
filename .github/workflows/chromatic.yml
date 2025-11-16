@@ -17,10 +17,13 @@ jobs:
     permissions: {}
     if: github.event.pull_request.draft == false && github.event.pull_request.state == 'open'
     steps:
-      - uses: ./.github/actions/setup-node-pnpm
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1.0.2-beta7
         with:
-          permissions-config: ${{ vars.PERMISSIONS_CONFIG }}
+          config: ${{ vars.PERMISSIONS_CONFIG }}
+      - uses: actions/checkout@v5
+        with:
           fetch-depth: 0
+      - uses: ./.github/actions/setup-node-pnpm
       - uses: chromaui/action@v13
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
