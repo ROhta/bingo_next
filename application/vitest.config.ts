@@ -59,6 +59,7 @@ export default defineConfig(
 		optimizeDeps: {
 			exclude: ["next/font/google", "next/font/local"],
 			esbuildOptions: {
+				jsx: "automatic" as const,
 				plugins: [
 					{
 						name: "storybook-original-resolver-esbuild",
@@ -75,6 +76,9 @@ export default defineConfig(
 					},
 				],
 			},
+		},
+		esbuild: {
+			jsx: "automatic" as const,
 		},
 		resolve: {
 			alias: {

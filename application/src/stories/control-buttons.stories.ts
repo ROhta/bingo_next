@@ -1,5 +1,5 @@
 import type {Meta, StoryObj} from "@storybook/nextjs"
-import {fn} from "@storybook/test"
+import {fn} from "storybook/test"
 
 import {ControlButtons} from "@/components/control-buttons"
 import {UseBingo} from "@/hooks/use-bingo"
