@@ -1,3 +1,5 @@
+import React from "react"
+
 export const NumberDisplay = ({number}: {number: string}) => {
 	return (
 		<div className="flex">
