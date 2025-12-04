@@ -28,7 +28,7 @@
 	},
 	"volta": {
 		"node": "24.11.0",
-		"pnpm": "10.22.0"
+		"pnpm": "10.24.0"
 	},
 	"packageManager": "pnpm@10.24.0",
 	"husky": {
