@@ -14,7 +14,8 @@ jobs:
     name: Run Chromatic
     runs-on: ubuntu-latest
     timeout-minutes: 3
-    permissions: {}
+    permissions:
+      contents: read
     if: github.event.pull_request.draft == false && github.event.pull_request.state == 'open'
     steps:
       - uses: GitHubSecurityLab/actions-permissions/monitor@v1.0.2-beta7
