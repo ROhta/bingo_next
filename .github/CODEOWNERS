@@ -1,3 +1,4 @@
+# 基本ルール
 .github/ @ROhta
 .vscode/ @ROhta
 application/ @ROhta
@@ -5,3 +6,9 @@ iac/ @ROhta
 .gitignore @ROhta
 LICENSE @ROhta
 README.md @ROhta
+
+# Dependabotが更新するファイルは所有者なし（空行で上書き）
+# 最後にマッチした行が優先されるため、これらは除外される
+.github/dependabot.yml
+application/package.json
+application/pnpm-lock.yaml
