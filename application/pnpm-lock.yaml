@@ -43,8 +43,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       '@github/copilot':
-        specifier: ^0.0.366
-        version: 0.0.366
+        specifier: ^0.0.367
+        version: 0.0.367
       '@storybook/addon-vitest':
         specifier: ^10.1.4
         version: 10.1.4(@vitest/browser-playwright@4.0.15)(@vitest/browser@4.0.15(vite@7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(yaml@2.8.2))(vitest@4.0.15))(@vitest/runner@4.0.15)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(storybook@10.1.4(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(vitest@4.0.15)
@@ -70,7 +70,7 @@ importers:
         specifier: ^24.10.1
         version: 24.10.1
       '@types/react':
-        specifier: ^19.2.5
+        specifier: ^19.2.7
         version: 19.2.7
       '@types/react-dom':
         specifier: ^19.2.3
@@ -91,10 +91,10 @@ importers:
         specifier: ^4.0.15
         version: 4.0.15(@vitest/browser@4.0.15(vite@7.2.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(yaml@2.8.2))(vitest@4.0.15))(vitest@4.0.15)
       chromatic:
-        specifier: ^13.3.3
+        specifier: ^13.3.4
         version: 13.3.4
       esbuild:
-        specifier: ^0.27.0
+        specifier: ^0.27.1
         version: 0.27.1
       eslint:
         specifier: ^9.39.1
@@ -1141,8 +1141,8 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@github/copilot@0.0.366':
-    resolution: {integrity: sha512-mJ3wAvn4/yCrQBG5kcn2SOvWQSlrftkbpaAUBXX4l42y6Xsi4d9teuEdcwKOsUWLNDavpt3ecoCDnZUaCb/81A==}
+  '@github/copilot@0.0.367':
+    resolution: {integrity: sha512-wuYvVos1uQPBrJMXu2KdBtkDJV0f6St9yj2ZCrzinjLfPOKbOSLaWrH11xUkjZHfCb5lBWb+MDlat2Obrwnv4g==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -6333,7 +6333,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@github/copilot@0.0.366': {}
+  '@github/copilot@0.0.367': {}
 
   '@humanfs/core@0.19.1': {}
 
