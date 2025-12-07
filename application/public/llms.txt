@@ -1,0 +1,30 @@
+# Bingo Next
+
+> パーティーやイベントで使える、シンプルで使いやすいWebビンゴマシンアプリケーションです。
+
+Bingo Nextは、Next.jsで構築されたオープンソースのビンゴ抽選アプリです。ブラウザ上で動作し、インストール不要で誰でもすぐに利用できます。
+
+## 主な機能
+
+- 1〜75の番号をランダムに抽選
+- ドラムロール効果音付きの演出
+- 抽選済み番号の履歴表示
+- リセット機能で何度でも再利用可能
+- レスポンシブデザインで様々なデバイスに対応
+
+## 技術スタック
+
+- フレームワーク: Next.js 16 (React 19)
+- 言語: TypeScript
+- スタイリング: Tailwind CSS
+- ホスティング: Vercel
+- IaC: Terraform
+
+## リンク
+
+- [ソースコード](https://github.com/ROhta/bingo_next): GitHubリポジトリ
+- [プロダクト](https://rohta-bingo-next.vercel.app/): 本番環境
+
+## ライセンス
+
+GPL-3.0-or-later
