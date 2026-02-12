@@ -18,7 +18,7 @@ jobs:
       contents: read
     if: github.event.pull_request.draft == false && github.event.pull_request.state == 'open' && github.actor != 'dependabot[bot]'
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@v1.0.2-beta8
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1.0.2-beta9
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
       - uses: actions/checkout@v6
