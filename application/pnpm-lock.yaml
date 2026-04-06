@@ -38,13 +38,13 @@ importers:
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^5.0.0
-        version: 5.0.0(storybook@10.3.1(@testing-library/dom@10.4.1)(prettier@3.8.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))
+        version: 5.1.1(storybook@10.3.1(@testing-library/dom@10.4.1)(prettier@3.8.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))
       '@eslint/eslintrc':
         specifier: ^3.3.3
         version: 3.3.3
       '@github/copilot':
-        specifier: ^0.0.423
-        version: 0.0.423
+        specifier: ^1.0.2
+        version: 1.0.2
       '@storybook/addon-vitest':
         specifier: ^10.1.4
         version: 10.3.1(@vitest/browser-playwright@4.1.0)(@vitest/browser@4.1.0(vite@7.2.6(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.31.1)(terser@5.46.1)(yaml@2.8.3))(vitest@4.1.0))(@vitest/runner@4.1.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(storybook@10.3.1(@testing-library/dom@10.4.1)(prettier@3.8.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(vitest@4.1.0)
@@ -799,11 +799,11 @@ packages:
     resolution: {integrity: sha512-ctxtJ/eA+t+6q2++vj5j7FYX3nRu311q1wfYH3xjlLOsczhlhxAg2FWNUXhpGvAw3BWo1xBcvOV6/YLc2r5FJw==}
     hasBin: true
 
-  '@chromatic-com/storybook@5.0.0':
-    resolution: {integrity: sha512-8wUsqL8kg6R5ue8XNE7Jv/iD1SuE4+6EXMIGIuE+T2loBITEACLfC3V8W44NJviCLusZRMWbzICddz0nU0bFaw==}
+  '@chromatic-com/storybook@5.1.1':
+    resolution: {integrity: sha512-BPoAXHM71XgeCK2u0jKr9i8apeQMm/Z9IWGyndA2FMijfQG9m8ox45DdWh/pxFkK5ClhGgirv5QwMhFIeHmThg==}
     engines: {node: '>=20.0.0', yarn: '>=1.22.18'}
     peerDependencies:
-      storybook: ^0.0.0-0 || ^10.1.0 || ^10.1.0-0 || ^10.2.0-0 || ^10.3.0-0
+      storybook: ^0.0.0-0 || ^10.1.0 || ^10.1.0-0 || ^10.2.0-0 || ^10.3.0-0 || ^10.4.0-0
 
   '@csstools/color-helpers@6.0.2':
     resolution: {integrity: sha512-LMGQLS9EuADloEFkcTBR3BwV/CGHV7zyDxVRtVDTwdI2Ca4it0CCVTT9wCkxSgokjE5Ho41hEPgb8OEUwoXr6Q==}
@@ -1200,44 +1200,44 @@ packages:
       '@noble/hashes':
         optional: true
 
-  '@github/copilot-darwin-arm64@0.0.423':
-    resolution: {integrity: sha512-WcHNhDO/Law0T0njmGMmGPOh54Oynk8B/QuMkKfXA2yTh/rkLX72r++xnwF1gcswUdFleMt5v0LTLVDfb+1sCw==}
+  '@github/copilot-darwin-arm64@1.0.2':
+    resolution: {integrity: sha512-dYoeaTidsphRXyMjvAgpjEbBV41ipICnXURrLFEiATcjC4IY6x2BqPOocrExBYW/Tz2VZvDw51iIZaf6GXrTmw==}
     cpu: [arm64]
     os: [darwin]
     hasBin: true
 
-  '@github/copilot-darwin-x64@0.0.423':
-    resolution: {integrity: sha512-SQSs9hGei8gJ4S8lZssmnQQ4yJ6ZaE8Tou5j4XW4BUR4tYBAykS+5VbgYadsbf/aAhaGqJ/jdMO03xNH/wzw9Q==}
+  '@github/copilot-darwin-x64@1.0.2':
+    resolution: {integrity: sha512-8+Z9dYigEfXf0wHl9c2tgFn8Cr6v4RAY8xTgHMI9mZInjQyxVeBXCxbE2VgzUtDUD3a705Ka2d8ZOz05aYtGsg==}
     cpu: [x64]
     os: [darwin]
     hasBin: true
 
-  '@github/copilot-linux-arm64@0.0.423':
-    resolution: {integrity: sha512-I8dHUYSrJdq/5JzyJ4jQU1CnuD+Gt8i1hBubPdLej4/UbwUX4neiGIWlDCH5GNzHFIBFxpjp5/yQLWn1xal1yw==}
+  '@github/copilot-linux-arm64@1.0.2':
+    resolution: {integrity: sha512-ik0Y5aTXOFRPLFrNjZJdtfzkozYqYeJjVXGBAH3Pp1nFZRu/pxJnrnQ1HrqO/LEgQVbJzAjQmWEfMbXdQIxE4Q==}
     cpu: [arm64]
     os: [linux]
     hasBin: true
 
-  '@github/copilot-linux-x64@0.0.423':
-    resolution: {integrity: sha512-BW+cfsH89fbxXaeFWt0LQihipfGHezdxIn3ue1CzWnNvBZU/hFQTp9YaP5ROjTJJ4VZYKZE+9QWsRfSsD+rJ/A==}
+  '@github/copilot-linux-x64@1.0.2':
+    resolution: {integrity: sha512-mHSPZjH4nU9rwbfwLxYJ7CQ90jK/Qu1v2CmvBCUPfmuGdVwrpGPHB5FrB+f+b0NEXjmemDWstk2zG53F7ppHfw==}
     cpu: [x64]
     os: [linux]
     hasBin: true
 
-  '@github/copilot-win32-arm64@0.0.423':
-    resolution: {integrity: sha512-FfZ7LcmVKcGHkeCzhynZ6Ua8CcUebgonoXPqlkZ/AiqczThoNkPu5W+bpGSen+eY9Yw4c4WY+22q33/94yLsOg==}
+  '@github/copilot-win32-arm64@1.0.2':
+    resolution: {integrity: sha512-tLW2CY/vg0fYLp8EuiFhWIHBVzbFCDDpohxT/F/XyMAdTVSZLnopCcxQHv2BOu0CVGrYjlf7YOIwPfAKYml1FA==}
     cpu: [arm64]
     os: [win32]
     hasBin: true
 
-  '@github/copilot-win32-x64@0.0.423':
-    resolution: {integrity: sha512-ClLfpdhxhsaFe30c42/kpt4OYwGLKRtOHEfCNXx5YA4W6LLGooJ06U8EpBY6mRK/7++q3XKuSFO5VUlpeoa94A==}
+  '@github/copilot-win32-x64@1.0.2':
+    resolution: {integrity: sha512-cFlc3xMkKKFRIYR00EEJ2XlYAemeh5EZHsGA8Ir2G0AH+DOevJbomdP1yyCC5gaK/7IyPkHX3sGie5sER2yPvQ==}
     cpu: [x64]
     os: [win32]
     hasBin: true
 
-  '@github/copilot@0.0.423':
-    resolution: {integrity: sha512-etAdhJqdKwp8JM1og2rmSGBwFVMfap4CkbCyQSKjge3LCywWgcsUXrM5WQ1FGfw6a3QyfI/uoTlP9b8mqmfj0A==}
+  '@github/copilot@1.0.2':
+    resolution: {integrity: sha512-716SIZMYftldVcJay2uZOzsa9ROGGb2Mh2HnxbDxoisFsWNNgZlQXlV7A+PYoGsnAo2Zk/8e1i5SPTscGf2oww==}
     hasBin: true
 
   '@humanfs/core@0.19.1':
@@ -4972,10 +4972,6 @@ packages:
     resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
     engines: {node: '>=8'}
 
-  strip-ansi@7.1.2:
-    resolution: {integrity: sha512-gmBGslpoQJtgnMAvOVqGZpEz9dyoKTCzy2nfz/n8aIFhN/jCE/rCmcxabB6jOOHV+0WNnylOxaxBQPSvcWklhA==}
-    engines: {node: '>=12'}
-
   strip-ansi@7.2.0:
     resolution: {integrity: sha512-yDPMNjp4WyfYBkHnjIRLfca1i6KMyGCtsVgoKe/z1+6vukgaENdgGBZt+ZmKPc4gavvEZ5OgHfHdrazhgNyG7w==}
     engines: {node: '>=12'}
@@ -6383,14 +6379,14 @@ snapshots:
     dependencies:
       css-tree: 3.2.1
 
-  '@chromatic-com/storybook@5.0.0(storybook@10.3.1(@testing-library/dom@10.4.1)(prettier@3.8.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))':
+  '@chromatic-com/storybook@5.1.1(storybook@10.3.1(@testing-library/dom@10.4.1)(prettier@3.8.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))':
     dependencies:
       '@neoconfetti/react': 1.0.0
       chromatic: 13.3.5
       filesize: 10.1.6
       jsonfile: 6.2.0
       storybook: 10.3.1(@testing-library/dom@10.4.1)(prettier@3.8.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      strip-ansi: 7.1.2
+      strip-ansi: 7.2.0
     transitivePeerDependencies:
       - '@chromatic-com/cypress'
       - '@chromatic-com/playwright'
@@ -6635,32 +6631,32 @@ snapshots:
 
   '@exodus/bytes@1.15.0': {}
 
-  '@github/copilot-darwin-arm64@0.0.423':
+  '@github/copilot-darwin-arm64@1.0.2':
     optional: true
 
-  '@github/copilot-darwin-x64@0.0.423':
+  '@github/copilot-darwin-x64@1.0.2':
     optional: true
 
-  '@github/copilot-linux-arm64@0.0.423':
+  '@github/copilot-linux-arm64@1.0.2':
     optional: true
 
-  '@github/copilot-linux-x64@0.0.423':
+  '@github/copilot-linux-x64@1.0.2':
     optional: true
 
-  '@github/copilot-win32-arm64@0.0.423':
+  '@github/copilot-win32-arm64@1.0.2':
     optional: true
 
-  '@github/copilot-win32-x64@0.0.423':
+  '@github/copilot-win32-x64@1.0.2':
     optional: true
 
-  '@github/copilot@0.0.423':
+  '@github/copilot@1.0.2':
     optionalDependencies:
-      '@github/copilot-darwin-arm64': 0.0.423
-      '@github/copilot-darwin-x64': 0.0.423
-      '@github/copilot-linux-arm64': 0.0.423
-      '@github/copilot-linux-x64': 0.0.423
-      '@github/copilot-win32-arm64': 0.0.423
-      '@github/copilot-win32-x64': 0.0.423
+      '@github/copilot-darwin-arm64': 1.0.2
+      '@github/copilot-darwin-x64': 1.0.2
+      '@github/copilot-linux-arm64': 1.0.2
+      '@github/copilot-linux-x64': 1.0.2
+      '@github/copilot-win32-arm64': 1.0.2
+      '@github/copilot-win32-x64': 1.0.2
 
   '@humanfs/core@0.19.1': {}
 
@@ -10845,10 +10841,6 @@ snapshots:
   strip-ansi@6.0.1:
     dependencies:
       ansi-regex: 5.0.1
-
-  strip-ansi@7.1.2:
-    dependencies:
-      ansi-regex: 6.2.2
 
   strip-ansi@7.2.0:
     dependencies:
