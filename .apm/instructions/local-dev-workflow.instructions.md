@@ -30,6 +30,9 @@ applyTo: "**"
 2. 検証が通ったら `requesting-code-review` を起動し、レビュー依頼側ワークフローを開始する
 3. レビュー結果が返ってきたら `receiving-code-review` を起動してフィードバックに対応する
 4. 対応が完了したら `finishing-a-development-branch` を起動し、選択肢「2」を選んで PR を作成する
+   - PR 本文は `.github/PULL_REQUEST_TEMPLATE.md` の項目 (`## 期待する挙動・状態` / `## 確認済み項目` / `## 見てほしいところ`) を埋める形で記載すること。`finishing-a-development-branch` スキルが提案する独自構成 (`## Summary` / `## Test plan` 等) は採用しない
+   - チェックボックスは commit 前に実際に検証済みの項目のみ `[x]`、Preview Deploy 待ちなど未確認のものは `[ ]` のまま残す
+   - PR タイトルは Conventional Commits 形式 (`<type>(<scope>): <description>`) で記載し、本文と同じく日本語で書く
 
 各ステップで失敗した場合は次に進まず、失敗の根本原因を解決してから再実行する。
 
@@ -44,13 +47,18 @@ PR に対してコミットを push した後、AI エージェント (GitHub Co
 `gh api graphql` で未 resolve なレビュースレッドを列挙する。
 `gh pr view --json reviews,comments` は thread の `isResolved` を返さないので利用しない。
 
-レビュースレッド数が 100 を、または各スレッドのコメント数が 50 を超える可能性がある
-場合は、`pageInfo { hasNextPage endCursor }` を取得し、`hasNextPage: true` の間は
-`after: $cursor` を渡してカーソル送りで全件取得すること (下記は初回ページの取得例)。
+レビュースレッド数が 100 を超える可能性がある場合は、`reviewThreads.pageInfo` の
+`hasNextPage` / `endCursor` を取得し、`hasNextPage: true` の間は `$threadsCursor` に
+`endCursor` を渡してカーソル送りで全件取得すること (下記は初回ページの取得例)。
+
+各スレッドのコメントは、本クエリでは `comments(first: 50)` までに限定する前提とする
+(`$commentsCursor` は単一値しか持てず、全スレッドのコメントに対して同じカーソルを
+当てるため、スレッドごとに個別のページングはこのクエリでは行えないため)。1 スレッドの
+コメントが 50 件を超えた場合は、当該スレッド ID を指定して別途取得する。
 
 ```bash
 gh api graphql -f query='
-query($owner: String!, $repo: String!, $pr: Int!, $threadsCursor: String, $commentsCursor: String) {
+query($owner: String!, $repo: String!, $pr: Int!, $threadsCursor: String) {
   repository(owner: $owner, name: $repo) {
     pullRequest(number: $pr) {
       reviewThreads(first: 100, after: $threadsCursor) {
@@ -58,11 +66,11 @@ query($owner: String!, $repo: String!, $pr: Int!, $threadsCursor: String, $comme
         nodes {
           id            # GraphQL Node ID — resolveReviewThread mutation の threadId に渡す
           isResolved
-          comments(first: 50, after: $commentsCursor) {
+          comments(first: 50) {
             pageInfo { hasNextPage endCursor }
             nodes {
               id          # GraphQL Node ID
-              databaseId  # 数値 ID — REST API /pulls/comments/{comment_id}/replies の comment_id に渡す
+              databaseId  # 数値 ID — REST API POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies の comment_id に渡す
               author { login }
               body
               path
@@ -76,8 +84,10 @@ query($owner: String!, $repo: String!, $pr: Int!, $threadsCursor: String, $comme
 }' -F owner=<owner> -F repo=<repo> -F pr=<number>
 ```
 
-対象は `isResolved: false` かつ author が bot (例: `copilot-pull-request-reviewer[bot]`) の
-スレッドのみとする。
+対象は `isResolved: false` かつ **スレッド先頭コメント (`comments.nodes[0]`) の `author.login`**
+が bot (例: `copilot-pull-request-reviewer`) のスレッドのみとする
+(`reviewThreads.nodes[]` 自体には `author` フィールドが存在しないので、コメント側で
+判定する必要がある)。
 
 ### 2.2 妥当性判断
 
