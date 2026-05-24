@@ -1,0 +1,13 @@
+name: bingo-next
+version: 0.1.0
+description: AI agent instructions for the bingo_next project
+author: ROhta
+type: instructions
+targets:
+  - claude
+  - codex
+  - copilot
+includes: auto
+dependencies:
+  mcp: []
+  apm: []
