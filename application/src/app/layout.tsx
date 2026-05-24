@@ -4,24 +4,26 @@ import {SpeedInsights} from "@vercel/speed-insights/next"
 
 import {medievalSharp} from "@/app/fonts"
 
+import type {Metadata} from "next"
 import type {JSX, ReactNode} from "react"
 
-export const metadata = {
+export const metadata: Metadata = {
+	metadataBase: new URL("https://rohta-bingo-next.vercel.app/"),
 	title: "Bingo",
 	description: "ビンゴアプリケーション",
+	icons: {icon: "/logo.ico"},
+	openGraph: {
+		title: "Bingo",
+		description: "ビンゴアプリケーション",
+		images: "/ogp.png",
+		url: "https://rohta-bingo-next.vercel.app/",
+		type: "website",
+	},
 }
 
 export default function RootLayout({children}: {children: ReactNode}): JSX.Element {
 	return (
 		<html lang="ja">
-			<head>
-				<link rel="icon" href="/logo.ico" />
-				<meta property="description" content="ビンゴアプリケーション" />
-				<meta property="og:title" content="Bingo" />
-				<meta property="og:image" content="/ogp.png" />
-				<meta property="og:url" content="https://rohta-bingo-next.vercel.app/" />
-				<meta property="og:type" content="website" />
-			</head>
 			<body className={`${medievalSharp.className} bg-gray-900 text-white`}>
 				{children}
 				<Analytics />
