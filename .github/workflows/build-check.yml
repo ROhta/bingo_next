@@ -12,9 +12,13 @@ defaults:
     shell: bash
     working-directory: "application"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   Dependency-Review:
-    if: github.event.pull_request.draft == false && github.event.pull_request.state == 'open'
+    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     timeout-minutes: 3
     permissions:
@@ -29,7 +33,8 @@ jobs:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     timeout-minutes: 3
-    permissions: {}
+    permissions:
+      contents: read
     steps:
       - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
         with:

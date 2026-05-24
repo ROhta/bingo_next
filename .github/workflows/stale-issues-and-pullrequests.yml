@@ -2,12 +2,9 @@ name: Close Inactive Issues and PullRequests
 
 on:
   schedule:
-    - cron: "* * * * 1"
+    # 毎週月曜 00:00 UTC (= 月曜 09:00 JST) に実行
+    - cron: "0 0 * * 1"
 
-# デフォルトシェルでパイプエラーを有効化
-defaults:
-  run:
-    shell: bash
 jobs:
   close-issues:
     runs-on: ubuntu-latest
