@@ -12,3 +12,7 @@ README.md @ROhta
 .github/dependabot.yml
 application/package.json
 application/pnpm-lock.yaml
+.github/workflows/*.yml
+.github/actions/*/action.yml
+iac/**/*.tf
+iac/**/.terraform.lock.hcl
