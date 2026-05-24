@@ -16,7 +16,6 @@ CLAUDE.md
 
 # APM プラグイン (skills / commands / prompts / hooks / settings) の展開先 (apm.yml の dependencies.apm から `apm install` で再生成されるため追跡しない)
 .agents/skills/
-.claude/CLAUDE.md
 .claude/commands/
 .claude/skills/
 .claude/hooks/
