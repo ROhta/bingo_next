@@ -1,0 +1,17 @@
+lockfile_version: '1'
+generated_at: '2026-05-24T02:35:22.171050+00:00'
+dependencies: []
+local_deployed_files:
+- .claude/rules/apm-workflow.md
+- .claude/rules/pr-review.md
+- .claude/rules/setup.md
+- .github/instructions/apm-workflow.instructions.md
+- .github/instructions/pr-review.instructions.md
+- .github/instructions/setup.instructions.md
+local_deployed_file_hashes:
+  .claude/rules/apm-workflow.md: sha256:0ebc10e422fdbacc2fdc5c0602a38b113d026eeacd8364323f349ac82d943898
+  .claude/rules/pr-review.md: sha256:af50a0661cc593d21f02943882089b8618776e50512e4c2ea40c0116cd1fefec
+  .claude/rules/setup.md: sha256:c60cc573b46e3159ed6ab3dfc24aa08316e25c6c497edaaa2ef66b3c0bc25b78
+  .github/instructions/apm-workflow.instructions.md: sha256:4198d073134f6d047db6cb4a3c84d4d58ffe5425ad0fc6bf364a2d0d3b6b4826
+  .github/instructions/pr-review.instructions.md: sha256:713e9febbf9ea3d284c9a811ee3672129b3ae1bee224d2255e813551adb002a2
+  .github/instructions/setup.instructions.md: sha256:8e15a32fd8a02a6ccace41cfd8537f66397c16275500eba706df4ec901415758

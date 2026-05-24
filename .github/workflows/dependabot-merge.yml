@@ -13,10 +13,10 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@v1.0.2-beta9
+      - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
-      - uses: fastify/github-action-merge-dependabot@v3
+      - uses: fastify/github-action-merge-dependabot@30c3f8f14a4f7b315ba38dbc1b793d27128fef82 # v3.12.0
         with:
           use-github-auto-merge: true
           target: "minor"
