@@ -33,6 +33,7 @@ applyTo: "**"
    - PR 本文は `.github/PULL_REQUEST_TEMPLATE.md` の項目 (`## 期待する挙動・状態` / `## 確認済み項目` / `## 見てほしいところ`) を埋める形で記載すること。`finishing-a-development-branch` スキルが提案する独自構成 (`## Summary` / `## Test plan` 等) は採用しない
    - チェックボックスは commit 前に実際に検証済みの項目のみ `[x]`、Preview Deploy 待ちなど未確認のものは `[ ]` のまま残す
    - PR タイトルは Conventional Commits 形式 (`<type>(<scope>): <description>`) で記載し、本文と同じく日本語で書く
+   - PR の assignee には、コミットを作成した人間のユーザー (= 現在の `gh` CLI 認証ユーザー) を必ず設定する。AI エージェントは GitHub アカウントを持たないため、`gh pr create` 時に `--assignee @me` を渡すか、作成後に `gh pr edit <pr_number> --add-assignee @me` で追加する。`@me` は `gh` CLI が現在認証中のユーザー名に解決される
 
 各ステップで失敗した場合は次に進まず、失敗の根本原因を解決してから再実行する。
 
