@@ -87,5 +87,5 @@ export default defineConfig(
 				provider: playwright(),
 			},
 		},
-	}))
+	})),
 )
