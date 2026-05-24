@@ -1,3 +1,7 @@
 dependencies:
   - changed-files:
     - any-glob-to-any-file: ['package.json', 'pnpm-lock.yaml']
+
+"enhance-3 ドキュメント":
+  - changed-files:
+    - any-glob-to-any-file: ['**/*.md', '.apm/**']
