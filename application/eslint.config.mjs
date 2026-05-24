@@ -59,7 +59,7 @@ const eslintConfig = [
 		},
 	},
 	{
-		ignores: ["src/components/ui/*", "*.md", ".next/**"],
+		ignores: ["src/components/ui/*", "*.md", ".next/**", "storybook-static/**"],
 	},
 ]
 

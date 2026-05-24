@@ -1,4 +1,4 @@
-import type {Meta, StoryObj} from "@storybook/nextjs"
+import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 import {HitNumbers} from "@/components/hit-numbers"
 
 const meta: Meta<typeof HitNumbers> = {
