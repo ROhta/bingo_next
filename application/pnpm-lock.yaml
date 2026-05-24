@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  '@storybook/builder-webpack5@10.3.6':
-    hash: ab521a3c4be592b6049fac4f1771f89e39eeedfbf79069017288dc8eef1d1a11
-    path: patches/@storybook__builder-webpack5@10.3.6.patch
-
 importers:
 
   .:
@@ -7065,7 +7060,7 @@ snapshots:
       - rollup
       - webpack
 
-  '@storybook/builder-webpack5@10.3.6(patch_hash=ab521a3c4be592b6049fac4f1771f89e39eeedfbf79069017288dc8eef1d1a11)(esbuild@0.28.0)(lightningcss@1.32.0)(postcss@8.5.15)(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(typescript@6.0.3)':
+  '@storybook/builder-webpack5@10.3.6(esbuild@0.28.0)(lightningcss@1.32.0)(postcss@8.5.15)(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(typescript@6.0.3)':
     dependencies:
       '@storybook/core-webpack': 10.3.6(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))
       case-sensitive-paths-webpack-plugin: 2.4.0
@@ -7161,7 +7156,7 @@ snapshots:
       '@babel/preset-typescript': 7.28.5(@babel/core@7.29.0)
       '@babel/runtime': 7.29.2
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.17(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-hot-middleware@2.26.1)(webpack@5.107.1(esbuild@0.28.0)(lightningcss@1.32.0)(postcss@8.5.15))
-      '@storybook/builder-webpack5': 10.3.6(patch_hash=ab521a3c4be592b6049fac4f1771f89e39eeedfbf79069017288dc8eef1d1a11)(esbuild@0.28.0)(lightningcss@1.32.0)(postcss@8.5.15)(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(typescript@6.0.3)
+      '@storybook/builder-webpack5': 10.3.6(esbuild@0.28.0)(lightningcss@1.32.0)(postcss@8.5.15)(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(typescript@6.0.3)
       '@storybook/preset-react-webpack': 10.3.6(esbuild@0.28.0)(lightningcss@1.32.0)(postcss@8.5.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(typescript@6.0.3)
       '@storybook/react': 10.3.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(typescript@6.0.3)
       '@types/semver': 7.7.1

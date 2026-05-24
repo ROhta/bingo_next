@@ -122,9 +122,6 @@
 			"core-js-pure",
 			"msw",
 			"unrs-resolver"
-		],
-		"patchedDependencies": {
-			"@storybook/builder-webpack5@10.3.6": "patches/@storybook__builder-webpack5@10.3.6.patch"
-		}
+		]
 	}
 }
