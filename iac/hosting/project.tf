@@ -29,12 +29,13 @@ resource "vercel_project" "bingo_next" {
   enable_affected_projects_deployments              = false
   enable_preview_feedback                           = true
   enable_production_feedback                        = true
-  function_failover                                 = true
-  git_fork_protection                               = true
-  git_lfs                                           = false
-  preview_deployments_disabled                      = false
-  prioritise_production_builds                      = false
-  public_source                                     = false
+  # function_failover は Enterprise プラン限定機能。現プラン (Pro/Hobby) では設定不可のため false 固定。
+  function_failover            = false
+  git_fork_protection          = true
+  git_lfs                      = false
+  preview_deployments_disabled = false
+  prioritise_production_builds = false
+  public_source                = false
 }
 
 resource "vercel_project_domain" "bingo_next" {
