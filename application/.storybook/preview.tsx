@@ -1,7 +1,9 @@
 import React from "react"
-import type {Preview} from "@storybook/nextjs-vite"
-import "../src/app/globals.css"
+
 import {medievalSharp} from "../src/app/fonts"
+import "../src/app/globals.css"
+
+import type {Preview} from "@storybook/nextjs-vite"
 
 const preview: Preview = {
 	tags: ["autodocs"],

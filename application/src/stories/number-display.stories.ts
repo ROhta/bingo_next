@@ -1,5 +1,6 @@
-import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 import {NumberDisplay} from "@/components/number-display"
+
+import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 
 const meta: Meta<typeof NumberDisplay> = {
 	title: "LeftSide/Number Display",
