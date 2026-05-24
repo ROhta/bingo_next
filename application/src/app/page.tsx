@@ -4,8 +4,9 @@ import {NumberDisplay} from "@/components/number-display"
 import {ControlButtons} from "@/components/control-buttons"
 import {HitNumbers} from "@/components/hit-numbers"
 import {UseBingo} from "@/hooks/use-bingo"
+import type {JSX} from "react"
 
-export default function Home() {
+export default function Home(): JSX.Element {
 	const {currentNumber, selectedNumbers, isRunning, startRotation, reset} = UseBingo()
 
 	return (

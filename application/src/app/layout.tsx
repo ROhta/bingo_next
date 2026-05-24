@@ -2,13 +2,14 @@ import "./globals.css"
 import {medievalSharp} from "@/app/fonts"
 import {Analytics} from "@vercel/analytics/react"
 import {SpeedInsights} from "@vercel/speed-insights/next"
+import type {JSX, ReactNode} from "react"
 
 export const metadata = {
 	title: "Bingo",
 	description: "ビンゴアプリケーション",
 }
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({children}: {children: ReactNode}): JSX.Element {
 	return (
 		<html lang="ja">
 			<head>
