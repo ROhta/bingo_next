@@ -7,14 +7,12 @@ import {defineConfig, type Plugin, type ViteUserConfigExport} from "vitest/confi
 
 const dirname = typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url))
 
-// Vite plugin to handle sb-original and next/font imports
+// Vite plugin to resolve `sb-original/*` virtual modules emitted by Storybook's Next.js preset.
+// `next/font/*` は resolve.alias で `.storybook/mocks/next-font.js` に解決されるため、ここでは扱わない。
 const storybookOriginalPlugin = (): Plugin => ({
 	name: "storybook-original-resolver",
 	resolveId(id) {
 		if (id.startsWith("sb-original/")) {
-			return `\0${id}`
-		}
-		if (id === "next/font/google" || id === "next/font/local") {
 			return `\0${id}`
 		}
 		return null
@@ -23,22 +21,6 @@ const storybookOriginalPlugin = (): Plugin => ({
 		if (id.startsWith("\0sb-original/")) {
 			const moduleName = id.slice(1).replace("sb-original/", "")
 			return `export const ${moduleName.replace(/-/g, "_")} = {}; export default {};`
-		}
-		if (id === "\0next/font/google" || id === "\0next/font/local") {
-			return `
-				const mockFont = () => ({ className: '', style: {} });
-				export default mockFont;
-				export const MedievalSharp = mockFont;
-				const handler = {
-					get: (target, prop) => {
-						if (prop === '__esModule') return true;
-						if (prop === 'default') return mockFont;
-						return mockFont;
-					}
-				};
-				const proxy = new Proxy({}, handler);
-				export { proxy };
-			`
 		}
 		return null
 	},
@@ -53,9 +35,6 @@ const config: ViteUserConfigExport = defineConfig(
 		},
 	}).then(plugins => ({
 		plugins: [...plugins, storybookOriginalPlugin()],
-		optimizeDeps: {
-			exclude: ["next/font/google", "next/font/local"],
-		},
 		resolve: {
 			alias: {
 				"@": path.resolve(dirname, "./src"),
