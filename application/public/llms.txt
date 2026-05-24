@@ -1,30 +1,46 @@
 # Bingo Next
 
-> パーティーやイベントで使える、シンプルで使いやすいWebビンゴマシンアプリケーションです。
+> Web ブラウザだけで動作する、パーティーやイベント向けのオープンソースビンゴ抽選アプリ。
 
-Bingo Nextは、Next.jsで構築されたオープンソースのビンゴ抽選アプリです。ブラウザ上で動作し、インストール不要で誰でもすぐに利用できます。
+Next.js (React 19) で構築され、Vercel 上でホスティングされています。インストール不要で、本番 URL を開くだけでビンゴ抽選を開始できます。
 
-## 主な機能
+**主な機能**
 
-- 1〜75の番号をランダムに抽選
+- 1〜75 の番号からランダムに抽選
 - ドラムロール効果音付きの演出
 - 抽選済み番号の履歴表示
 - リセット機能で何度でも再利用可能
 - レスポンシブデザインで様々なデバイスに対応
 
-## 技術スタック
+**技術スタック**
 
-- フレームワーク: Next.js 16 (React 19)
-- 言語: TypeScript
-- スタイリング: Tailwind CSS
-- ホスティング: Vercel
-- IaC: Terraform
+- Next.js 16 / React 19 / TypeScript
+- Tailwind CSS
+- Vercel (ホスティング・監視)
+- Terraform (IaC, HashiCorp Cloud バックエンド)
 
 ## リンク
 
-- [ソースコード](https://github.com/ROhta/bingo_next): GitHubリポジトリ
-- [プロダクト](https://rohta-bingo-next.vercel.app/): 本番環境
+- [本番環境](https://rohta-bingo-next.vercel.app/): 公開デプロイ。ブラウザで開くとそのまま利用可能
+- [GitHub リポジトリ](https://github.com/ROhta/bingo_next): ソースコード一式
+- [README](https://github.com/ROhta/bingo_next/blob/main/README.md): プロジェクト概要とドキュメント索引
+- [LICENSE](https://github.com/ROhta/bingo_next/blob/main/LICENSE): GPL-3.0-or-later
 
-## ライセンス
+## ドキュメント
 
-GPL-3.0-or-later
+- [セットアップ手順](https://github.com/ROhta/bingo_next/blob/main/.apm/instructions/setup.instructions.md): ローカル開発環境構築 (application / iac)
+- [PR レビュー方針](https://github.com/ROhta/bingo_next/blob/main/.apm/instructions/pr-review.instructions.md): レビュー時のコミュニケーションルール
+- [APM 運用ルール](https://github.com/ROhta/bingo_next/blob/main/.apm/instructions/apm-workflow.instructions.md): AI エージェント向け指示の管理方法
+
+## ソースコード
+
+- [app/page.tsx](https://github.com/ROhta/bingo_next/blob/main/application/src/app/page.tsx): ビンゴ画面のエントリポイント
+- [hooks/use-bingo.ts](https://github.com/ROhta/bingo_next/blob/main/application/src/hooks/use-bingo.ts): 抽選ロジック
+- [hooks/use-audio.ts](https://github.com/ROhta/bingo_next/blob/main/application/src/hooks/use-audio.ts): 効果音再生
+- [components/](https://github.com/ROhta/bingo_next/tree/main/application/src/components): UI コンポーネント
+- [iac/hosting/](https://github.com/ROhta/bingo_next/tree/main/iac/hosting): Vercel ホスティングの Terraform 定義
+
+## Optional
+
+- [Security Policy](https://github.com/ROhta/bingo_next/blob/main/.github/SECURITY.md): 脆弱性報告の手順
+- [GitHub Actions workflows](https://github.com/ROhta/bingo_next/tree/main/.github/workflows): CI/CD 定義 (build-check, chromatic 等)
