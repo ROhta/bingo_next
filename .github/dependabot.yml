@@ -32,9 +32,10 @@ updates:
       timezone: "Asia/Tokyo"
     cooldown:
       default-days: 10
-    directory: "/"
-    allow:
-      - dependency-type: "all"
+    directories:
+      - "/iac/**"
+    labels:
+      - "dependencies"
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "_"
@@ -51,9 +52,9 @@ updates:
       timezone: "Asia/Tokyo"
     cooldown:
       default-days: 10
-    directory: "/"
-    allow:
-      - dependency-type: "all"
+    directories:
+      - "/"
+      - "/.github/actions/*"
     labels:
       - "dependencies"
     open-pull-requests-limit: 10
