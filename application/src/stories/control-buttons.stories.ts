@@ -1,7 +1,6 @@
 import {fn} from "storybook/test"
 
 import {ControlButtons} from "@/components/control-buttons"
-import {UseBingo} from "@/hooks/use-bingo"
 
 import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 
@@ -25,7 +24,5 @@ type Story = StoryObj<typeof meta>
 export const control_buttons: Story = {
 	args: {
 		isRunning: false,
-		onStart: () => UseBingo().startRotation(),
-		onReset: () => UseBingo().reset(),
 	},
 }

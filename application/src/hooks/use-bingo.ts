@@ -12,11 +12,11 @@ type UseBingoReturn = {
 	reset: () => void
 }
 
-export const UseBingo = (): UseBingoReturn => {
+export const useBingo = (): UseBingoReturn => {
 	const [currentNumber, setCurrentNumber] = useState("00")
 	const [selectedNumbers, setSelectedNumbers] = useState<string[]>([])
 	const [isRunning, setIsRunning] = useState(false)
-	const intervalRef = useRef<NodeJS.Timeout>(null)
+	const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 	const {playDrumroll, stopDrumroll, playCymbals} = useAudio()
 
 	const generateNumber = useCallback(() => {

@@ -1,7 +1,7 @@
 import {renderHook, act} from "@testing-library/react"
 import {describe, it, expect, vi, beforeEach, afterEach} from "vitest"
 
-import {UseBingo} from "@/hooks/use-bingo"
+import {useBingo} from "@/hooks/use-bingo"
 
 // useAudioのモック
 vi.mock("@/hooks/use-audio", () => ({
@@ -17,7 +17,7 @@ vi.mock("@/hooks/use-audio", () => ({
 	}),
 }))
 
-describe("UseBingo", () => {
+describe("useBingo", () => {
 	// テスト前に実行
 	beforeEach(() => {
 		// Math.randomのモック
@@ -37,7 +37,7 @@ describe("UseBingo", () => {
 
 	describe("generateNumber", () => {
 		it("0から75までの数字をランダムに生成し、2桁の文字列として返す", () => {
-			const {result} = renderHook(() => UseBingo())
+			const {result} = renderHook(() => useBingo())
 
 			// Math.randomが0.5を返すようにモック化されているので、
 			// 0.5 * 76 = 38が生成される
@@ -47,7 +47,7 @@ describe("UseBingo", () => {
 
 	describe("startRotation", () => {
 		it("回転を開始し、isRunningをtrueに設定する", () => {
-			const {result} = renderHook(() => UseBingo())
+			const {result} = renderHook(() => useBingo())
 
 			act(() => {
 				result.current.startRotation()
@@ -59,7 +59,7 @@ describe("UseBingo", () => {
 
 	describe("reset", () => {
 		it("確認ダイアログでYesを選択した場合、状態をリセットする", () => {
-			const {result} = renderHook(() => UseBingo())
+			const {result} = renderHook(() => useBingo())
 
 			// リセット
 			act(() => {
