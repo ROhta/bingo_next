@@ -9,8 +9,8 @@ resource "vercel_project" "bingo_next" {
   node_version   = "24.x"
 
   git_repository = {
-    production_branch = local.production_branch
-    repo              = local.repo
+    production_branch = var.production_branch
+    repo              = var.repo
     type              = "github"
   }
 
@@ -38,7 +38,7 @@ resource "vercel_project" "bingo_next" {
 }
 
 resource "vercel_project_domain" "bingo_next" {
-  domain     = local.domain
-  project_id = local.project_id
-  team_id    = resource.vercel_team_config.bingo_next.id
+  domain     = var.domain
+  project_id = vercel_project.bingo_next.id
+  team_id    = vercel_team_config.bingo_next.id
 }

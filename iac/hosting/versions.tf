@@ -16,12 +16,3 @@ terraform {
     }
   }
 }
-
-provider "vercel" {
-  api_token = var.vercel_api_token
-}
-
-variable "vercel_api_token" {
-  description = "API token for Vercel"
-  type        = string
-}
