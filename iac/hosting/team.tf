@@ -9,4 +9,6 @@ resource "vercel_team_config" "bingo_next" {
   }
   hide_ip_addresses               = true
   hide_ip_addresses_in_log_drains = true
+  enable_preview_feedback         = "default"
+  enable_production_feedback      = "default"
 }
