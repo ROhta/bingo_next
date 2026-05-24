@@ -1,5 +1,6 @@
 resource "vercel_attack_challenge_mode" "bingo_next" {
-  project_id = vercel_project.bingo_next.id
-  enabled    = true
-  team_id    = vercel_team_config.bingo_next.id
+  project_id               = vercel_project.bingo_next.id
+  enabled                  = true
+  team_id                  = vercel_team_config.bingo_next.id
+  attack_mode_active_until = local.attack_mode_active_until_ms
 }
