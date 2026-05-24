@@ -93,11 +93,24 @@ const eslintConfig = tseslint.config(
 		},
 	},
 	{
+		files: [".storybook/**/*.{ts,tsx}"],
+		extends: [storybook.configs["flat/recommended"]],
+		plugins: {
+			"import-x": importX,
+		},
+		rules: {
+			"import-x/no-default-export": "off",
+			"import-x/prefer-default-export": "off",
+			"storybook/story-exports": "off",
+		},
+	},
+	{
 		files: ["src/**/*.test.{ts,tsx}", "src/__tests__/**/*.{ts,tsx}"],
 		extends: [vitest.configs.recommended],
 		rules: {
 			"@typescript-eslint/no-unsafe-assignment": "off",
 			"@typescript-eslint/no-unsafe-member-access": "off",
+			"react-compiler/react-compiler": "off",
 		},
 	},
 )
