@@ -37,11 +37,85 @@ applyTo: "**"
 
 各ステップで失敗した場合は次に進まず、失敗の根本原因を解決してから再実行する。
 
-## 2. PR レビュー応答ループ (git push 毎)
+## 2. PR レビュー応答ループ (PR 作成 / push 毎)
 
-PR に対してコミットを push した後、AI エージェント (GitHub Copilot Review 等) からの
-レビュー指摘が付いた場合、push の度に以下を繰り返す。**すべてのスレッドが resolve
-されるまでループを継続する。**
+PR を新規作成、または既存ブランチに push した後、AI エージェントは **ユーザーからの
+「レビュー指摘がきた」等の合図を待たずに** 自走でレビュースレッドの有無を確認し、
+指摘があれば対応ループを実行する。**すべてのスレッドが resolve されるまでループを
+継続する。**
+
+### 2.0 自走チェックの起動方法
+
+`gh pr create` または `git push` が成功した直後、本セクションのフローを開始する。
+**ユーザー入力を待たない。**
+
+#### 2.0.1 即時 1 回チェック (全エージェント共通)
+
+push 完了から **60 秒待機** (Copilot Review の初回反応待ち) し、§2.1 のクエリを 1 回
+実行する。未 resolve スレッドがあれば §2.2〜2.3 で処理する。
+
+#### 2.0.2 追跡チェックの予約 (エージェント別)
+
+Copilot Review の指摘は push から数分〜十数分遅延することがあるため、即時チェックで
+未指摘でも以下のいずれかの方法で **5 分後 / 10 分後 / 15 分後** までフォローする。
+
+##### Claude Code 実行時
+
+`ScheduleWakeup` ツールで自走する。`delaySeconds` は [60, 3600] の範囲。
+
+```text
+ScheduleWakeup({
+  delaySeconds: 300,
+  prompt: "PR #<number> の Copilot Review 応答ループを再開する。.apm/instructions/local-dev-workflow.instructions.md §2 に従い、未 resolve スレッドを検知して処理せよ。",
+  reason: "Copilot Review 遅延応答の追跡チェック"
+})
+```
+
+再起動ターンで §2.1 を実行する。
+
+- 未 resolve があれば §2.2〜2.3 で処理してから次回 (`delaySeconds: 600` → `900`) を予約
+- **連続 3 回** 新規指摘がなければ追跡終了
+
+##### Codex CLI 実行時
+
+Codex CLI には自己再起動予約機能がない (`codex exec` は単発実行、TUI は対話セッション
+内のみ動作)。代替として以下のいずれかを採用する。
+
+- **Codex app の Automations**: UI または cron syntax で
+  `codex exec "PR #<pr_number> の Copilot Review 応答ループを実行"` を 5 分間隔で
+  3 回程度の recurring task として登録するようユーザーに案内する
+  (参考: <https://developers.openai.com/codex/app/automations>)
+- **ローカル shell**: 開発機で
+  `for i in 1 2 3; do sleep 300; codex exec "PR #<pr_number> の Copilot Review 応答ループを実行"; done &`
+  を起動するようユーザーに案内する
+
+ユーザーがいずれも採用しない場合は §2.0.3 のフォールバックに委ねる。
+
+##### GitHub Copilot CLI / Coding Agent 実行時
+
+Copilot Coding Agent はクラウド側で動作し、自己再起動予約機能はない。代替手段:
+
+- **GitHub Actions の `on.schedule.cron`**: Agentic Workflows (`gh aw`) または
+  `gh copilot` を 5 分間隔の cron で呼び出す workflow (例:
+  `.github/workflows/pr-review-tracker.yml`) を提案する
+  (参考: <https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-copilot-cli/automate-with-actions>、
+  <https://github.github.com/gh-aw/>)
+- 既存 workflow がある場合は再利用、無い場合はユーザーに作成可否を確認する
+
+ユーザーが採用しない場合は §2.0.3 のフォールバックに委ねる。
+
+#### 2.0.3 ユーザー復帰時フォールバック (全エージェント共通)
+
+ユーザーから次の入力を受け取ったとき、その入力が PR と無関係に見えても、まず自分が
+作成した未マージ PR について `gh api graphql` で未 resolve スレッドの有無を 1 回確認
+する。
+
+- 未 resolve あり → ユーザーに「PR #<pr_number> に未対応のレビュースレッドがあります。
+  先に応答しますか？」と確認し、了承されたら §2.1〜2.3 を先に実行
+- 未 resolve なし、または PR が merged / closed → 通常通り本来の入力に着手
+
+このフォールバックは **自己再起動できないエージェント (Codex / Copilot) の取りこぼし
+防止** と、自走チェックを 15 分以上経過後に拾う最後の砦として機能する。
 
 ### 2.1 検知
 
