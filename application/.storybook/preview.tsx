@@ -1,5 +1,5 @@
 import React from "react"
-import type {Preview} from "@storybook/nextjs"
+import type {Preview} from "@storybook/nextjs-vite"
 import "../src/app/globals.css"
 import {medievalSharp} from "../src/app/fonts"
 
