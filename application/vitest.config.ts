@@ -87,7 +87,7 @@ const config: ViteUserConfigExport = defineConfig(
 				provider: playwright(),
 			},
 		},
-	}))
+	})),
 )
 
 export default config
