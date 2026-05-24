@@ -1,9 +1,10 @@
 "use client"
 
-import {NumberDisplay} from "@/components/number-display"
 import {ControlButtons} from "@/components/control-buttons"
 import {HitNumbers} from "@/components/hit-numbers"
+import {NumberDisplay} from "@/components/number-display"
 import {UseBingo} from "@/hooks/use-bingo"
+
 import type {JSX} from "react"
 
 export default function Home(): JSX.Element {

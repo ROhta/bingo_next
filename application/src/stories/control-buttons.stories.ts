@@ -1,8 +1,9 @@
-import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 import {fn} from "storybook/test"
 
 import {ControlButtons} from "@/components/control-buttons"
 import {UseBingo} from "@/hooks/use-bingo"
+
+import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 
 const meta: Meta<typeof ControlButtons> = {
 	title: "LeftSide/Control Buttons",
