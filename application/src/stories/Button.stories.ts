@@ -1,4 +1,4 @@
-import {fn} from "storybook/test"
+import {expect, fn, userEvent, within} from "storybook/test"
 
 import {Button} from "@/components/ui/button"
 
@@ -23,5 +23,11 @@ type Story = StoryObj<typeof meta>
 export const button: Story = {
 	args: {
 		asChild: false,
+		children: "クリック",
+	},
+	play: async ({canvasElement, args}) => {
+		const canvas = within(canvasElement)
+		await userEvent.click(canvas.getByRole("button"))
+		await expect(args.onClick).toHaveBeenCalled()
 	},
 }

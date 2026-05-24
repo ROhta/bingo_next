@@ -8,6 +8,7 @@ const meta: Meta<typeof HitNumbers> = {
 	parameters: {
 		layout: "fullscreen",
 	},
+	tags: ["autodocs"],
 } satisfies Meta<typeof HitNumbers>
 
 export default meta
