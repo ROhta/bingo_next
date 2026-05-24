@@ -37,11 +37,103 @@ applyTo: "**"
 
 各ステップで失敗した場合は次に進まず、失敗の根本原因を解決してから再実行する。
 
-## 2. PR レビュー応答ループ (git push 毎)
+## 2. PR レビュー応答ループ (PR 作成 / push 毎)
 
-PR に対してコミットを push した後、AI エージェント (GitHub Copilot Review 等) からの
-レビュー指摘が付いた場合、push の度に以下を繰り返す。**すべてのスレッドが resolve
-されるまでループを継続する。**
+PR を新規作成、または既存ブランチに push した後、AI エージェントは **ユーザーからの
+「レビュー指摘がきた」等の合図を待たずに** 自走でレビュースレッドの有無を確認し、
+指摘があれば対応ループを実行する。**すべてのスレッドが resolve されるまでループを
+継続する。**
+
+### 2.0 自走チェックの起動方法
+
+`gh pr create` または `git push` が成功した直後、本セクションのフローを開始する。
+**ユーザー入力を待たない。**
+
+#### 2.0.1 即時 1 回チェック (全エージェント共通)
+
+push 完了から **2 分 (120 秒) 待機** (Copilot Review の初回反応待ち) し、§2.1 のクエリを
+1 回実行する。未 resolve スレッドがあれば §2.2〜2.3 で処理する。
+
+#### 2.0.2 追跡チェックの予約 (エージェント別)
+
+Copilot Review の指摘は遅延することがあるため、即時チェックで未指摘でも以下の方法で
+**さらに 2 分後** に 1 回フォローする。
+**§2.0.1 と §2.0.2 を合わせて連続 2 回** 未指摘なら追跡を終了する。
+
+##### Claude Code 実行時
+
+`ScheduleWakeup` ツールで自走する。`delaySeconds` は [60, 3600] の範囲。
+
+```text
+ScheduleWakeup({
+  delaySeconds: 120,
+  prompt: "PR #<number> の Copilot Review 応答ループを再開する。.apm/instructions/local-dev-workflow.instructions.md §2 に従い、未 resolve スレッドを検知して処理せよ。",
+  reason: "Copilot Review 遅延応答の追跡チェック (push から 2 分後)"
+})
+```
+
+再起動ターンで §2.1 を実行する。
+
+- 未 resolve があれば §2.2〜2.3 で処理し、修正コミットを push 後、改めて §2.0.1 から
+  新サイクルを開始する
+- **連続 2 回** (§2.0.1 + §2.0.2) 新規指摘がなければ追跡終了
+
+##### Codex CLI 実行時
+
+Codex CLI には自己再起動予約機能がない (`codex exec` は単発実行、TUI は対話セッション
+内のみ動作)。代替として以下のいずれかを採用する。
+
+- **Codex app の Automations**: UI または cron syntax で
+  `codex exec "PR #<pr_number> の Copilot Review 応答ループを実行"` を 2 分間隔で 2 回
+  の recurring task として登録するようユーザーに案内する
+  (参考: <https://developers.openai.com/codex/app/automations>)
+- **ローカル shell**: 開発機で
+  `for i in 1 2; do sleep 120; codex exec "PR #<pr_number> の Copilot Review 応答ループを実行"; done &`
+  を起動するようユーザーに案内する
+
+ユーザーがいずれも採用しない場合は §2.0.3 のフォールバックに委ねる。
+
+##### GitHub Copilot CLI / Coding Agent 実行時
+
+Copilot Coding Agent はクラウド側で動作し、自己再起動予約機能はない。代替手段:
+
+- **GitHub Actions の `on.schedule.cron`**: Agentic Workflows (`gh aw`) または
+  `gh copilot` を 2 分間隔の cron で呼び出す workflow (例:
+  `.github/workflows/pr-review-tracker.yml`) を提案する
+  (参考: <https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-copilot-cli/automate-with-actions>、
+  <https://github.github.com/gh-aw/>)
+- 既存 workflow がある場合は再利用、無い場合はユーザーに作成可否を確認する
+
+ユーザーが採用しない場合は §2.0.3 のフォールバックに委ねる。
+
+#### 2.0.3 ユーザー復帰時フォールバック (全エージェント共通)
+
+ユーザーから次の入力を受け取ったとき、その入力が PR と無関係に見えても、まず自分が
+作成した未マージ PR について `gh api graphql` で未 resolve スレッドの有無を 1 回確認
+する。
+
+- 未 resolve あり → ユーザーに「PR #<pr_number> に未対応のレビュースレッドがあります。
+  先に応答しますか？」と確認し、了承されたら §2.1〜2.3 を先に実行
+- 未 resolve なし、または PR が merged / closed → 通常通り本来の入力に着手
+
+このフォールバックは **自己再起動できないエージェント (Codex / Copilot) の取りこぼし
+防止** と、自走チェック (合計 4 分) 終了後に来た遅延指摘を拾う最後の砦として機能する。
+
+#### 2.0.4 運用上の注意 (PR #683 dogfooding で得られた知見)
+
+- **§2.0.1 即時チェックが最重要**: Copilot Review の指摘は push 完了から数十秒〜2 分
+  以内に大半が出る傾向がある。§2.0.1 で捕捉できる確率が高く、§2.0.2 追跡チェックは
+  遅延応答に対する保険的位置付けと捉えてよい。
+- **`ScheduleWakeup` は上書きされない**: Claude Code で `ScheduleWakeup` を再 call
+  しても、前回予約は **キャンセルされず別ターンとして独立起動する**。サイクル変更
+  (規範更新や push の重ね打ち) を行うと、旧 prompt に従う古いターンが起動する可能性が
+  ある。許容するか、prompt 内に「現在の最新 push SHA を取得し、自分が前提とする SHA と
+  異なれば no-op で終了」判定を入れる。
+- **サイクルは push 単位、ただし PR 全体共通**: 同一 PR で push を重ねるごとに新サイクル
+  を立ち上げる設計は、Copilot Review が PR 全体に対してレビューする実態と整合させると
+  二重チェックになりうる。新 push に対するサイクルを開始する前に、進行中の旧サイクル
+  が残っていれば 1 つのチェック共有でもよい (`gh api graphql` の結果は PR 単位なので
+  同じ未 resolve リストが返る)。
 
 ### 2.1 検知
 
