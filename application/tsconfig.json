@@ -1,5 +1,4 @@
 {
-	"compileOnSave": true,
 	"extends": "@tsconfig/strictest/tsconfig.json",
 	"compilerOptions": {
 		"target": "ES2022",
@@ -28,7 +27,6 @@
 		"removeComments": true,
 		"noEmitOnError": true,
 		"checkJs": false,
-		"experimentalDecorators": true,
 		"plugins": [
 			{
 				"name": "next"
