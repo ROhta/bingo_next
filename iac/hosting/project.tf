@@ -1,6 +1,7 @@
 # Web Analytics / Speed Insights は @vercel/analytics と @vercel/speed-insights の SDK で
-# application/src/app/layout.tsx に組み込み済み。Vercel provider 5.3.x には対応する project
-# 属性が無いため、トグル状態は IaC で固定できない (Hobby plan は Vercel 側で自動有効)。
+# application/src/app/layout.tsx に組み込み済み。vercel/vercel provider v5 (lock: 5.3.0) に
+# 対応する project 属性が無いため、トグル状態は IaC で固定できない (Hobby plan は Vercel
+# 側で自動有効)。
 resource "vercel_project" "bingo_next" {
   root_directory = "application/"
   framework      = "nextjs"
