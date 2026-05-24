@@ -38,7 +38,7 @@ apm compile   # CLAUDE.md / AGENTS.md を更新
 ただし、`apm.lock.yaml` を除く生成物は `.gitignore` 対象のためコミットには含まれない。
 
 > [!NOTE]
-> APM CLI v0.14.1 には `apm.lock.yaml` の `deployed_files:` に重複が残る既知不具合がある。bingo リポジトリでは `scripts/dedupe-apm-lock.mjs` を `apm install` 後に走らせる `pnpm apm-install` を導入してこれを回避しているため、必要に応じて同様のラッパースクリプトを追加すること。
+> APM CLI v0.14.1 には `apm.lock.yaml` の `local_deployed_files:` 配列に同一パスが重複して出力される既知不具合がある (`local_deployed_file_hashes:` はマッピングなので影響を受けない)。bingo リポジトリでは `scripts/dedupe-apm-lock.mjs` を `apm install` 後に走らせる `pnpm apm-install` を導入してこれを回避しているため、必要に応じて同様のラッパースクリプトを追加すること。
 
 ## GitHub Copilot Code Review への指示伝達
 
