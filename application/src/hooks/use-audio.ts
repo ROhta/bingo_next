@@ -2,7 +2,13 @@
 
 import {useEffect, useRef, useCallback} from "react"
 
-export const useAudio = () => {
+type UseAudioReturn = {
+	playDrumroll: (onEnded: () => void) => void
+	stopDrumroll: () => void
+	playCymbals: () => void
+}
+
+export const useAudio = (): UseAudioReturn => {
 	const drumrollRef = useRef<HTMLAudioElement | null>(null)
 	const cymbalsRef = useRef<HTMLAudioElement | null>(null)
 

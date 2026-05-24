@@ -1,6 +1,6 @@
 import path from "node:path"
 import {fileURLToPath} from "node:url"
-import {defineConfig, type Plugin} from "vitest/config"
+import {defineConfig, type Plugin, type ViteUserConfigExport} from "vitest/config"
 import {storybookTest} from "@storybook/addon-vitest/vitest-plugin"
 import {playwright} from "@vitest/browser-playwright"
 
@@ -44,7 +44,7 @@ const storybookOriginalPlugin = (): Plugin => ({
 })
 
 // More info at: https://storybook.js.org/docs/writing-tests/test-addon
-export default defineConfig(
+const config: ViteUserConfigExport = defineConfig(
 	storybookTest({
 		configDir: path.join(dirname, ".storybook"),
 		tags: {
@@ -89,3 +89,5 @@ export default defineConfig(
 		},
 	}))
 )
+
+export default config

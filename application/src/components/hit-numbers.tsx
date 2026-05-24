@@ -1,8 +1,10 @@
+import type {JSX} from "react"
+
 interface HitNumbersProps {
 	numbers: string[]
 }
 
-export const HitNumbers = ({numbers}: HitNumbersProps) => {
+export const HitNumbers = ({numbers}: HitNumbersProps): JSX.Element => {
 	return (
 		<div className="p-4">
 			<h2 className="text-6xl py-10">Hit Numbers</h2>
