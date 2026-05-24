@@ -4,4 +4,5 @@ resource "vercel_project_environment_variable" "enable_corepack" {
   key        = "ENABLE_EXPERIMENTAL_COREPACK"
   value      = "1"
   target     = ["production", "preview"]
+  sensitive  = true
 }
