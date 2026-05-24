@@ -15,5 +15,5 @@
 ### 対応方針
 
 - 依存関係は基本的に [dependabot version updates](https://docs.github.com/ja/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates) に基づいて対応します
-  - [`versioning-strategy: increase-if-necessary`](https://github.com/ROhta/bingo_next/blob/main/.github/dependabot.yml#L25) を設定し、必要なアップデートにのみ追従します
+  - [`versioning-strategy: increase-if-necessary`](https://github.com/ROhta/bingo_next/blob/main/.github/dependabot.yml) を設定し、必要なアップデートにのみ追従します
 - [dependabot security updates](https://docs.github.com/ja/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates) で検知された脆弱性にも対応します
