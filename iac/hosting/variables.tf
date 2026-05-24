@@ -5,19 +5,19 @@ variable "vercel_api_token" {
 }
 
 variable "team_id" {
-  description = "Vercel team ID for the existing team config. Used as the import identifier."
+  description = "Vercel team ID this workspace manages. 既存 team を import 済みのため変更には state からの再 import が必要。"
   type        = string
   default     = "team_YR2EVOhud8379Uz429mo0SDG"
 }
 
 variable "team_name" {
-  description = "Display name of the Vercel team."
+  description = "Display name of the Vercel team. 既存 team の表示名と一致させる必要あり。"
   type        = string
   default     = "rohta's projects"
 }
 
 variable "team_name_slug" {
-  description = "URL slug of the Vercel team."
+  description = "URL slug of the Vercel team. Vercel 側で確定済みのため通常は変更しない。"
   type        = string
   default     = "rohtas-projects"
 }
