@@ -8,6 +8,7 @@ const meta: Meta<typeof NumberDisplay> = {
 	parameters: {
 		layout: "fullscreen",
 	},
+	tags: ["autodocs"],
 } satisfies Meta<typeof NumberDisplay>
 
 export default meta
