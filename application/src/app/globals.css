@@ -1,6 +1,18 @@
 @import "tailwindcss";
 
 /*
+	body の背景・前景色は元々 globals.css 側で `rgb(var(--*-rgb))` で固定していた。
+	そのまま削除すると layout.tsx の `bg-gray-900 text-white` 単独となり、layout を
+	経由しない描画経路 (Storybook など) で黒背景・白文字が維持されないため、@layer base
+	で明示する。
+*/
+@layer base {
+	body {
+		@apply bg-gray-900 text-white;
+	}
+}
+
+/*
 	shadcn/ui の HSL ベース色トークン (cssVariables: true) の値定義のみを :root に残す。
 	Tailwind v4 ユーティリティ (`bg-primary` 等) への橋渡し (`@theme inline`) は意図的に
 	行わない: `cn(cva 既定値, "bg-slate-700 ...")` は `bg-primary` を `twMerge` が脱落
