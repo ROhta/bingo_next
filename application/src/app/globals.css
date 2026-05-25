@@ -1,30 +1,12 @@
 @import "tailwindcss";
 
 /*
-	shadcn/ui の HSL ベース色トークン (cssVariables: true) を Tailwind v4 のユーティリティ
-	(`bg-primary` 等) へ橋渡しするための `@theme inline`。
-	`button.tsx` の variants が参照しているトークンに限定して定義する。
+	shadcn/ui の HSL ベース色トークン (cssVariables: true) の値定義のみを :root に残す。
+	Tailwind v4 ユーティリティ (`bg-primary` 等) への橋渡し (`@theme inline`) は意図的に
+	行わない: `cn(cva 既定値, "bg-slate-700 ...")` は `bg-primary` を `twMerge` が脱落
+	させる一方で `hover:bg-primary/90` を残すため、bridge を入れると ControlButtons の
+	ホバー時の見た目が変化してしまうため。
 */
-@theme inline {
-	--color-background: hsl(var(--background));
-	--color-foreground: hsl(var(--foreground));
-	--color-primary: hsl(var(--primary));
-	--color-primary-foreground: hsl(var(--primary-foreground));
-	--color-secondary: hsl(var(--secondary));
-	--color-secondary-foreground: hsl(var(--secondary-foreground));
-	--color-destructive: hsl(var(--destructive));
-	--color-destructive-foreground: hsl(var(--destructive-foreground));
-	--color-accent: hsl(var(--accent));
-	--color-accent-foreground: hsl(var(--accent-foreground));
-	--color-border: hsl(var(--border));
-	--color-input: hsl(var(--input));
-	--color-ring: hsl(var(--ring));
-
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
-	--radius-lg: var(--radius);
-}
-
 :root {
 	--background: 0 0% 100%;
 	--foreground: 222.2 84% 4.9%;
