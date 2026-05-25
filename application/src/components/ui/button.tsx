@@ -1,9 +1,10 @@
-import * as React from "react"
 import {Slot} from "@radix-ui/react-slot"
 import {cva, type VariantProps} from "class-variance-authority"
-import type {ClassValue} from "clsx"
 
 import {cn} from "@/lib/utils"
+
+import type {ClassValue} from "clsx"
+import type {ComponentProps, JSX, Ref} from "react"
 
 type ButtonVariantsProps = {
 	variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined
@@ -34,14 +35,15 @@ const buttonVariants: (props?: ButtonVariantsProps) => string = cva("inline-flex
 	},
 })
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
-	asChild?: boolean
-}
+export type ButtonProps = ComponentProps<"button"> &
+	VariantProps<typeof buttonVariants> & {
+		asChild?: boolean
+		ref?: Ref<HTMLButtonElement>
+	}
 
-const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>> = React.forwardRef<HTMLButtonElement, ButtonProps>(({className, variant, size, asChild = false, ...props}, ref) => {
+const Button = ({className, variant, size, asChild = false, ref, ...props}: ButtonProps): JSX.Element => {
 	const Comp = asChild ? Slot : "button"
 	return <Comp className={cn(buttonVariants({variant, size, className}))} ref={ref} {...props} />
-})
-Button.displayName = "Button"
+}
 
 export {Button, buttonVariants}
