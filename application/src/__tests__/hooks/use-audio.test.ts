@@ -56,11 +56,14 @@ describe("useAudio hook", () => {
 		result.current.playDrumroll(onEndedMock)
 
 		// 最新のインスタンスを使用
-		const drumrollInstance = audioInstances[0]!
-		expect(drumrollInstance.currentTime).toBe(0)
+		const [drumroll] = audioInstances
+		expect(drumroll).toBeDefined()
+		if (!drumroll) return
+
+		expect(drumroll.currentTime).toBe(0)
 		// onendedの検証方法を変更
-		expect(drumrollInstance.onended).not.toBeNull()
-		expect(drumrollInstance.play).toHaveBeenCalled()
+		expect(drumroll.onended).not.toBeNull()
+		expect(drumroll.play).toHaveBeenCalled()
 	})
 
 	it("stopDrumroll should pause drumroll audio and reset currentTime", () => {
@@ -69,9 +72,12 @@ describe("useAudio hook", () => {
 		result.current.stopDrumroll()
 
 		// drumrollのAudioインスタンスのメソッドが正しく呼ばれたか確認
-		const drumrollInstance = audioInstances[0]!
-		expect(drumrollInstance.pause).toHaveBeenCalled()
-		expect(drumrollInstance.currentTime).toBe(0)
+		const [drumroll] = audioInstances
+		expect(drumroll).toBeDefined()
+		if (!drumroll) return
+
+		expect(drumroll.pause).toHaveBeenCalled()
+		expect(drumroll.currentTime).toBe(0)
 	})
 
 	it("playCymbals should play cymbals audio", () => {
@@ -80,9 +86,12 @@ describe("useAudio hook", () => {
 		result.current.playCymbals()
 
 		// cymbalsのAudioインスタンスのメソッドが正しく呼ばれたか確認
-		const cymbalsInstance = audioInstances[1]!
-		expect(cymbalsInstance.currentTime).toBe(0)
-		expect(cymbalsInstance.play).toHaveBeenCalled()
+		const [, cymbals] = audioInstances
+		expect(cymbals).toBeDefined()
+		if (!cymbals) return
+
+		expect(cymbals.currentTime).toBe(0)
+		expect(cymbals.play).toHaveBeenCalled()
 	})
 
 	it("should cleanup audio elements on unmount", () => {
@@ -91,9 +100,12 @@ describe("useAudio hook", () => {
 		unmount()
 
 		// アンマウント時に両方のAudioインスタンスのpauseが呼ばれたか確認
-		const drumrollInstance = audioInstances[0]!
-		const cymbalsInstance = audioInstances[1]!
-		expect(drumrollInstance.pause).toHaveBeenCalled()
-		expect(cymbalsInstance.pause).toHaveBeenCalled()
+		const [drumroll, cymbals] = audioInstances
+		expect(drumroll).toBeDefined()
+		expect(cymbals).toBeDefined()
+		if (!drumroll || !cymbals) return
+
+		expect(drumroll.pause).toHaveBeenCalled()
+		expect(cymbals.pause).toHaveBeenCalled()
 	})
 })
