@@ -7,8 +7,10 @@ import {medievalSharp} from "@/app/fonts"
 import type {Metadata} from "next"
 import type {JSX, ReactNode} from "react"
 
+const siteUrl = new URL("https://rohta-bingo-next.vercel.app/")
+
 export const metadata: Metadata = {
-	metadataBase: new URL("https://rohta-bingo-next.vercel.app/"),
+	metadataBase: siteUrl,
 	title: "Bingo",
 	description: "ビンゴアプリケーション",
 	icons: {icon: "/logo.ico"},
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
 		title: "Bingo",
 		description: "ビンゴアプリケーション",
 		images: "/ogp.png",
-		url: "https://rohta-bingo-next.vercel.app/",
+		url: siteUrl,
 		type: "website",
 	},
 }
