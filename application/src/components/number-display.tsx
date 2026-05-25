@@ -1,11 +1,9 @@
-import type {JSX} from "react"
+import type React from "react"
 
-export const NumberDisplay = ({number}: {number: string}): JSX.Element => {
+export const NumberDisplay = ({number}: {number: string}): React.JSX.Element => {
 	return (
 		<div className="flex">
-			<div style={{fontSize: "55vmin"}} className="font-bold">
-				{number}
-			</div>
+			<div className="font-bold text-[55vmin]">{number}</div>
 		</div>
 	)
 }
