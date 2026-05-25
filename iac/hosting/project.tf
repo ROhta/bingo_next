@@ -9,8 +9,8 @@ resource "vercel_project" "bingo_next" {
   node_version   = "24.x"
 
   git_repository = {
-    production_branch = local.production_branch
-    repo              = local.repo
+    production_branch = var.production_branch
+    repo              = var.repo
     type              = "github"
   }
 
@@ -29,16 +29,17 @@ resource "vercel_project" "bingo_next" {
   enable_affected_projects_deployments              = false
   enable_preview_feedback                           = true
   enable_production_feedback                        = true
-  function_failover                                 = true
-  git_fork_protection                               = true
-  git_lfs                                           = false
-  preview_deployments_disabled                      = false
-  prioritise_production_builds                      = false
-  public_source                                     = false
+  # function_failover は Enterprise プラン限定機能。現プラン (Pro/Hobby) では設定不可のため false 固定。
+  function_failover            = false
+  git_fork_protection          = true
+  git_lfs                      = false
+  preview_deployments_disabled = false
+  prioritise_production_builds = false
+  public_source                = false
 }
 
 resource "vercel_project_domain" "bingo_next" {
-  domain     = local.domain
-  project_id = local.project_id
-  team_id    = resource.vercel_team_config.bingo_next.id
+  domain     = var.domain
+  project_id = vercel_project.bingo_next.id
+  team_id    = vercel_team_config.bingo_next.id
 }

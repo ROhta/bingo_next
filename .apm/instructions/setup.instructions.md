@@ -29,7 +29,7 @@ applyTo: "**/{package.json,pnpm-lock.yaml,tsconfig.json,*.tf,*.tfvars}"
 ## iac (Terraform)
 
 - terraform をローカルにインストール
-  - terraform のバージョンは `iac/main.tf` を参照
-- `iac/` ディレクトリで以下を実行
+  - terraform のバージョンは `iac/hosting/versions.tf` を参照
+- `iac/hosting/` ディレクトリで以下を実行
   - `terraform login`
   - `terraform init`
