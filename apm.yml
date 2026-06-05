@@ -9,5 +9,9 @@ targets:
   - copilot
 includes: auto
 dependencies:
-  mcp: []
+  mcp:
+    - name: bingo-next-storybook
+      registry: false
+      transport: http
+      url: http://localhost:6006/mcp
   apm: []
