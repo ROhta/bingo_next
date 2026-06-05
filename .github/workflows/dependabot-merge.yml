@@ -1,7 +1,10 @@
 name: Auto Merge
 
 on:
-  pull_request_target:
+  pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
+    branches:
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
