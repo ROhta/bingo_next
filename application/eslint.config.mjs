@@ -11,7 +11,7 @@ import tseslint from "typescript-eslint"
 
 const nextConfigFiles = ["src/**/*.{js,jsx,ts,tsx}", "next.config.ts"]
 const eslint10CompatibleNextConfig = nextConfig.map(config => {
-	const files = config.files?.map(filePattern => (filePattern === "**/*.{js,jsx,mjs,ts,tsx,mts,cts}" ? nextConfigFiles[0] : filePattern)) ?? config.files
+	const files = config.files?.flatMap(filePattern => (filePattern === "**/*.{js,jsx,mjs,ts,tsx,mts,cts}" ? nextConfigFiles : filePattern)) ?? config.files
 	const scopedConfig = files ? {...config, files} : config
 
 	if (!config.rules) {
