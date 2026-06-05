@@ -6,6 +6,9 @@ updates:
       time: "10:00"
       timezone: "Asia/Tokyo"
     directory: "/application"
+    allow:
+      - dependency-type: "production"
+      - dependency-type: "development"
     cooldown:
       semver-major-days: 30
       semver-minor-days: 10
@@ -19,6 +22,7 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types:
+          - version-update:semver-minor
           - version-update:semver-patch
     groups:
       npm-all-dependencies:
@@ -55,6 +59,11 @@ updates:
     directories:
       - "/"
       - "/.github/actions/*"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-minor
+          - version-update:semver-patch
     labels:
       - "dependencies"
     open-pull-requests-limit: 10
