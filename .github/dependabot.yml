@@ -7,8 +7,7 @@ updates:
       timezone: "Asia/Tokyo"
     directory: "/application"
     allow:
-      - dependency-type: "production"
-      - dependency-type: "development"
+      - dependency-type: "all"
     cooldown:
       semver-major-days: 30
       semver-minor-days: 10
