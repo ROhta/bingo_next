@@ -1,3 +1,4 @@
+import eslintReact from "@eslint-react/eslint-plugin"
 import vitest from "@vitest/eslint-plugin"
 import nextConfig from "eslint-config-next"
 import {importX} from "eslint-plugin-import-x"
@@ -8,18 +9,29 @@ import unicorn from "eslint-plugin-unicorn"
 import unusedImports from "eslint-plugin-unused-imports"
 import tseslint from "typescript-eslint"
 
+const nextConfigFiles = ["src/**/*.{js,jsx,ts,tsx}", "next.config.ts"]
+const eslint10CompatibleNextConfig = nextConfig.map(config => {
+	const files = config.files?.flatMap(filePattern => (filePattern === "**/*.{js,jsx,mjs,ts,tsx,mts,cts}" ? nextConfigFiles : filePattern)) ?? config.files
+	const scopedConfig = files ? {...config, files} : config
+
+	if (!config.rules) {
+		return scopedConfig
+	}
+
+	return {
+		...scopedConfig,
+		rules: Object.fromEntries(Object.entries(config.rules).filter(([ruleName]) => !ruleName.startsWith("react/"))),
+	}
+})
+
 const eslintConfig = tseslint.config(
 	{
 		ignores: ["src/components/ui/**", "*.md", ".next/**", "storybook-static/**", "coverage/**"],
 	},
-	...nextConfig,
+	...eslint10CompatibleNextConfig,
 	{
 		files: ["**/*.ts", "**/*.tsx"],
-		extends: [
-			...tseslint.configs.recommendedTypeChecked,
-			importX.flatConfigs.recommended,
-			importX.flatConfigs.typescript,
-		],
+		extends: [...tseslint.configs.recommendedTypeChecked, eslintReact.configs["recommended-type-checked"], importX.flatConfigs.recommended, importX.flatConfigs.typescript],
 		plugins: {
 			unicorn,
 			"unused-imports": unusedImports,
