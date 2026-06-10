@@ -1,0 +1,7 @@
+allowBuilds:
+  "@vercel/speed-insights": true
+  esbuild: true
+  sharp: true
+  core-js-pure: false
+  msw: false
+  unrs-resolver: false
