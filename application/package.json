@@ -27,11 +27,7 @@
 		"chromatic": "chromatic --only-changed --project-token=${CHROMATIC_PROJECT_TOKEN}",
 		"copilot": "copilot"
 	},
-	"volta": {
-		"node": "24.11.0",
-		"pnpm": "10.24.0"
-	},
-	"packageManager": "pnpm@10.24.0",
+	"packageManager": "pnpm@11.5.2",
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
@@ -122,17 +118,5 @@
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.60.1",
 		"vitest": "~4.1.8"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@vercel/speed-insights",
-			"esbuild",
-			"sharp"
-		],
-		"ignoredBuiltDependencies": [
-			"core-js-pure",
-			"msw",
-			"unrs-resolver"
-		]
 	}
 }
