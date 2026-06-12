@@ -1,6 +1,6 @@
 name: bingo-next
 version: 0.1.0
-description: AI agent instructions for the bingo_next project
+description: bingo_next プロジェクトの AI エージェント向け指示
 author: ROhta
 type: instructions
 targets:
