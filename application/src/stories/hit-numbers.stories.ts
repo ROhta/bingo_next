@@ -3,7 +3,7 @@ import {HitNumbers} from "@/components/hit-numbers"
 import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 
 const meta: Meta<typeof HitNumbers> = {
-	title: "RightSide/Hit Number",
+	title: "Component/Hit Number",
 	component: HitNumbers,
 	parameters: {
 		layout: "fullscreen",

@@ -5,7 +5,7 @@ import Home from "@/app/page"
 import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 
 const meta: Meta<typeof Home> = {
-	title: "App/Bingo Flow",
+	title: "UX/Bingo Flow",
 	component: Home,
 	parameters: {
 		layout: "fullscreen",
@@ -44,5 +44,35 @@ export const DrawNumber: Story = {
 
 		// 抽選が終わり、ラベルは START 表示に戻る。
 		await canvas.findByRole("button", {name: "START"})
+	},
+}
+
+// RESET を押すと confirm ダイアログが出て、OK で Hit Numbers の行が全消去される UX を再現する。
+// confirm は実ブラウザではモーダルでテストをブロックするため、OK 固定にスタブして検証後に復元する。
+export const Reset: Story = {
+	play: async ({canvasElement}) => {
+		const canvas = within(canvasElement)
+		const hitNumbers = within(canvas.getByRole("heading", {name: "Hit Numbers"}).parentElement ?? canvasElement)
+
+		const originalConfirm = window.confirm
+		window.confirm = () => true
+		try {
+			// 事前準備: 2 回抽選して Hit Numbers に行を作る。
+			await userEvent.click(canvas.getByRole("button", {name: "START"}))
+			await userEvent.click(await canvas.findByRole("button", {name: "STOP"}))
+			await userEvent.click(await canvas.findByRole("button", {name: "START"}))
+			await userEvent.click(await canvas.findByRole("button", {name: "STOP"}))
+			await waitFor(async () => {
+				await expect(hitNumbers.queryAllByText(/^\d{2}$/).length).toBeGreaterThan(0)
+			})
+
+			// RESET を押す → confirm(OK) で全行がクリアされる。
+			await userEvent.click(canvas.getByRole("button", {name: "RESET"}))
+			await waitFor(async () => {
+				await expect(hitNumbers.queryAllByText(/^\d{2}$/)).toHaveLength(0)
+			})
+		} finally {
+			window.confirm = originalConfirm
+		}
 	},
 }

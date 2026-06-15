@@ -5,7 +5,7 @@ import {ControlButtons} from "@/components/control-buttons"
 import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 
 const meta: Meta<typeof ControlButtons> = {
-	title: "LeftSide/Control Buttons",
+	title: "Component/Control Buttons",
 	component: ControlButtons,
 	tags: ["autodocs"],
 	parameters: {
