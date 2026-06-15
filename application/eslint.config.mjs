@@ -101,7 +101,7 @@ const eslintConfig = tseslint.config(
 		rules: {
 			"import-x/no-default-export": "off",
 			"import-x/prefer-default-export": "off",
-			"storybook/prefer-pascal-case": "off",
+			"storybook/prefer-pascal-case": "error",
 		},
 	},
 	{

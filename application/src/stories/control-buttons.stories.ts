@@ -5,7 +5,7 @@ import {ControlButtons} from "@/components/control-buttons"
 import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 
 const meta: Meta<typeof ControlButtons> = {
-	title: "LeftSide/Control Buttons",
+	title: "Component/Control Buttons",
 	component: ControlButtons,
 	tags: ["autodocs"],
 	parameters: {
@@ -21,8 +21,10 @@ const meta: Meta<typeof ControlButtons> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const control_buttons: Story = {
+export const Stopped: Story = {}
+
+export const Running: Story = {
 	args: {
-		isRunning: false,
+		isRunning: true,
 	},
 }

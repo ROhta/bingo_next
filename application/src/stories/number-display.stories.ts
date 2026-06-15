@@ -3,7 +3,7 @@ import {NumberDisplay} from "@/components/number-display"
 import type {Meta, StoryObj} from "@storybook/nextjs-vite"
 
 const meta: Meta<typeof NumberDisplay> = {
-	title: "LeftSide/Number Display",
+	title: "Component/Number Display",
 	component: NumberDisplay,
 	parameters: {
 		layout: "fullscreen",
@@ -14,8 +14,14 @@ const meta: Meta<typeof NumberDisplay> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const number_display: Story = {
+export const Initial: Story = {
 	args: {
-		number: "03",
+		number: "00",
+	},
+}
+
+export const Drawn: Story = {
+	args: {
+		number: "75",
 	},
 }
