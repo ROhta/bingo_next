@@ -20,7 +20,7 @@ const meta: Meta<typeof Button> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const button: Story = {
+export const Default: Story = {
 	args: {
 		asChild: false,
 		children: "クリック",
@@ -29,5 +29,26 @@ export const button: Story = {
 		const canvas = within(canvasElement)
 		await userEvent.click(canvas.getByRole("button"))
 		await expect(args.onClick).toHaveBeenCalled()
+	},
+}
+
+export const Disabled: Story = {
+	args: {
+		children: "クリック",
+		disabled: true,
+	},
+}
+
+export const Large: Story = {
+	args: {
+		children: "クリック",
+		size: "lg",
+	},
+}
+
+export const Icon: Story = {
+	args: {
+		children: "＋",
+		size: "icon",
 	},
 }

@@ -21,8 +21,14 @@ const meta: Meta<typeof ControlButtons> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const control_buttons: Story = {
+export const Stopped: Story = {
 	args: {
 		isRunning: false,
+	},
+}
+
+export const Running: Story = {
+	args: {
+		isRunning: true,
 	},
 }

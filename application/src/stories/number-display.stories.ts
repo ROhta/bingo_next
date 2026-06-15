@@ -14,8 +14,14 @@ const meta: Meta<typeof NumberDisplay> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const number_display: Story = {
+export const Initial: Story = {
 	args: {
-		number: "03",
+		number: "00",
+	},
+}
+
+export const Drawn: Story = {
+	args: {
+		number: "75",
 	},
 }
