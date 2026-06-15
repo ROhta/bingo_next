@@ -1,4 +1,4 @@
-import {expect, userEvent, waitFor, within} from "storybook/test"
+import {expect, spyOn, userEvent, waitFor, within} from "storybook/test"
 
 import Home from "@/app/page"
 
@@ -73,6 +73,39 @@ export const Reset: Story = {
 			})
 		} finally {
 			window.confirm = originalConfirm
+		}
+	},
+}
+
+// START を押した後 STOP を押さず、ドラムロールが鳴り終わると自動的に数字が確定する UX を再現する。
+// useBingo はドラムロール音声の ended イベントで selectNumber() を呼ぶ設計のため、実音声（再生が長く
+// テストに不向き）の代わりに play() をスタブし、再生直後に ended を発火させて「鳴り終わり」を擬似再現する。
+export const AutoDraw: Story = {
+	play: async ({canvasElement}) => {
+		const canvas = within(canvasElement)
+		const hitNumbers = within(canvas.getByRole("heading", {name: "Hit Numbers"}).parentElement ?? canvasElement)
+		await expect(hitNumbers.queryAllByText(/^\d{2}$/)).toHaveLength(0)
+
+		const playSpy = spyOn(HTMLMediaElement.prototype, "play").mockImplementation(function (this: HTMLMediaElement) {
+			// startRotation 内で setInterval 代入が終わってから ended を発火させたいので非同期にする。
+			setTimeout(() => {
+				this.dispatchEvent(new Event("ended"))
+			}, 100)
+			return Promise.resolve()
+		})
+		try {
+			// START を押す → 回転開始。STOP は押さない。
+			await userEvent.click(canvas.getByRole("button", {name: "START"}))
+			await canvas.findByRole("button", {name: "STOP"})
+
+			// ドラムロールが鳴り終わると自動的に数字が 1 つ確定し、Hit Numbers に追加される。
+			await waitFor(async () => {
+				await expect(hitNumbers.queryAllByText(/^\d{2}$/).length).toBeGreaterThan(0)
+			})
+			// 自動確定後はラベルが START に戻る。
+			await canvas.findByRole("button", {name: "START"})
+		} finally {
+			playSpy.mockRestore()
 		}
 	},
 }
