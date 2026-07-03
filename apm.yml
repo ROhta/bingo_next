@@ -14,4 +14,5 @@ dependencies:
       registry: false
       transport: http
       url: http://localhost:6006/mcp
-  apm: []
+  apm:
+    - ROhta/apm-config/base#main
