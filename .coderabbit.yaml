@@ -1,0 +1,72 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# CodeRabbit 設定。ドキュメント: https://docs.coderabbit.ai/getting-started/yaml-configuration
+language: "ja-JP"
+tone_instructions: "指摘は具体的に。該当箇所・理由・可能なら修正案を含める。PR 本文の「## 見てほしいところ」を最優先で確認する。"
+
+reviews:
+  profile: "assertive"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: true
+  review_status: true
+  auto_review:
+    enabled: true
+    drafts: false
+    ignore_usernames:
+      - "dependabot[bot]"
+  path_filters:
+    - "!**/node_modules/**"
+    - "!**/.next/**"
+    - "!**/storybook-static/**"
+    - "!**/coverage/**"
+    - "!**/apm_modules/**"
+    - "!application/pnpm-lock.yaml"
+    - "!apm.lock.yaml"
+    - "!iac/**/.terraform.lock.hcl"
+  path_instructions:
+    - path: "application/src/**/*.{ts,tsx}"
+      instructions: |
+        - @tsconfig/strictest 準拠。any・不要な型アサーション・非 null アサーション (!) の濫用を指摘する。
+        - Next.js 16 App Router 前提。Server Components と Client Components ("use client") の境界を意識し、クライアント専用 API/フックをサーバー側で使っていないか確認する。
+        - React 19 / React Compiler 前提。不要な useMemo/useCallback や副作用の誤用、リストの key の付け方を指摘する。
+        - src/components/ui は shadcn/ui の生成物。スタイルの細かい指摘は控えめにし、アクセシビリティと Tailwind クラスの一貫性を重視する。
+    - path: "application/src/**/*.stories.{ts,tsx}"
+      instructions: |
+        - Storybook の story が正常・異常・境界などの主要な状態/バリアントを網羅しているか確認する。
+        - named export が PascalCase (storybook/prefer-pascal-case 準拠) になっているか確認する。
+    - path: "application/src/**/*.test.{ts,tsx}"
+      instructions: |
+        - テスト名が仕様を表現しているか、境界値・異常系がカバーされているか確認する。
+        - noUncheckedIndexedAccess 下でも安全なアクセス (非 null 断言に頼らない) になっているか確認する。
+    - path: "iac/**/*.tf"
+      instructions: |
+        - Vercel provider の設定。API トークンやシークレットが平文でハードコードされず variable / 環境変数経由になっているか確認する。
+        - attack_challenge_mode やデプロイ保護などセキュリティ関連設定の妥当性を確認する。
+        - provider / モジュールのバージョン固定 (~>) が保たれているか確認する。
+    - path: ".github/workflows/*.yml"
+      instructions: |
+        - サードパーティ Action が commit SHA でピン留めされているか、permissions が最小権限か確認する。
+        - シークレットの露出やスクリプトインジェクションのリスクがないか確認する。
+  tools:
+    eslint:
+      enabled: true
+    actionlint:
+      enabled: true
+    gitleaks:
+      enabled: true
+    checkov:
+      enabled: true
+    markdownlint:
+      enabled: true
+    yamllint:
+      enabled: true
+
+knowledge_base:
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - ".apm/instructions/*.md"
+      - ".github/instructions/*.md"
+
+chat:
+  auto_reply: true
