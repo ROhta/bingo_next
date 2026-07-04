@@ -7,7 +7,7 @@ reviews:
   profile: "assertive"
   request_changes_workflow: false
   high_level_summary: true
-  poem: true
+  poem: false
   review_status: true
   auto_review:
     enabled: true
@@ -34,16 +34,16 @@ reviews:
       instructions: |
         - Storybook の story が正常・異常・境界などの主要な状態/バリアントを網羅しているか確認する。
         - named export が PascalCase (storybook/prefer-pascal-case 準拠) になっているか確認する。
-    - path: "application/src/**/*.test.{ts,tsx}"
+    - path: "application/src/**/*.{test,spec}.{ts,tsx}"
       instructions: |
         - テスト名が仕様を表現しているか、境界値・異常系がカバーされているか確認する。
         - noUncheckedIndexedAccess 下でも安全なアクセス (非 null 断言に頼らない) になっているか確認する。
-    - path: "iac/**/*.tf"
+    - path: "iac/**/*.{tf,tfvars}"
       instructions: |
         - Vercel provider の設定。API トークンやシークレットが平文でハードコードされず variable / 環境変数経由になっているか確認する。
         - attack_challenge_mode やデプロイ保護などセキュリティ関連設定の妥当性を確認する。
         - provider / モジュールのバージョン固定 (~>) が保たれているか確認する。
-    - path: ".github/workflows/*.yml"
+    - path: ".github/workflows/*.{yml,yaml}"
       instructions: |
         - サードパーティ Action が commit SHA でピン留めされているか、permissions が最小権限か確認する。
         - シークレットの露出やスクリプトインジェクションのリスクがないか確認する。
