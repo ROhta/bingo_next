@@ -29,8 +29,7 @@ Next.js (React 19) で構築され、Vercel 上でホスティングされてい
 ## ドキュメント
 
 - [セットアップ手順](https://github.com/ROhta/bingo_next/blob/main/.apm/instructions/setup.instructions.md): ローカル開発環境構築 (application / iac)
-- [PR レビュー方針](https://github.com/ROhta/bingo_next/blob/main/.apm/instructions/pr-review.instructions.md): レビュー時のコミュニケーションルール
-- [APM 運用ルール](https://github.com/ROhta/bingo_next/blob/main/.apm/instructions/apm-workflow.instructions.md): AI エージェント向け指示の管理方法
+- [共通 AI エージェント指示](https://github.com/ROhta/apm-config): PR レビュー方針・APM 運用ルール等の共通指示は apm-config から `apm install` で配信
 
 ## ソースコード
 
