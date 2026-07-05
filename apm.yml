@@ -14,4 +14,6 @@ dependencies:
       registry: false
       transport: http
       url: http://localhost:6006/mcp
-  apm: []
+  apm:
+    - ROhta/apm-config/base#82831f48b6be9e1e70291813ae66a1fa68884c64
+    - github/awesome-copilot/instructions/code-review-generic.instructions.md#5b049e4e196c10aab8ddfd9e492323d08cf985b0
