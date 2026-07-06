@@ -19,3 +19,7 @@ v0 と Terraform Cloud を使った bingo の Next.js 再実装。
 他リポジトリ共通の指示 (PR レビュー方針・APM 運用ルール・使用言語・開発フロー等) は共通パッケージ [`ROhta/apm-config`](https://github.com/ROhta/apm-config) から `apm install` で配信され、ローカルの `.apm/instructions/` には保持しません。共通指示を変更したい場合は apm-config を編集し、そのうえで本リポジトリ側の `apm.yml` の pin と `apm.lock.yaml` を更新 (`apm update` 等) して反映します。
 
 これらは [microsoft/apm](https://github.com/microsoft/apm) によって管理され、`apm compile` で Claude Code / Codex / GitHub Copilot 向けファイル (`CLAUDE.md` / `AGENTS.md` / `.claude/rules/` / `.github/instructions/`) に展開されます。
+
+## MCP
+
+リポジトリ固有の MCP サーバーとして `bingo-next-storybook` (`http://localhost:6006/mcp`) を利用します。ローカルで Storybook を起動し、UI コンポーネントを参照するための MCP サーバーです。
