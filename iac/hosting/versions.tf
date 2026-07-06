@@ -13,7 +13,7 @@ terraform {
   }
 
   cloud {
-    organization = "bingo_next"
+    organization = "rohta"
 
     workspaces {
       name = "hosting"

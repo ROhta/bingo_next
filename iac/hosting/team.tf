@@ -2,7 +2,7 @@ resource "vercel_team_config" "bingo_next" {
   id                                    = var.team_id
   name                                  = var.team_name
   slug                                  = var.team_name_slug
-  description                           = var.team_name
+  description                           = var.team_description
   sensitive_environment_variable_policy = "on"
   remote_caching = {
     enabled = true

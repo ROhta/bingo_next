@@ -13,13 +13,19 @@ variable "team_id" {
 variable "team_name" {
   description = "Display name of the Vercel team. 既存 team の表示名と一致させる必要あり。"
   type        = string
+  default     = "rohta as a team"
+}
+
+variable "team_description" {
+  description = "Description of the Vercel team. 表示名 (team_name) とは別値で Vercel 側に保持されているため独立変数とする。"
+  type        = string
   default     = "rohta's projects"
 }
 
 variable "team_name_slug" {
   description = "URL slug of the Vercel team. Vercel 側で確定済みのため通常は変更しない。"
   type        = string
-  default     = "rohtas-projects"
+  default     = "rohta"
 }
 
 variable "repo" {
