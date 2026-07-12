@@ -1,8 +1,24 @@
 lockfile_version: '1'
-generated_at: '2026-07-06T21:07:33.618962+00:00'
-apm_version: 0.24.0
+generated_at: '2026-07-12T03:42:37.860415+00:00'
+apm_version: 0.24.1
 dependencies:
-- repo_url: ROhta/apm-config
+- repo_url: github/awesome-copilot
+  name: awesome-copilot-code-review-generic
+  host: github.com
+  resolved_commit: 5b049e4e196c10aab8ddfd9e492323d08cf985b0
+  resolved_ref: 5b049e4e196c10aab8ddfd9e492323d08cf985b0
+  version: 1.0.0
+  virtual_path: instructions/code-review-generic.instructions.md
+  is_virtual: true
+  package_type: apm_package
+  deployed_files:
+  - .claude/rules/code-review-generic.md
+  - .github/instructions/code-review-generic.instructions.md
+  deployed_file_hashes:
+    .claude/rules/code-review-generic.md: sha256:438a95faf5d7e0c1d52f0be55ca6d751a133a30f07cd95f09390803635267e5d
+    .github/instructions/code-review-generic.instructions.md: sha256:e6917309e3e986cde1650768cc871f54e5d054e90c4518afb5c937941ee212a9
+  content_hash: sha256:31212689590950d38ab751ad947ac94078ec57eb71a497c5b126135bc05dc7e1
+- repo_url: rohta/apm-config
   name: apm-config-base
   host: github.com
   resolved_commit: c150cfffc0199321928d524b15a91b95888ccfd6
@@ -43,22 +59,6 @@ dependencies:
     .github/instructions/review-response-loop.instructions.md: sha256:602254403a6890a64a55669472a1549f34e7383b3afb29f0fdb9989b8dfce5f8
   content_hash: sha256:ae1d68b5b9c18c29224809795582b0a7905ecc4b8d150401f39501eeb60483e3
   declared_license: GPL-3.0-or-later
-- repo_url: github/awesome-copilot
-  name: awesome-copilot-code-review-generic
-  host: github.com
-  resolved_commit: 5b049e4e196c10aab8ddfd9e492323d08cf985b0
-  resolved_ref: 5b049e4e196c10aab8ddfd9e492323d08cf985b0
-  version: 1.0.0
-  virtual_path: instructions/code-review-generic.instructions.md
-  is_virtual: true
-  package_type: apm_package
-  deployed_files:
-  - .claude/rules/code-review-generic.md
-  - .github/instructions/code-review-generic.instructions.md
-  deployed_file_hashes:
-    .claude/rules/code-review-generic.md: sha256:438a95faf5d7e0c1d52f0be55ca6d751a133a30f07cd95f09390803635267e5d
-    .github/instructions/code-review-generic.instructions.md: sha256:e6917309e3e986cde1650768cc871f54e5d054e90c4518afb5c937941ee212a9
-  content_hash: sha256:31212689590950d38ab751ad947ac94078ec57eb71a497c5b126135bc05dc7e1
 - repo_url: obra/superpowers
   name: superpowers
   host: github.com
@@ -66,7 +66,7 @@ dependencies:
   resolved_ref: d884ae04edebef577e82ff7c4e143debd0bbec99
   version: 6.1.1
   depth: 2
-  resolved_by: ROhta/apm-config
+  resolved_by: rohta/apm-config
   package_type: marketplace_plugin
   deployed_files:
   - .agents/skills/brainstorming
