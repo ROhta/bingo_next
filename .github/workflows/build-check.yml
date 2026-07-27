@@ -44,9 +44,11 @@ jobs:
       # mise.toml（SSoT）と 2 つの package.json の pnpm 版が乖離していないことを検証する。
       # composite action ではなくこのワークフローに置く: composite action に入れると
       # chromatic.yml からも走り、main への push でベースラインジョブまで赤くなるため。
-      # mise タスクは mise.toml のあるリポジトリルートで実行されるので、
-      # 上の defaults.run.working-directory: "application" の影響は受けない。
+      # check-versions は package.json / application/package.json をリポジトリルート相対で
+      # 参照する。mise タスクは mise.toml のあるディレクトリで実行される仕様だが、
+      # 上の defaults.run.working-directory: "application" に紛れないよう明示する。
       - name: Check version drift
+        working-directory: ${{ github.workspace }}
         run: mise run check-versions
       - name: Run Tests
         run: pnpm test -- --run
