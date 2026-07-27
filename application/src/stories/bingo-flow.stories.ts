@@ -54,6 +54,8 @@ export const Reset: Story = {
 		const canvas = within(canvasElement)
 		const hitNumbers = within(canvas.getByRole("heading", {name: "Hit Numbers"}).parentElement ?? canvasElement)
 
+		// 退避と復元のためにプロパティ値をそのまま保持するだけで呼び出さないため、this 束縛は不要。
+		// eslint-disable-next-line @typescript-eslint/unbound-method
 		const originalConfirm = window.confirm
 		window.confirm = () => true
 		try {
