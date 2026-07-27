@@ -41,6 +41,13 @@ jobs:
           config: ${{ vars.PERMISSIONS_CONFIG }}
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/setup-node-pnpm
+      # mise.toml（SSoT）と 2 つの package.json の pnpm 版が乖離していないことを検証する。
+      # composite action ではなくこのワークフローに置く: composite action に入れると
+      # chromatic.yml からも走り、main への push でベースラインジョブまで赤くなるため。
+      # mise タスクは mise.toml のあるリポジトリルートで実行されるので、
+      # 上の defaults.run.working-directory: "application" の影響は受けない。
+      - name: Check version drift
+        run: mise run check-versions
       - name: Run Tests
         run: pnpm test -- --run
       - name: Build

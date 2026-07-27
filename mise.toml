@@ -6,3 +6,29 @@ terraform = "1.15.8"
 
 [settings]
 lockfile = true
+
+# mise が届かない Vercel ビルド向けに package.json 側へ複写している pnpm 版が、
+# SSoT（上記 [tools] pnpm）から乖離していないことを検証する。
+# 複写先は 2 つある: Vercel が読むのは root_directory の application/package.json のみだが、
+# ルートの package.json もローカル運用で参照されるため両方を対象にする。
+# terraform の required_version や Vercel の node_version は「制約 ⊇ 固定値」の関係であり
+# 等値ではないため、ここでは検証しない（等値化すると恒久的に失敗する）。
+[tasks.check-versions]
+description = "mise.toml の pnpm 版と各 package.json の packageManager が一致することを検証する"
+run = '''
+want="$(mise config get tools.pnpm)"
+checked=0
+for f in package.json application/package.json; do
+  got="$(sed -n 's/.*"packageManager"[[:space:]]*:[[:space:]]*"pnpm@\([^"]*\)".*/\1/p' "$f")"
+  if [ -z "$got" ]; then
+    echo "$f: packageManager を読み取れない" >&2
+    exit 1
+  fi
+  if [ "$got" != "$want" ]; then
+    echo "$f: packageManager=pnpm@$got が mise.toml の pnpm=$want と不一致" >&2
+    exit 1
+  fi
+  checked=$((checked + 1))
+done
+echo "pnpm 版一致: $want（検査 $checked ファイル）"
+'''
