@@ -27,7 +27,7 @@ jobs:
       - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
   Build-Check:
     if: github.event.pull_request.draft == false
@@ -39,8 +39,17 @@ jobs:
       - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ./.github/actions/setup-node-pnpm
+      # mise.toml（SSoT）と 2 つの package.json の pnpm 版が乖離していないことを検証する。
+      # composite action ではなくこのワークフローに置く: composite action に入れると
+      # chromatic.yml からも走り、main への push でベースラインジョブまで赤くなるため。
+      # check-versions は package.json / application/package.json をリポジトリルート相対で
+      # 参照する。mise タスクは mise.toml のあるディレクトリで実行される仕様だが、
+      # 上の defaults.run.working-directory: "application" に紛れないよう明示する。
+      - name: Check version drift
+        working-directory: ${{ github.workspace }}
+        run: mise run check-versions
       - name: Run Tests
         run: pnpm test -- --run
       - name: Build

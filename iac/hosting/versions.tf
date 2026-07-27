@@ -1,14 +1,14 @@
 terraform {
-  required_version = "~> 1.13"
+  required_version = "~> 1.15"
 
   required_providers {
     vercel = {
       source  = "vercel/vercel"
-      version = "~> 5.2"
+      version = "~> 5.5"
     }
     time = {
       source  = "hashicorp/time"
-      version = "~> 0.13"
+      version = "~> 0.14"
     }
   }
 
