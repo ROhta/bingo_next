@@ -1,11 +1,3 @@
-# next が postcss を exact pin (8.4.31) で引き込むため、直接依存の postcss@8.5.x と
-# 併存し 8.4.31 側に脆弱性アラートが残り続ける (GHSA-qx2v-qp2m-jg93 / GHSA-6g55-p6wh-862q /
-# GHSA-r28c-9q8g-f849)。直接依存を上げても next 配下は動かないため、next 配下だけを
-# 直接依存と同じレンジへ寄せて postcss を 1 バージョンに統一する。
-# next が pin を上げたらこの override は不要になる。
-overrides:
-  next>postcss: "^8.5.23"
-
 allowBuilds:
   "@vercel/speed-insights": true
   esbuild: true
