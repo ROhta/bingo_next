@@ -32,7 +32,7 @@ jobs:
   Build-Check:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     permissions:
       contents: read
     steps:
@@ -50,6 +50,13 @@ jobs:
       - name: Check version drift
         working-directory: ${{ github.workspace }}
         run: mise run check-versions
+      # Dependabot PR は pre-commit hook を通らないため、lint-staged は依存更新を
+      # 一切検証できない。ここで lint を実行しないと ESLint を壊す依存更新が
+      # 無検証で main に入る (#733 の TypeScript 7 更新が 2 週間気付かれなかった原因)。
+      # Build-Check は ruleset の必須チェックなので、この job のステップとして追加する。
+      # 別 job にすると非必須チェックになり auto-merge のフォールバックを止められない。
+      - name: Lint
+        run: pnpm lint
       - name: Run Tests
         run: pnpm test -- --run
       - name: Build
