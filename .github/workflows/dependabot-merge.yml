@@ -23,7 +23,25 @@ jobs:
       - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
-      - uses: fastify/github-action-merge-dependabot@73ec4cbb5e56df5591eae286972d5b2201ffe90f # v3.15.0
+      - id: auto-merge
+        uses: fastify/github-action-merge-dependabot@73ec4cbb5e56df5591eae286972d5b2201ffe90f # v3.15.0
+        continue-on-error: true
         with:
           use-github-auto-merge: true
           target: "minor"
+      # 必須チェックが全て完走した後に auto-merge の予約 API が呼ばれると
+      # GitHub は「予約不要」として拒否する (unstable status) ため、直接マージにフォールバックする。
+      # ただし action は target を超える更新の拒否でも失敗するため、outcome だけを条件にすると
+      # target: minor の制約を迂回して major をマージしてしまう。更新種別を独立に取得し、
+      # minor / patch のみを許可する allowlist で判定する
+      - id: metadata
+        if: steps.auto-merge.outcome == 'failure'
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+      - name: 直接マージへのフォールバック
+        if: >-
+          steps.auto-merge.outcome == 'failure'
+          && contains(fromJSON('["version-update:semver-minor", "version-update:semver-patch"]'), steps.metadata.outputs.update-type)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: gh pr merge --squash "${{ github.event.pull_request.number }}"
