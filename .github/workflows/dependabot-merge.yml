@@ -31,15 +31,16 @@ jobs:
           target: "minor"
       # 必須チェックが全て完走した後に auto-merge の予約 API が呼ばれると
       # GitHub は「予約不要」として拒否する (unstable status) ため、直接マージにフォールバックする。
-      # action が core.setFailed を呼ぶのは target 超過の拒否 (skipped:cannot_update_major) と
-      # マージ / 予約 API の失敗 (merge_failed) の 2 通りのみ。前者を除外することで
-      # target: minor の制約を迂回して major がマージされることを防ぐ。
-      # composite action の output は内部 step の失敗時に伝播しない可能性があるため、
-      # merge_failed を要求せず危険な値を除外する形にして空値でもフォールバックが働くようにする
+      # ただし action は target を超える更新の拒否でも失敗するため、outcome だけを条件にすると
+      # target: minor の制約を迂回して major をマージしてしまう。更新種別を独立に取得し、
+      # minor / patch のみを許可する allowlist で判定する
+      - id: metadata
+        if: steps.auto-merge.outcome == 'failure'
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
       - name: 直接マージへのフォールバック
         if: >-
           steps.auto-merge.outcome == 'failure'
-          && steps.auto-merge.outputs.merge_status != 'skipped:cannot_update_major'
+          && contains(fromJSON('["version-update:semver-minor", "version-update:semver-patch"]'), steps.metadata.outputs.update-type)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
