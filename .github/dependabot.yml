@@ -22,6 +22,13 @@ updates:
       - dependency-name: "*"
         update-types:
           - version-update:semver-patch
+      # TypeScript 7 はエコシステムの対応が追いついていない。
+      # ts-api-utils が TypeScript 7 で動かず ESLint が起動不能になり、
+      # @joshwooding/vite-plugin-react-docgen-typescript も未対応で Storybook が壊れる。
+      # 対応が揃うまで major 更新を見送る。
+      - dependency-name: "typescript"
+        update-types:
+          - version-update:semver-major
     groups:
       npm-all-dependencies:
         patterns:
