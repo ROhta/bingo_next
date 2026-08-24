@@ -55,6 +55,9 @@ jobs:
       # 無検証で main に入る (#733 の TypeScript 7 更新が 2 週間気付かれなかった原因)。
       # Build-Check は ruleset の必須チェックなので、この job のステップとして追加する。
       # 別 job にすると非必須チェックになり auto-merge のフォールバックを止められない。
+      # timeout-minutes を 5 にしているのは lint の所要時間 (実測 11 秒) のためではなく、
+      # permissions monitor ステップが単体で 52 秒 (job 全体の 40%) を占めており、
+      # ここの変動や pnpm キャッシュミスで 3 分を超える余地があるため。
       - name: Lint
         run: pnpm lint
       - name: Run Tests
