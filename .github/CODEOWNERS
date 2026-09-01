@@ -1,18 +1,2 @@
-# 基本ルール
-.github/ @ROhta
-.vscode/ @ROhta
-application/ @ROhta
-iac/ @ROhta
-.gitignore @ROhta
-LICENSE @ROhta
-README.md @ROhta
-
-# Dependabotが更新するファイルは所有者なし（空行で上書き）
-# 最後にマッチした行が優先されるため、これらは除外される
-.github/dependabot.yml
-application/package.json
-application/pnpm-lock.yaml
-.github/workflows/*.yml
-.github/actions/*/action.yml
-iac/**/*.tf
-iac/**/.terraform.lock.hcl
+# 非 Draft PR (dependabot PR 含む) のレビュアーに @ROhta を自動依頼 (作成者自身の PR は除外される)
+* @ROhta
