@@ -10,7 +10,6 @@ updates:
       - dependency-type: "all"
     cooldown:
       semver-major-days: 30
-      semver-minor-days: 10
     labels:
       - "dependencies"
     open-pull-requests-limit: 5
@@ -22,6 +21,7 @@ updates:
       - dependency-name: "*"
         update-types:
           - version-update:semver-patch
+          - version-update:semver-minor
       # TypeScript はエコシステムの対応が追いついていない。
       # ts-api-utils が TypeScript 7 で動かず ESLint が起動不能になり、
       # @joshwooding/vite-plugin-react-docgen-typescript も未対応で Storybook が壊れる。
@@ -50,6 +50,7 @@ updates:
       - dependency-name: "*"
         update-types:
           - version-update:semver-patch
+          - version-update:semver-minor
     labels:
       - "dependencies"
     open-pull-requests-limit: 10
@@ -75,6 +76,7 @@ updates:
       - dependency-name: "*"
         update-types:
           - version-update:semver-patch
+          - version-update:semver-minor
     labels:
       - "dependencies"
     open-pull-requests-limit: 10
