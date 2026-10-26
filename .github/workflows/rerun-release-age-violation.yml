@@ -1,0 +1,67 @@
+name: Rerun Release Age Violation
+
+# Dependabot がロックファイルを再解決すると、公開 24h 未満の間接依存が入り
+# pnpm の minimumReleaseAge で CI が落ちる (cooldown は直接依存にしか効かない)。
+# ロックファイルは変えずに、公開から 24h 経過した時点で失敗したジョブと Vercel デプロイを再実行する
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+
+jobs:
+  rerun:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+      pull-requests: read
+      statuses: read
+    steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
+        with:
+          config: ${{ vars.PERMISSIONS_CONFIG }}
+      - name: ゲート違反で落ちた Dependabot PR の再実行
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TEAM: rohta
+          VERCEL_PROJECT: bingo-next
+        run: |
+          set -euo pipefail
+          now=$(date -u +%s)
+          for pr in $(gh pr list --author app/dependabot --state open --json number --jq '.[].number'); do
+            sha=$(gh pr view "$pr" --json headRefOid --jq .headRefOid)
+            rerun=false
+            for run in $(gh run list --commit "$sha" --status failure --json databaseId --jq '.[].databaseId'); do
+              # 違反したエントリの公開日時を抽出し、最も新しいものから 24h 経過していれば再実行する
+              published=$(gh run view "$run" --log-failed 2>/dev/null \
+                | grep -oP 'was published at \K[^,]+(?=, within the minimumReleaseAge cutoff)' || true)
+              [ -z "$published" ] && continue
+              latest=$(printf '%s\n' "$published" | xargs -I{} date -u +%s -d {} | sort -n | tail -1)
+              if (( now >= latest + 86400 )); then
+                echo "PR #$pr: run $run を再実行"
+                gh run rerun "$run" --failed
+                rerun=true
+              else
+                echo "PR #$pr: run $run は $(date -u -d "@$((latest + 86400))" +%FT%TZ) 以降に再実行"
+              fi
+            done
+            [ "$rerun" = true ] || continue
+            # Vercel は同じロックファイルで同じ理由により失敗しているため、Actions の再実行と同時に再デプロイする
+            target=$(gh api "repos/$GH_REPO/commits/$sha/status" \
+              --jq '.statuses[] | select(.context == "Vercel" and .state == "failure") | .target_url')
+            [ -z "$target" ] && continue
+            [[ "${target##*/}" =~ ^[A-Za-z0-9]+$ ]] || { echo "::warning::想定外の Vercel URL: $target"; continue; }
+            if [ -z "$VERCEL_TOKEN" ]; then
+              echo "::warning::VERCEL_TOKEN 未設定のため PR #$pr の Vercel を再デプロイできません"
+              continue
+            fi
+            echo "PR #$pr: Vercel dpl_${target##*/} を再デプロイ"
+            curl -fsS -o /dev/null -X POST "https://api.vercel.com/v13/deployments?slug=$VERCEL_TEAM" \
+              -H "Authorization: Bearer $VERCEL_TOKEN" -H "Content-Type: application/json" \
+              -d "{\"name\":\"$VERCEL_PROJECT\",\"deploymentId\":\"dpl_${target##*/}\"}"
+          done
