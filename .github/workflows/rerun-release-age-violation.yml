@@ -5,7 +5,8 @@ name: Rerun Release Age Violation
 # ロックファイルは変えずに、公開から 24h 経過した時点で失敗したジョブと Vercel デプロイを再実行する
 on:
   schedule:
-    - cron: "23 * * * *"
+    # GitHub は高負荷時に schedule を遅延・間引くため (毎時 1 回では数時間起動しないことがあった)、15 分ごとに起動する
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 
 concurrency:
