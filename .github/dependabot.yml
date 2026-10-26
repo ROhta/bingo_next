@@ -9,6 +9,8 @@ updates:
     allow:
       - dependency-type: "all"
     cooldown:
+      # pnpm の minimumReleaseAge (24h) に抵触しないよう、公開から 1 日経過した版のみ PR 化する
+      default-days: 1
       semver-major-days: 30
     labels:
       - "dependencies"

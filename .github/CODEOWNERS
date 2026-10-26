@@ -1,2 +1,7 @@
-# 非 Draft PR (dependabot PR 含む) のレビュアーに @ROhta を自動依頼 (作成者自身の PR は除外される)
+# 非 Draft PR のレビュアーに @ROhta を自動依頼 (作成者自身の PR と、下記のオーナー不在ファイルのみを変更する PR は除外される)
 * @ROhta
+
+# npm 依存更新 (Dependabot) を承認なしで自動マージさせるため、依存定義ファイルはオーナー不在とする
+# (pnpm-workspace.yaml は overrides / minimumReleaseAge を含むため対象外とし、オーナーレビューを維持する)
+/application/package.json
+/application/pnpm-lock.yaml

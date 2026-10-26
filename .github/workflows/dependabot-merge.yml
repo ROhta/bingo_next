@@ -45,3 +45,24 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: gh pr merge --squash "${{ github.event.pull_request.number }}"
+
+  # Dependabot PR に Dependabot 以外がコミットを追加した場合は自動マージ予約を解除し、人手レビューに戻す
+  # (依存定義ファイルはコードオーナー不在のため、予約が残ると人のコミットが無レビューでマージされる)
+  disable-auto-merge:
+    if: >-
+      github.event.action == 'synchronize'
+      && github.event.pull_request.user.login == 'dependabot[bot]'
+      && github.event.sender.login != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
+        with:
+          config: ${{ vars.PERMISSIONS_CONFIG }}
+      - name: 自動マージ予約の解除
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: gh pr merge --disable-auto "${{ github.event.pull_request.number }}"
