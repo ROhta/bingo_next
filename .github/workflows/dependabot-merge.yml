@@ -61,8 +61,25 @@ jobs:
       - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
         with:
           config: ${{ vars.PERMISSIONS_CONFIG }}
+      # Update branch (GitHub 上での main 取り込み) は内容の修正ではないため予約を維持する。
+      # PR の全コミット (base との差分) が GitHub 上で作成 (committer: web-flow) され、かつ
+      # マージコミット以外が Dependabot 作成の場合のみ許可する。
+      # ローカルからの push・amend・rebase・ブラウザ編集は解除対象。比較に失敗した場合も安全側に倒して解除する
       - name: 自動マージ予約の解除
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
-        run: gh pr merge --disable-auto "${{ github.event.pull_request.number }}"
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          unexpected=$(gh api "repos/$GH_REPO/compare/$BASE_REF...$HEAD_SHA" --jq '
+            [.commits[] | select(
+              .committer.login != "web-flow"
+              or ((.parents | length) == 1 and .author.login != "dependabot[bot]")
+            )] | length' || echo error)
+          if [ "$unexpected" = "0" ]; then
+            echo "main の取り込みのみのため自動マージ予約を維持"
+          else
+            gh pr merge --disable-auto "$PR_NUMBER"
+          fi
