@@ -73,11 +73,14 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
+          # 一覧が打ち切られた (total_commits と件数が不一致) 場合や署名未検証のコミットがある場合も解除対象
           unexpected=$(gh api "repos/$GH_REPO/compare/$BASE_REF...$HEAD_SHA" --jq '
+            if .total_commits != (.commits | length) then "truncated" else
             [.commits[] | select(
               .committer.login != "web-flow"
+              or .commit.verification.verified != true
               or ((.parents | length) == 1 and .author.login != "dependabot[bot]")
-            )] | length' || echo error)
+            )] | length end' || echo error)
           if [ "$unexpected" = "0" ]; then
             echo "main の取り込みのみのため自動マージ予約を維持"
           else
