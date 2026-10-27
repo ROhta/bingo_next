@@ -32,7 +32,9 @@ jobs:
   Build-Check:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # pretest の playwright install --with-deps が毎回 apt を実行し、ミラーが遅いと
+    # 5 分を超えてキャンセルされるため (#761 / #767 で発生)、余裕を持たせる
+    timeout-minutes: 10
     permissions:
       contents: read
     steps:
