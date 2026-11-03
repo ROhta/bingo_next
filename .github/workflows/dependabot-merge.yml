@@ -20,9 +20,6 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
-        with:
-          config: ${{ vars.PERMISSIONS_CONFIG }}
       - id: auto-merge
         uses: fastify/github-action-merge-dependabot@73ec4cbb5e56df5591eae286972d5b2201ffe90f # v3.15.0
         continue-on-error: true
@@ -58,9 +55,6 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@bf82d13b9b10051d224345ab9184f5ede0a94289 # v1.0.2-beta9
-        with:
-          config: ${{ vars.PERMISSIONS_CONFIG }}
       # Update branch (GitHub 上での main 取り込み) は内容の修正ではないため予約を維持する。
       # PR の全コミット (base との差分) が GitHub 上で作成 (committer: web-flow) され、かつ
       # マージコミット以外が Dependabot 作成の場合のみ許可する。
