@@ -6,7 +6,12 @@ resource "vercel_project" "bingo_next" {
   root_directory = "application/"
   framework      = "nextjs"
   name           = "bingo-next"
-  node_version   = "24.x"
+  # Vercel は Node.js 26.x を提供している (既定値):
+  # https://vercel.com/docs/functions/runtimes/node-js/node-js-versions
+  # ただし terraform-provider-vercel の node_version バリデータが 18.x / 20.x / 22.x / 24.x しか
+  # 受け付けない (v5.24.1 時点) ため、provider が対応するまで本番は 24.x に据え置く。
+  # ローカル / CI は mise.toml の node (26 系) を使う。
+  node_version = "24.x"
 
   git_repository = {
     production_branch = var.production_branch

@@ -35,7 +35,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup-node-pnpm
-      - uses: chromaui/action@14cfaef73576e69f95f47f60058063f46ca38719 # v18.1.0
+      - uses: chromaui/action@80379940a37537422d4419aa4c9578673b8bcd34 # v18.13.9
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true
