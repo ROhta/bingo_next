@@ -2,7 +2,7 @@
 node = "26.13.0"
 pnpm = "11.28.10"
 terraform = "1.15.8"
-"github:microsoft/apm" = {version = "0.26.0", extract_all = "true"}
+"github:microsoft/apm" = {version = "0.35.0", extract_all = "true"}
 
 [settings]
 lockfile = true
